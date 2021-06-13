@@ -11,6 +11,17 @@
 	margin-right: 40px;
 }
 
+section .container, section .container-fluid {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.row::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 .row [class^="col"] {
 	float: left;
 	margin: 0.5rem 2%;
@@ -78,12 +89,6 @@
 
 .col-12-sm {
 	width: 96%;
-}
-
-.row::after {
-	content: "";
-	display: table;
-	clear: both;
 }
 
 .hidden-sm {

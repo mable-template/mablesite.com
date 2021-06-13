@@ -63,7 +63,7 @@ body, html, section, header, footer {
 @import(../fonts/noto-serif.css);
 @import(../fonts/noto-mono.css);
 
-* {
+body {
 	font-family: var(--body-font);
 }
 
@@ -74,7 +74,7 @@ body, html, section, header, footer {
 /* 1.1: Section */
 
 section {
-	padding: 80px 0;
+	padding: 70px 0;
 	overflow: hidden;
 }
 
@@ -96,6 +96,7 @@ h1, h2, h3, h4, h5, h6, p, code, pre, a.button {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: var(--title-font);
+	line-height: 1;
 }
 
 h1 {font-size: 72px;}
@@ -235,8 +236,8 @@ p.large .dropcap {font-size: 96px;line-height: 72px;}
    5: Buttons
    ============================================== */
 a.button {
-	font-family: var(--body-font);
-	font-weight: 900;
+	font-family: var(--title-font);
+	font-weight: 700;
 	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -508,15 +509,18 @@ code, pre, .code {
 
 /* 6.1: Code Colors */
 
-
 /* ==============================================
    7: Header
    ============================================== */
 
 header {
 	padding: 16px 0;
-	font-family: var(--body-font);
-	font-weight: var(--title-weight);
+	font-family: var(--title-font);
+	font-weight: 700;
+}
+
+header * {
+	font-family: var(--title-font);
 }
 
 header.sticky {
@@ -538,4 +542,147 @@ header ul li {
 	margin-right: 12px;
 	display: inline-block;
 	text-transform: uppercase;
+}
+
+/* 7.1: Header Colors */
+header.sticky {
+	border-bottom: 4px solid var(--color-black);
+}
+
+header.sticky.section-black {
+	border-bottom: var(--color-white);
+}
+
+header.sticky.section-dark {
+	border-color: var(--color-light);
+}
+
+header.sticky.section-white {
+	border-color: var(--color-black);
+}
+
+header.sticky.section-light {
+	border-color: var(--color-dark);
+}
+
+header.sticky.section-theme {
+	border-color: var(--color-light);
+}
+
+header.sticky.section-theme-inverted {
+	border-color: var(--color-theme);
+}
+
+/* ==============================================
+   8: Footer
+   ============================================== */
+
+footer {
+	margin: 0;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+footer h1 {font-size:32px;}
+footer h2 {font-size:28px;}
+footer h3 {font-size:22px;}
+footer h4 {font-size:16px;}
+footer h5 {font-size:12px;}
+footer h6 {font-size:12px;}
+footer p {font-size:12px}
+
+/* ==============================================
+   9: Portfolio
+   ============================================== */
+
+.portfolio {
+	display: grid;
+	grid-row-gap: 16px;
+	grid-column-gap: 16px;
+	grid-template-columns: 6fr 6fr;
+}
+
+.portfolio article {
+	grid-row-end: var(--row-span, span 1);
+	padding: 10px;
+}
+
+.portfolio.col6 {
+	grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+}
+
+.portfolio.col5 {
+	grid-template-columns: auto auto auto auto auto;
+}
+
+.portfolio.col4 {
+	grid-template-columns: 3fr 3fr 3fr 3fr;
+}
+
+.portfolio.col3 {
+	grid-template-columns: 4fr 4fr 4fr;
+}
+
+.portfolio.col2 {
+	grid-template-columns: 6fr 6fr;
+}
+
+.portfolio.col1 {
+	grid-template-columns: 12fr;
+}
+
+@media (max-width: 60em) {
+	.portfolio.col6 {
+		grid-template-columns: 3fr 3fr 3fr 3fr;
+	}
+
+	.portfolio.col5 {
+		grid-template-columns: 4fr 4fr 4fr;
+	}
+
+	.portfolio.col4 {
+		grid-template-columns: 6fr 6fr;
+	}
+
+	.portfolio.col3 {
+		grid-template-columns: 6fr 6fr;
+	}
+
+	.portfolio.col2 {
+		grid-template-columns: 12fr;
+	}
+
+	.portfolio.col1 {
+		grid-template-columns: 12fr;
+	}
+	
+	.portfolio {
+		grid-template-columns: 12fr;
+	}
+}
+
+@media (max-width: 40em) {
+	.portfolio, .portfolio.col6, .portfolio.col5, .portfolio.col4, .portfolio.col3, .portfolio.col2, .portfolio.col1 {
+		grid-template-columns: 12fr;
+	}
+}
+
+/* ==============================================
+   10: Override
+   ============================================== */
+
+.text-left {
+	text-align:left;
+}
+
+.text-center {
+	text-align:center;
+}
+
+.text-right {
+	text-align:right;
+}
+
+.text-justified {
+	text-align:justified;
 }
