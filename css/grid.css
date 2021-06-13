@@ -11,9 +11,9 @@
 	margin-right: 40px;
 }
 
-section .container, section .container-fluid {
-	margin-top: 20px;
-	margin-bottom: 20px;
+.container, .container-fluid {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .row::after {
@@ -95,7 +95,7 @@ section .container, section .container-fluid {
 	display: none;
 }
 
-@media only screen and (min-width: 53.75em) {	/* 720px */
+@media only screen and (min-width: 53.75em) {	/* 860px */
 	.container {
 		margin-left: auto;
 		margin-right: auto;
