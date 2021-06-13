@@ -56,6 +56,11 @@ body, html, section, header, footer {
 	padding: 0;
 }
 
+* {
+	background-position: center;
+	background-size: cover;
+}
+
 /* 0.3: Font Import */
 
 @import(../fonts/montserrat.css);
@@ -266,12 +271,12 @@ a.button.pill {
 }
 
 a.button:hover {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black);
 }
 
 a.button.hollow {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black)
 }
 a.button.hollow:hover {
@@ -286,11 +291,11 @@ a.button.hollow:hover {
 	border-color: var(--color-white)
 }
 .section-black a.button:hover {
-	background-color: var(--color-black);
+	background-color: transparent;
 	color: var(--color-white);
 }
 .section-black a.button.hollow {
-	background-color: var(--color-black);
+	background-color: transparent;
 	color: var(--color-white)
 }
 .section-black a.button.hollow:hover {
@@ -304,11 +309,11 @@ a.button.hollow:hover {
 	border-color: var(--color-light)
 }
 .section-dark a.button:hover {
-	background-color: var(--color-dark);
+	background-color: transparent;
 	color: var(--color-light);
 }
 .section-dark a.button.hollow {
-	background-color: var(--color-dark);
+	background-color: transparent;
 	color: var(--color-light)
 }
 .section-dark a.button.hollow:hover {
@@ -322,11 +327,11 @@ a.button.hollow:hover {
 	border-color: var(--color-black)
 }
 .section-white a.button:hover {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black);
 }
 .section-white a.button.hollow {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black)
 }
 .section-white a.button.hollow:hover {
@@ -340,11 +345,11 @@ a.button.hollow:hover {
 	border-color: var(--color-dark)
 }
 .section-light a.button:hover {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-dark);
 }
 .section-light a.button.hollow {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-dark)
 }
 .section-light a.button.hollow:hover {
@@ -358,11 +363,11 @@ a.button.hollow:hover {
 	border-color: var(--color-light)
 }
 .section-theme a.button:hover {
-	background-color: var(--color-theme);
+	background-color: transparent;
 	color: var(--color-light);
 }
 .section-theme a.button.hollow {
-	background-color: var(--color-theme);
+	background-color: transparent;
 	color: var(--color-light)
 }
 .section-theme a.button.hollow:hover {
@@ -376,11 +381,11 @@ a.button.hollow:hover {
 	border-color: var(--color-theme)
 }
 .section-theme-inverted a.button:hover {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-theme);
 }
 .section-theme-inverted a.button.hollow {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-theme)
 }
 .section-theme-inverted a.button.hollow:hover {
@@ -395,11 +400,11 @@ a.button.hollow:hover {
 	border-color: var(--color-black)
 }
 .element-black a.button:hover, a.buton.element-black:hover {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black);
 }
 .element-black a.button.hollow, a.button.element-black.hollow {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black)
 }
 .element-black a.button.hollow:hover, a.button.element-black.hollow:hover {
@@ -413,11 +418,11 @@ a.button.hollow:hover {
 	border-color: var(--color-dark)
 }
 .element-dark a.button:hover, a.button.element-dark:hover {
-	background-color: var(--color-dark);
+	background-color: transparent;
 	color: var(--color-light);
 }
 .element-dark a.button.hollow, a.button.element-dark.hollow {
-	background-color: var(--color-dark);
+	background-color: transparent;
 	color: var(--color-light)
 }
 .element-dark a.button.hollow:hover, a.button.element-dark.hollow:hover {
@@ -432,11 +437,11 @@ a.button.hollow:hover {
 	border-color: var(--color-white)
 }
 .element-white a.button:hover, a.button.element-white:hover {
-	background-color: var(--color-black);
+	background-color: transparent;
 	color: var(--color-white);
 }
 .element-white a.button.hollow, a.button.element-white.hollow {
-	background-color: var(--color-white);
+	background-color: transparent;
 	color: var(--color-black)
 }
 .element-white a.button.hollow:hover, a.button.element-white.hollow:hover {
@@ -450,16 +455,16 @@ a.button.hollow:hover {
 	border-color: var(--color-light)
 }
 .element-light a.button:hover, a.button.element-white:hover {
-	background-color: var(--color-dark);
+	background-color: transparent;
 	color: var(--color-light);
 }
 .element-light a.button.hollow, a.button.element-light.hollow {
-	background-color: var(--color-light);
-	color: var(--color-dark)
+	background-color: transparent;
+	color: var(--color-light)
 }
 .element-light a.button.hollow:hover, a.button.element-light.hollow:hover {
-	background-color: var(--color-dark);
-	color: var(--color-light)
+	background-color: var(--color-light);
+	color: var(--color-dark)
 }
 
 .element-theme a.button, a.button.element-theme {
@@ -468,11 +473,11 @@ a.button.hollow:hover {
 	border-color: var(--color-theme)
 }
 .element-theme a.button:hover, a.button.element-theme:hover {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-theme);
 }
 .element-theme a.button.hollow, a.button.element-theme.hollow {
-	background-color: var(--color-theme);
+	background-color: transparent;
 	color: var(--color-light)
 }
 .element-theme a.button.hollow:hover, a.button.element-theme.hollow:hover {
@@ -486,11 +491,11 @@ a.button.hollow:hover {
 	border-color: var(--color-light)
 }
 .element-theme-inverted a.button:hover, a.button.element-theme-inverted:hover {
-	background-color: var(--color-theme);
+	background-color: transparent;
 	color: var(--color-light);
 }
 .element-theme-inverted a.button.hollow, a.button.element-theme-inverted.hollow {
-	background-color: var(--color-light);
+	background-color: transparent;
 	color: var(--color-theme)
 }
 .element-theme-inverted a.button.hollow:hover, a.button.element-theme-inverted.hollow:hover {
