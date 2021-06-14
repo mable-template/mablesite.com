@@ -85,6 +85,10 @@ section {
 	overflow: hidden;
 }
 
+section.section-edgeless {
+	padding: 0;
+}
+
 section.section-thin {
 	padding: 20px 0;
 }
@@ -582,7 +586,7 @@ header.sticky {
 	width: 100%;
 }
 
-header.section-transparent {
+header.transparent {
 	margin-bottom: -80px;
 }
 
@@ -606,7 +610,6 @@ header ul li {
 header.sticky {
 	border-bottom: 3px solid var(--color-black);
 	transition-duration: 0.2s;
-	border-bottom: var(--color-black);
 }
 
 header.sticky.section-black {
