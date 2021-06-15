@@ -6,9 +6,10 @@ Table of Contents
 =================
 
 0: Root Variables, Reset, & Font Import
-	0.1: Root Variables
-	0.2: Reset
-	0.3: Font import
+	0.1: Import
+	0.2: Root Variables
+	0.3: Reset
+	0.4: Font import
 1: Layout
 	1.1: Section
 	1.2: Elements
@@ -21,10 +22,13 @@ Table of Contents
 5: Buttons
 	5.1: Button Colors Section
 	5.2: Button Colors Element
+	5.3: Small Screens
 6: Code
 	6.1: Code Colors
 7: Header
-	7.1: Sticky Headers
+	7.1: Header Colors
+	7.2: Sticky Headers
+	7.3: Small Screens
 8: Footer
 9: Portfolio
 10: Override
@@ -36,7 +40,12 @@ Table of Contents
    0: Root Variables & Reset
    ============================================== */
 
-/* 0.1: Root Variables */
+/* 0.1: Import */
+
+@import url("grid.css");
+@import url("font-awesome.css");
+
+/* 0.2: Root Variables */
 
  :root {
 	--color-black: #000000;
@@ -45,14 +54,14 @@ Table of Contents
 	--color-white: #ffffff;
 	--color-light: #f5f5f5;
 	--color-theme: #f43952;
-	--title-font: "Montserrat", sans-serif;
-	--title-weight: 800;
+	--title-font: "Noto Sans", sans-serif;
+	--title-weight: 900;
 	--body-font: "Noto Sans", sans-serif;
 	--reading-font: "Noto Serif", serif;
 	--monospace-font: "Noto Mono", monospace;
 }
 
-/* 0.2: Reset */
+/* 0.3: Reset */
 
 body, html, section, header, footer {
 	margin: 0;
@@ -61,14 +70,14 @@ body, html, section, header, footer {
 
 * {
 	color: var(--color-black);
+	transition-duration: 0.25s;
 }
 
-/* 0.3: Font Import */
+/* 0.4: Font Import */
 
-@import(../fonts/montserrat.css);
-@import(../fonts/noto-sans.css);
-@import(../fonts/noto-serif.css);
-@import(../fonts/noto-mono.css);
+@import url("../fonts/noto-sans.css");
+@import url("../fonts/noto-serif.css");
+@import url("../fonts/noto-mono.css");
 
 body {
 	font-family: var(--body-font);
@@ -81,7 +90,7 @@ body {
 /* 1.1: Section */
 
 section {
-	padding: 50px;
+	padding: 50px 0;
 	overflow: hidden;
 }
 
@@ -103,18 +112,16 @@ section.section-huge {
 
 section.section-full {
 	height: 100%;
-	display: table;	
 	width: 100%;
 	padding: 0;
-}
-
-section.section-full .container,  section.section-full .container-fluid {
-	display: table-cell;
-	vertical-align: middle;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 1.2: Elements */
-p, code, pre, a.button {
+
+tagline, code, pre, a.button {
 	margin: 0;
 	margin-top: 12px;
 }
@@ -136,21 +143,39 @@ h1 {font-size: 72px;}
 h2 {font-size: 64px;}
 h3 {font-size: 56px;}
 h4 {font-size: 48px;}
-h5 {font-size: 36px;}
-h6 {font-size: 28px;}
-.large h1, h1.large {font-size: 108px}
-.large h2, h2.large {font-size: 96px}
-.large h3, h3.large {font-size: 84px}
-.large h4, h4.large {font-size: 72px}
-.large h5, h5.large {font-size: 54px}
-.large h6, h6.large {font-size: 42px}
+h5 {font-size: 40px;}
+h6 {font-size: 32px;}
+
+.small h1, h1.small {font-size: 54px}
+.small h2, h2.small {font-size: 48px}
+.small h3, h3.small {font-size: 42px}
+.small h4, h4.small {font-size: 36px}
+.small h5, h5.small {font-size: 30px}
+.small h6, h6.small {font-size: 24px}
+
+.large h1, h1.large {font-size: 90px}
+.large h2, h2.large {font-size: 80px}
+.large h3, h3.large {font-size: 70px}
+.large h4, h4.large {font-size: 60px}
+.large h5, h5.large {font-size: 50px}
+.large h6, h6.large {font-size: 40px}
+
 
 h1 {
 	text-transform: uppercase;
 }
 
-.tagline {
+tagline {
+	font-size: 32px;
 	font-weight: 300;
+}
+
+.small tagline, tagline.small {
+	font-size: 24px;
+}
+
+.large tagline, tagline.large {
+	font-size: 40px;
 }
 
 /* 2.2: Body Fonts */
@@ -160,7 +185,8 @@ h1 {
 }
 
 p {font-size: 16px;}
-.large p, p.large {font-size: 24px;}
+.large p, p.large {font-size: 20px;}
+.small p, p.small {font-size: 12px;}
 
 p .dropcap {
 	font-family: var(--body-font);
@@ -168,40 +194,134 @@ p .dropcap {
 	font-size: 64px;
 	line-height: 48px;
 	float: left;
-	padding-top: 12px;
+	padding-top: 8px;
 	padding-right: 8px;
 	padding-left: 4px;
 	text-transform: uppercase;
 }
+.small p .dropcap, p.small .dropcap {
+	font-size: 48px;
+	line-height: 36px;
+	padding-top: 6px;
+	padding-right: 6px;
+	padding-left: 3px;
+}
 .large p .dropcap, p.large .dropcap {
 	font-size: 96px;
 	line-height: 72px;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-left: 5px;
+}
+
+i.fa, i.fab, i.far, i.fas, i.fa-solid, i.fa-regular {
+	font-size: 48px;
+}
+
+p i.fa, p i.fab, p i.far, p i.fas, p i.fa-solid, p i.fa-regular {
+	font-size: 16px;
 }
 
 /* 2.3: Small Screens */
 
-@media only screen and (max-width: 53.75em) {
-	h1 {font-size: 48px;}
-	h2 {font-size: 42px;}
-	h3 {font-size: 36px;}
-	h4 {font-size: 32px;}
-	h5 {font-size: 24px;}
-	h6 {font-size: 18px;}
+@media only screen and (max-width: 54rem) {
+	h1 {font-size: 54px;}
+	h2 {font-size: 48px;}
+	h3 {font-size: 42px;}
+	h4 {font-size: 36px;}
+	h5 {font-size: 30px;}
+	h6 {font-size: 24px;}
+
+	.small h1, h1.small {font-size: 36px}
+	.small h2, h2.small {font-size: 32px}
+	.small h3, h3.small {font-size: 28px}
+	.small h4, h4.small {font-size: 24px}
+	.small h5, h5.small {font-size: 20px}
+	.small h6, h6.small {font-size: 16px}
+
 	.large h1, h1.large {font-size: 72px}
 	.large h2, h2.large {font-size: 64px}
 	.large h3, h3.large {font-size: 56px}
 	.large h4, h4.large {font-size: 48px}
-	.large h5, h5.large {font-size: 36px}
-	.large h6, h6.large {font-size: 28px}
+	.large h5, h5.large {font-size: 40px}
+	.large h6, h6.large {font-size: 32px}
+	
+	tagline {
+		font-size: 24px;
+	}
+
+	.small tagline, tagline.small {
+		font-size: 16px;
+	}
+
+	.large tagline, tagline.large {
+		font-size: 32px;
+	}
 	
 	p {font-size: 12px;}
-	.large p, p.large {font-size: 18px;}
+	.large p, p.large {font-size: 16px;}
+	.small p, p.small {font-size: 8px;}
 	
-	p.dropcap {
-		font-size: 42px;
-		line-height: 32px;
+	p .dropcap {
+		font-size: 48px;
+		line-height: 36px;
+		padding-top: 6px;
+		padding-right: 6px;
+		padding-left: 3px;
 	}
-	.large p .dropcap, p.large .dropcap {font-size: 64px;line-height: 48px;}
+	.small p .dropcap, p.small .dropcap {
+		font-size: 32px;
+		line-height: 24px;
+		padding-top: 4px;
+		padding-right: 4px;
+		padding-left: 2px;
+	}
+	.large p .dropcap, p.large .dropcap {
+		font-size: 64px;
+		line-height: 48px;
+		padding-top: 8px;
+		padding-right: 8px;
+		padding-left: 4px;
+	}
+	
+	p i.fa, p i.fab, p i.far, p i.fas, p i.fa-solid, p i.fa-regular {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 25rem) {
+	h1 {font-size: 36px;}
+	h2 {font-size: 32px;}
+	h3 {font-size: 28px;}
+	h4 {font-size: 24px;}
+	h5 {font-size: 20px;}
+	h6 {font-size: 16px;}
+
+	.small h1, h1.small {font-size: 36px}
+	.small h2, h2.small {font-size: 32px}
+	.small h3, h3.small {font-size: 28px}
+	.small h4, h4.small {font-size: 24px}
+	.small h5, h5.small {font-size: 20px}
+	.small h6, h6.small {font-size: 16px}
+
+	.large h1, h1.large {font-size: 54px}
+	.large h2, h2.large {font-size: 48px}
+	.large h3, h3.large {font-size: 42px}
+	.large h4, h4.large {font-size: 36px}
+	.large h5, h5.large {font-size: 30px}
+	.large h6, h6.large {font-size: 24px}
+	
+	tagline {
+		font-size: 16px;
+	}
+
+	.small tagline, tagline.small {
+		font-size: 16px;
+	}
+
+	.large tagline, tagline.large {
+		font-size: 24px;
+	}
 }
 
 /* ==============================================
@@ -286,18 +406,42 @@ p .dropcap {
    ============================================== */
 a.button {
 	font-family: var(--title-font);
-	font-weight: 700;
+	font-weight: var(--title-weight);
 	font-size: 16px;
 	padding: 8px;
 	margin-right: 8px;
 	text-transform: uppercase;
 	text-align: center;
 	text-decoration: none;
-	border: 3px solid var(--color-black);
+	border: 2px solid var(--color-black);
 	background-color: var(--color-black);
 	color: var(--color-white);
 	display: inline-block;
-	transition-duration: 0.2s;
+}
+a.button * {
+	font-size: 16px;
+	color: var(--color-white);
+}
+a.button:hover {
+	background-color: transparent;
+	color: var(--color-black);
+}
+a.button:hover * {
+	color: var(--color-black);
+}
+a.button.hollow {
+	background-color: transparent;
+}
+a.button.hollow * {
+	background-color: transparent;
+	color: var(--color-black);
+}
+a.button.hollow:hover {
+	background-color: var(--color-white);
+	color: var(--color-black)
+}
+a.button.hollow:hover * {
+	color: var(--color-black);
 }
 
 a.button.rounded {
@@ -309,26 +453,27 @@ a.button.pill {
 }
 
 .large a.button, a.button.large {
-	font-size: 24px;
-	padding: 12px;
+	font-size: 20px;
+	padding: 10px;
+	border: 3px solid var(--color-black);
 }
 
-a.button:hover {
-	background-color: transparent;
-	color: var(--color-black);
+.large a.button *, a.button.large * {
+	font-size: 20px;
 }
 
-a.button.hollow {
-	background-color: transparent;
-	color: var(--color-black)
+.small a.button, a.button.small {
+	font-size: 12px;
+	padding: 6px;
+	border: 2px solid var(--color-black);
 }
-a.button.hollow:hover {
-	background-color: var(--color-black);
-	color: var(--color-white)
+
+.small a.button *, a.button.small * {
+	font-size: 12px;
 }
 
 header a.button {
-	margin: -12px;
+	margin: -12px 0;
 }
 
 /* 5.1: Button Colors Section */
@@ -337,17 +482,29 @@ header a.button {
 	color: var(--color-black);
 	border-color: var(--color-white)
 }
+.section-black a.button * {
+	color: var(--color-black);
+}
 .section-black a.button:hover {
 	background-color: transparent;
 	color: var(--color-white);
 }
+.section-black a.button:hover * {
+	color: var(--color-white);
+}
 .section-black a.button.hollow {
 	background-color: transparent;
-	color: var(--color-white)
+	color: var(--color-white);
+}
+.section-black a.button.hollow * {
+	color: var(--color-white);
 }
 .section-black a.button.hollow:hover {
 	background-color: var(--color-white);
 	color: var(--color-black)
+}
+.section-black a.button.hollow:hover * {
+	color: var(--color-black);
 }
 
 .section-dark a.button {
@@ -355,17 +512,29 @@ header a.button {
 	color: var(--color-dark);
 	border-color: var(--color-light)
 }
+.section-dark a.button * {
+	color: var(--color-dark);
+}
 .section-dark a.button:hover {
 	background-color: transparent;
 	color: var(--color-light);
 }
+.section-dark a.button:hover * {
+	color: var(--color-light);
+}
 .section-dark a.button.hollow {
 	background-color: transparent;
-	color: var(--color-light)
+	color: var(--color-light);
+}
+.section-dark a.button.hollow * {
+	color: var(--color-light);
 }
 .section-dark a.button.hollow:hover {
 	background-color: var(--color-light);
 	color: var(--color-dark)
+}
+.section-dark a.button.hollow:hover * {
+	color: var(--color-dark);
 }
 
 .section-white a.button {
@@ -373,17 +542,29 @@ header a.button {
 	color: var(--color-white);
 	border-color: var(--color-black)
 }
+.section-white a.button * {
+	color: var(--color-white);
+}
 .section-white a.button:hover {
 	background-color: transparent;
 	color: var(--color-black);
 }
+.section-white a.button:hover * {
+	color: var(--color-black);
+}
 .section-white a.button.hollow {
 	background-color: transparent;
-	color: var(--color-black)
+	color: var(--color-black);
+}
+.section-white a.button.hollow * {
+	color: var(--color-black);
 }
 .section-white a.button.hollow:hover {
 	background-color: var(--color-black);
 	color: var(--color-white)
+}
+.section-white a.button.hollow:hover * {
+	color: var(--color-white);
 }
 
 .section-light a.button {
@@ -391,17 +572,29 @@ header a.button {
 	color: var(--color-light);
 	border-color: var(--color-dark)
 }
+.section-light a.button * {
+	color: var(--color-light);
+}
 .section-light a.button:hover {
 	background-color: transparent;
 	color: var(--color-dark);
 }
+.section-light a.button:hover * {
+	color: var(--color-dark);
+}
 .section-light a.button.hollow {
 	background-color: transparent;
-	color: var(--color-dark)
+	color: var(--color-dark);
+}
+.section-light a.button.hollow * {
+	color: var(--color-dark);
 }
 .section-light a.button.hollow:hover {
 	background-color: var(--color-dark);
 	color: var(--color-light)
+}
+.section-light a.button.hollow:hover * {
+	color: var(--color-light);
 }
 
 .section-theme a.button {
@@ -409,17 +602,29 @@ header a.button {
 	color: var(--color-theme);
 	border-color: var(--color-light)
 }
+.section-theme a.button * {
+	color: var(--color-theme);
+}
 .section-theme a.button:hover {
 	background-color: transparent;
 	color: var(--color-light);
 }
+.section-theme a.button:hover * {
+	color: var(--color-light);
+}
 .section-theme a.button.hollow {
 	background-color: transparent;
-	color: var(--color-light)
+	color: var(--color-light);
+}
+.section-theme a.button.hollow * {
+	color: var(--color-light);
 }
 .section-theme a.button.hollow:hover {
 	background-color: var(--color-light);
 	color: var(--color-theme)
+}
+.section-theme a.button.hollow:hover * {
+	color: var(--color-theme);
 }
 
 .section-theme-inverted a.button {
@@ -427,17 +632,29 @@ header a.button {
 	color: var(--color-light);
 	border-color: var(--color-theme)
 }
+.section-theme-inverted a.button * {
+	color: var(--color-light);
+}
 .section-theme-inverted a.button:hover {
 	background-color: transparent;
 	color: var(--color-theme);
 }
+.section-theme-inverted a.button:hover * {
+	color: var(--color-theme);
+}
 .section-theme-inverted a.button.hollow {
 	background-color: transparent;
-	color: var(--color-theme)
+	color: var(--color-light);
+}
+.section-theme-inverted a.button.hollow * {
+	color: var(--color-theme);
 }
 .section-theme-inverted a.button.hollow:hover {
 	background-color: var(--color-theme);
 	color: var(--color-light)
+}
+.section-theme-inverted a.button.hollow:hover * {
+	color: var(--color-light);
 }
 
 /* 5.1: Button Colors Element */
@@ -446,17 +663,29 @@ header a.button {
 	color: var(--color-white);
 	border-color: var(--color-black)
 }
-.element-black a.button:hover, a.buton.element-black:hover {
+.element-black a.button *, a.button.element-black * {
+	color: var(--color-white);
+}
+.element-black a.button:hover, a.button.element-black:hover {
 	background-color: transparent;
+	color: var(--color-black);
+}
+.element-black a.button:hover *, a.button.element-black:hover * {
 	color: var(--color-black);
 }
 .element-black a.button.hollow, a.button.element-black.hollow {
 	background-color: transparent;
 	color: var(--color-black)
 }
+.element-black a.button.hollow *, a.button.element-black.hollow * {
+	color: var(--color-black);
+}
 .element-black a.button.hollow:hover, a.button.element-black.hollow:hover {
 	background-color: var(--color-black);
 	color: var(--color-white)
+}
+.element-black a.button.hollow:hover *, a.button.element-dark.hollow:hover * {
+	color: var(--color-white);
 }
 
 .element-dark a.button, a.button.element-dark {
@@ -464,36 +693,59 @@ header a.button {
 	color: var(--color-light);
 	border-color: var(--color-dark)
 }
+.element-dark a.button *, a.button.element-dark * {
+	color: var(--color-light);
+}
 .element-dark a.button:hover, a.button.element-dark:hover {
 	background-color: transparent;
-	color: var(--color-light);
+	color: var(--color-dark);
+}
+.element-dark a.button:hover *, a.button.element-dark:hover * {
+	color: var(--color-dark);
 }
 .element-dark a.button.hollow, a.button.element-dark.hollow {
 	background-color: transparent;
-	color: var(--color-light)
-}
-.element-dark a.button.hollow:hover, a.button.element-dark.hollow:hover {
-	background-color: var(--color-light);
 	color: var(--color-dark)
 }
-
+.element-dark a.button.hollow *, a.button.element-dark.hollow * {
+	color: var(--color-dark);
+}
+.element-dark a.button.hollow:hover, a.button.element-dark.hollow:hover {
+	background-color: var(--color-dark);
+	color: var(--color-light)
+}
+.element-dark a.button.hollow:hover *, a.button.element-dark.hollow:hover * {
+	color: var(--color-light);
+}
 
 .element-white a.button, a.button.element-white {
 	background-color: var(--color-white);
 	color: var(--color-black);
 	border-color: var(--color-white)
 }
+.element-white a.button *, a.button.element-white * {
+	color: var(--color-black);
+}
 .element-white a.button:hover, a.button.element-white:hover {
 	background-color: transparent;
 	color: var(--color-white);
 }
+.element-white a.button:hover *, a.button.element-white:hover * {
+	color: var(--color-white);
+}
 .element-white a.button.hollow, a.button.element-white.hollow {
 	background-color: transparent;
-	color: var(--color-black)
+	color: var(--color-white)
+}
+.element-white a.button.hollow *, a.button.element-white.hollow * {
+	color: var(--color-white);
 }
 .element-white a.button.hollow:hover, a.button.element-white.hollow:hover {
-	background-color: var(--color-black);
-	color: var(--color-white)
+	background-color: var(--color-white);
+	color: var(--color-black)
+}
+.element-white a.button.hollow:hover *, a.button.element-white.hollow:hover * {
+	color: var(--color-black);
 }
 
 .element-light a.button, a.button.element-white {
@@ -501,17 +753,29 @@ header a.button {
 	color: var(--color-dark);
 	border-color: var(--color-light)
 }
+.element-light a.button *, a.button.element-white * {
+	color: var(--color-dark);
+}
 .element-light a.button:hover, a.button.element-white:hover {
 	background-color: transparent;
+	color: var(--color-light);
+}
+.element-light a.button:hover *, a.button.element-white:hover * {
 	color: var(--color-light);
 }
 .element-light a.button.hollow, a.button.element-light.hollow {
 	background-color: transparent;
 	color: var(--color-light)
 }
+.element-light a.button.hollow *, a.button.element-light.hollow * {
+	color: var(--color-light);
+}
 .element-light a.button.hollow:hover, a.button.element-light.hollow:hover {
 	background-color: var(--color-light);
 	color: var(--color-dark)
+}
+.element-light a.button.hollow:hover *, a.button.element-light.hollow:hover * {
+	color: var(--color-dark);
 }
 
 .element-theme a.button, a.button.element-theme {
@@ -519,17 +783,29 @@ header a.button {
 	color: var(--color-light);
 	border-color: var(--color-theme)
 }
+.element-theme a.button *, a.button.element-theme * {
+	color: var(--color-light);
+}
 .element-theme a.button:hover, a.button.element-theme:hover {
 	background-color: transparent;
 	color: var(--color-theme);
 }
+.element-theme a.button:hover *, a.button.element-theme:hover * {
+	color: var(--color-theme);
+}
 .element-theme a.button.hollow, a.button.element-theme.hollow {
 	background-color: transparent;
-	color: var(--color-light)
+	color: var(--color-theme)
+}
+.element-theme a.button.hollow *, a.button.element-theme.hollow * {
+	color: var(--color-theme);
 }
 .element-theme a.button.hollow:hover, a.button.element-theme.hollow:hover {
-	background-color: var(--color-light);
-	color: var(--color-theme)
+	background-color: var(--color-theme);
+	color: var(--color-light)
+}
+.element-theme a.button.hollow:hover *, a.button.element-theme.hollow:hover * {
+	color: var(--color-light);
 }
 
 .element-theme-inverted a.button, a.button.element-theme-inverted {
@@ -537,17 +813,68 @@ header a.button {
 	color: var(--color-theme);
 	border-color: var(--color-light)
 }
+.element-theme-inverted a.button *, a.button.element-theme-inverted * {
+	color: var(--color-theme);
+}
 .element-theme-inverted a.button:hover, a.button.element-theme-inverted:hover {
 	background-color: transparent;
 	color: var(--color-light);
 }
+.element-theme-inverted a.button:hover *, a.button.element-theme-inverted:hover * {
+	color: var(--color-light);
+}
 .element-theme-inverted a.button.hollow, a.button.element-theme-inverted.hollow {
 	background-color: transparent;
-	color: var(--color-theme)
+	color: var(--color-light)
+}
+.element-theme-inverted a.button.hollow *, a.button.element-theme-inverted.hollow * {
+	color: var(--color-light);
 }
 .element-theme-inverted a.button.hollow:hover, a.button.element-theme-inverted.hollow:hover {
-	background-color: var(--color-theme);
-	color: var(--color-light)
+	background-color: var(--color-light);
+	color: var(--color-theme)
+}
+.element-theme-inverted a.button.hollow:hover *, a.button.element-theme-inverted.hollow:hover * {
+	color: var(--color-theme);
+}
+
+/* 5.3: Small Screens */
+@media only screen and (max-width: 54em) {
+	a.button {
+		font-size: 12px;
+	}
+	a.button * {
+		font-size: 12px;
+	}
+	
+	.large a.button, a.button.large {
+		font-size: 16px;
+		padding: 8px;
+		border-width: 2px;
+	}
+	.large a.button *, a.button.large * {
+		font-size: 16px;
+	}
+
+	.small a.button, a.button.small {
+		font-size: 8px;
+		padding: 4px;
+		border-width: 2px;
+	}
+	.small a.button *, a.button.small * {
+		font-size: 8px;
+	}
+}
+
+@media only screen and (max-width: 30rem) {
+	.large a.button, a.button.large {
+		font-size: 12px;
+		padding: 8px;
+		border-width: 2px;
+	}
+	.large a.button *, a.button.large * {
+		font-size: 12px;
+	}
 }
 
 /* ==============================================
@@ -561,6 +888,7 @@ code, pre, .code {
 
 pre {
 	padding: 8px;
+	overflow-x: scroll;
 }
 
 /* 6.1: Code Colors */
@@ -570,7 +898,7 @@ pre {
    ============================================== */
 
 header {
-	padding: 20px 0;
+	padding: 12px 0;
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	background-color: transparent;
@@ -608,8 +936,7 @@ header ul li {
 /* 7.1: Header Colors */
 
 header.sticky {
-	border-bottom: 3px solid var(--color-black);
-	transition-duration: 0.2s;
+	border-bottom: 2px solid var(--color-black);
 }
 
 header.sticky.section-black {
@@ -636,10 +963,23 @@ header.sticky.section-theme-inverted {
 	border-color: var(--color-theme);
 }
 
-/* 7.1: Sticky headers */
+/* 7.2: Sticky headers */
 html:is([data-scroll='0']) header.sticky {
   background-color: transparent;
   border: none;
+}
+
+/* 7.3: Small Screens */
+@media only screen and (max-width: 54em) {
+	header li, header a.button {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 30rem) {
+	header li, header a.button {
+		font-size: 12px;
+	}
 }
 
 /* ==============================================
@@ -650,10 +990,6 @@ footer {
 	margin: 0;
 	padding-top: 40px;
 	padding-bottom: 40px;
-}
-
-footer .container {
-	margin: 0;
 }
 
 footer h1 {font-size:32px;}
@@ -704,7 +1040,7 @@ footer p {font-size:12px}
 	grid-template-columns: 12fr;
 }
 
-@media (max-width: 60em) {
+@media (max-width: 54em) {
 	.portfolio.col6 {
 		grid-template-columns: 3fr 3fr 3fr 3fr;
 	}
@@ -734,9 +1070,13 @@ footer p {font-size:12px}
 	}
 }
 
-@media (max-width: 40em) {
-	.portfolio, .portfolio.col6, .portfolio.col5, .portfolio.col4, .portfolio.col3, .portfolio.col2, .portfolio.col1 {
+@media (max-width: 30rem) {
+	.portfolio, .portfolio.col5, .portfolio.col4, .portfolio.col3, .portfolio.col2, .portfolio.col1 {
 		grid-template-columns: 12fr;
+	}
+	
+	.portfolio.col6 {
+		grid-template-columns: 6fr 6fr;
 	}
 }
 
@@ -745,17 +1085,17 @@ footer p {font-size:12px}
    ============================================== */
 
 .text-left {
-	text-align:left;
+	text-align: left;
 }
 
 .text-center {
-	text-align:center;
+	text-align: center;
 }
 
 .text-right {
-	text-align:right;
+	text-align: right;
 }
 
 .text-justified {
-	text-align:justified;
+	text-align: justify;
 }
