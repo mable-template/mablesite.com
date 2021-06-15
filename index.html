@@ -7,6 +7,7 @@
 		<link href="css/font-awesome.css" type="text/css" rel="stylesheet">
 		<link href="css/grid.css" type="text/css" rel="stylesheet">
 		<link href="css/style.css" type="text/css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="custom-theme-here" id="custom-theme-sheet">
 		
 		<!-- Other Things -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +17,9 @@
 		<header class="section-dark sticky transparent">
 			<div class="container-fluid">
 				<ul>
-					<li><a href="#demos" class="button hollow">Demos</a></li>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#themes">Themes</a></li>
+					<li><a href="#demos" class="button pill hollow">Demos</a></li>
 					<li><a href="#sample-text">Sample Text</a></li>
 				</ul>
 			</div>
@@ -33,7 +36,7 @@
 			</div>
 		</section>
 		<!-- Features -->
-		<section class="section-light" id="features">
+		<section class="section-theme" id="features">
 			<div class="container">
 				<div class="row">
 					<h1 class="text-center">Features</h1>
@@ -68,15 +71,25 @@
 				</div>
 			</div>
 		</section>
+		<!-- Themes -->
+		<section class="section-light" id="themes">
+			<div class="container">
+					<h1>Themes</h1>
+					<tagline>Click on a theme below to apply it to this page</tagline>
+					<p><a href="#!" class="button" id="theme-set-default" onclick="setThemeDefault()">Default</a> <a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBenjistokman()">Benjistokman</a></p>
+					<p><a class="button hollow">View and Download <i class="fa-solid fa-arrow-right"></i></a></p>
+				<div class="row">
+				</div>
+			</div>
+		</section>
+		
 		<!-- Demos -->
-		<section class="section-theme section-thin" id="demos">
+		<section class="section-dark" id="demos">
 			<div class="container">
 				<div class="row">
 					<h1>Demos</h1>
 				</div>
 			</div>
-		</section>
-		<section class="section-dark">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="portfolio col4">
@@ -99,6 +112,7 @@
 				</div>
 			</div>
 		</section>
+		
 		<!-- Sample Text -->
 		<section class="section-light" id="sample-text">
 			<div class="container">
@@ -115,7 +129,9 @@
 				</div>
 			</div>
 		</section>
-		<footer class="section-dark">
+		
+		<!-- Footer -->
+		<footer class="section-theme">
 			<div class="container">
 				<div class="row">
 					<div class="col-6 text-right">
@@ -130,5 +146,16 @@
 		
 		<!-- Scripts -->
 		<script src="js/main.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+			
+			function setThemeDefault() {
+				customTheme.href = "custom-theme-here";
+			}
+			
+			function setThemeBenjistokman() {
+				customTheme.href = "css/themes/benjistokman.css";
+			}
+		</script>
 	</body>
 </html>

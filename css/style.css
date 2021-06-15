@@ -28,6 +28,7 @@ Table of Contents
 7: Header
 	7.1: Header Colors
 	7.2: Sticky Headers
+		7.2.1: Sticky Headers Top Color
 	7.3: Small Screens
 8: Footer
 9: Portfolio
@@ -53,7 +54,7 @@ Table of Contents
 	--color-dark-rgb: 32, 32, 32;
 	--color-white: #ffffff;
 	--color-light: #f5f5f5;
-	--color-theme: #f43952;
+	--color-theme: #f2ab23;
 	--title-font: "Noto Sans", sans-serif;
 	--title-weight: 900;
 	--body-font: "Noto Sans", sans-serif;
@@ -66,6 +67,10 @@ Table of Contents
 body, html, section, header, footer {
 	margin: 0;
 	padding: 0;
+}
+
+section {
+	overflow:  auto;
 }
 
 * {
@@ -91,7 +96,6 @@ body {
 
 section {
 	padding: 50px 0;
-	overflow: hidden;
 }
 
 section.section-edgeless {
@@ -136,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	line-height: 1;
-	margin: 6;
+	margin: 8px 0;
 }
 
 h1 {font-size: 72px;}
@@ -296,13 +300,6 @@ p i.fa, p i.fab, p i.far, p i.fas, p i.fa-solid, p i.fa-regular {
 	h4 {font-size: 24px;}
 	h5 {font-size: 20px;}
 	h6 {font-size: 16px;}
-
-	.small h1, h1.small {font-size: 36px}
-	.small h2, h2.small {font-size: 32px}
-	.small h3, h3.small {font-size: 28px}
-	.small h4, h4.small {font-size: 24px}
-	.small h5, h5.small {font-size: 20px}
-	.small h6, h6.small {font-size: 16px}
 
 	.large h1, h1.large {font-size: 54px}
 	.large h2, h2.large {font-size: 48px}
@@ -899,13 +896,12 @@ pre {
 
 header {
 	padding: 12px 0;
-	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	background-color: transparent;
 }
 
-header, header * {
-	font-family: var(--title-font);
+header, header *, header a.button {
+	font-family: var(--body-font);
 }
 
 header.sticky {
@@ -969,7 +965,7 @@ html:is([data-scroll='0']) header.sticky {
   border: none;
 }
 
-/* 7.3: Small Screens */
+/* 7.4: Small Screens */
 @media only screen and (max-width: 54em) {
 	header li, header a.button {
 		font-size: 12px;

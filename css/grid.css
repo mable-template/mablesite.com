@@ -1,10 +1,11 @@
 .container {
-	width: calc(100%-80px);
-	max-width: 50rem;
+	width: calc(100%-60px);
+	max-width: 800px;
+	margin: 0 20px;
 }
 
 .container-fluid {
-	width: calc(100%-5rem);
+	width: calc(100%-60px);
 	margin: 0 30px;
 }
 
@@ -36,7 +37,7 @@
 .col-10,
 .col-11,
 .col-12 {
-	width: 100%;
+	width: 90%;
 	padding: 0 12px;
 }
 
@@ -94,8 +95,7 @@
 
 @media only screen and (min-width: 54rem) {	/* 860px */
 	.container {
-		margin-left: auto;
-		margin-right: auto;
+		margin: auto;
 	}
 
 	.col-1 {
