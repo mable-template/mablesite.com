@@ -1,17 +1,17 @@
 /* Benjistokman CSS Theme for Mable Template */
 
+@import url('https://fonts.benstokman.me/odibee-sans.css');
+@import url('https://fonts.benstokman.me/montserrat.css');
+@import url('https://fonts.benstokman.me/share-tech-mono.css');
+
  :root {
 	--color-theme: #fc4651;
 	--title-font: "Odibee Sans", sans-serif;
-	--title-weight: 900;
+	--title-weight: 700;
 	--body-font: "Montserrat", sans-serif;
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
 }
-
-@import url('https://fonts.benstokman.me/odibee-sans.css');
-@import url('https://fonts.benstokman.me/montserrat.css');
-@import url('https://fonts.benstokman.me/share-tech-mono.css');
 
 a.button {
 	font-size: 20px;

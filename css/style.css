@@ -78,6 +78,10 @@ section {
 	transition-duration: 0.25s;
 }
 
+iframe {
+  border: 0;
+}
+
 /* 0.4: Font Import */
 
 @import url("../fonts/noto-sans.css");
@@ -140,7 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	line-height: 1;
-	margin: 8px 0;
+	margin: 12px 0;
 }
 
 h1 {font-size: 72px;}
@@ -188,7 +192,11 @@ tagline {
 	font-family: var(--reading-font);
 }
 
-p {font-size: 16px;}
+p {
+	font-size: 16px;
+	margin: 0;
+	margin-top: 12px;
+}
 .large p, p.large {font-size: 20px;}
 .small p, p.small {font-size: 12px;}
 
@@ -414,6 +422,9 @@ a.button {
 	background-color: var(--color-black);
 	color: var(--color-white);
 	display: inline-block;
+}
+p a.button {
+	margin: 0;
 }
 a.button * {
 	font-size: 16px;
@@ -984,17 +995,15 @@ html:is([data-scroll='0']) header.sticky {
 
 footer {
 	margin: 0;
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding: 10px 0;
 }
 
-footer h1 {font-size:32px;}
-footer h2 {font-size:28px;}
-footer h3 {font-size:22px;}
-footer h4 {font-size:16px;}
-footer h5 {font-size:12px;}
-footer h6 {font-size:12px;}
-footer p {font-size:12px}
+footer h1 {font-size:54px;}
+footer h2 {font-size:48px;}
+footer h3 {font-size:42px;}
+footer h4 {font-size:36px;}
+footer h5 {font-size:30px;}
+footer h6 {font-size:24px;}
 
 /* ==============================================
    9: Portfolio
