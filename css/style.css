@@ -5,138 +5,284 @@ Mable Main CSS File
 Table of Contents
 =================
 
-0: Root Variables, Reset, & Font Import
+0: Root Variables & Reset
 	0.1: Import
 	0.2: Root Variables
 	0.3: Reset
-	0.4: Font import
 1: Layout
 	1.1: Section
-	1.2: Elements
-2: Text
+	1.2: Grid
+2: Fonts & Text
 	2.1: Headings
 	2.2: Body Fonts
 	2.3: Small Screens
-3: Section Colors
-4: Element Colors
-5: Buttons
-	5.1: Button Colors Section
-	5.2: Button Colors Element
-	5.3: Small Screens
-6: Code
-	6.1: Code Colors
-7: Header
-	7.1: Header Colors
-	7.2: Sticky Headers
-		7.2.1: Sticky Headers Top Color
-	7.3: Small Screens
-8: Footer
-9: Portfolio
-10: Override
-11: Custom
+3: Colors
+	3.1: Section Colors
+	3.2: Element Colors
+4: Buttons
+5: Code
+6: Header
+	6.1: Header Colors
+	6.2: Sticky Headers
+7: Footer
+8: Table
+9: Override
 
 */
 
-/* ==============================================
-   0: Root Variables & Reset
-   ============================================== */
+/*	==============================================
+	0: Root Variables & Reset
+	============================================== */
 
 /* 0.1: Import */
 
-@import url("grid.css");
 @import url("font-awesome.css");
+@import url("../fonts/montserrat.css");
 
 /* 0.2: Root Variables */
 
- :root {
-	--color-black: #000000;
-	--color-dark: #202020;
-	--color-dark-rgb: 32, 32, 32;
-	--color-white: #ffffff;
-	--color-light: #f5f5f5;
-	--color-theme: #f2ab23;
-	--title-font: "Noto Sans", sans-serif;
+:root {
+	--black-color: #000000;
+	--dark-color: #202020;
+	--white-color: #ffffff;
+	--light-color: #f5f5f5;
+	--theme-color: #f2ab23;
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
+	--title-font: "Montserrat", sans-serif;
 	--title-weight: 900;
-	--body-font: "Noto Sans", sans-serif;
-	--reading-font: "Noto Serif", serif;
-	--monospace-font: "Noto Mono", monospace;
+	--title-size-raw: 72px;
+	--title-size: var(--title-size-raw);
+	--body-font: "Montserrat", sans-serif;
+	--body-size-raw: 20px;
+	--body-size: var(--body-size-raw);
+	--reading-font: serif;
+	--monospace-font: monospace;
+	--border-width: 3px;
 }
 
 /* 0.3: Reset */
 
-body, html, section, header, footer {
+* {
 	margin: 0;
 	padding: 0;
 }
 
-section {
-	overflow:  auto;
+html, body {
+	scroll-behavior: smooth;
 }
 
 * {
-	color: var(--color-black);
 	transition-duration: 0.25s;
+	background-position: center;
+	background-size: cover;
+}
+
+[class*="section-"] {
+	background-color: var(--background-color);
 }
 
 iframe {
-  border: 0;
+	border: 0;
 }
 
-/* 0.4: Font Import */
+img {
+	max-width: 100%;
+}
 
-@import url("../fonts/noto-sans.css");
-@import url("../fonts/noto-serif.css");
-@import url("../fonts/noto-mono.css");
+.row *, .row p {
+	margin: calc(var(--body-size) * 1/2) 0;
+}
 
 body {
 	font-family: var(--body-font);
 }
 
-/* ==============================================
-   1: Layout
-   ============================================== */
+/*	==============================================
+	1: Layout
+	============================================== */
 
 /* 1.1: Section */
 
 section {
-	padding: 50px 0;
+	padding: 70px 0;
 }
 
-section.section-edgeless {
+.section-edgeless {
 	padding: 0;
 }
 
-section.section-thin {
-	padding: 20px 0;
+.breadcrumbs {
+	padding: 10px 0;
+	font-family: var(--monospace-font);
 }
 
-section.section-large {
-	padding: 110px 0;
+.section-thin {
+	padding: 30px 0;
 }
 
-section.section-huge {
-	padding: 230px 0;
+.section-large {
+	padding: 150px 0;
 }
 
-section.section-full {
+.section-huge {
+	padding: 310px 0;
+}
+
+.section-full {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 }
 
-/* 1.2: Elements */
-
-tagline, code, pre, a.button {
-	margin: 0;
-	margin-top: 12px;
+.container, .container-fluid, .container-large {
+	width: calc(100%-60px);
+	margin: 0 30px;
 }
 
-/* ==============================================
-   2: Fonts & Text
-   ============================================== */
+.row {
+	margin: 20px 0;
+	width: 100%;
+}
+
+.row > * {
+	margin: calc(var(--body-size) * 2/3) 0;
+}
+
+@media only screen and (min-width: 54rem) {
+	.container {
+		max-width: 800px;
+		margin-left: calc(50% - 400px);
+	}
+}
+
+@media only screen and (min-width: 78.75rem) {
+	.container-large {
+		max-width: 1200px;
+		margin: 0 calc(50% - 600px);
+	}
+}
+
+@media only screen and (max-width: 54rem) {
+		section, .section-thin {
+		padding: 30px 0;
+	}
+	
+	.section-huge {
+		padding: 150px 0;
+	}
+}
+
+@media only screen and (max-width: 35rem) {
+		section, .section-thin {
+		padding: 10px 0;
+	}
+}
+
+/* 1.2: Grid */
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: 30px;
+}
+
+.grid.portfolio {
+	grid-gap: 20px;
+}
+
+.grid.no-gap {
+	grid-gap: 0px;
+}
+
+[class^="col-"] {
+	grid-column-end: span 12;
+	margin: 0;
+}
+
+.grid > [class^="col-"] > * {
+	margin: calc(var(--body-size) * 2/3);
+}
+
+.grid > [class^="col-"] > img, .grid > [class^="col-"] > a {
+	margin: 0;
+}
+
+.grid > [class^="col-"] > a > * {
+	margin: calc(var(--body-size) * 2/3);
+}
+
+.grid > [class^="col-"] > a > img {
+	margin: 0;
+}
+
+.hidden-sm {
+	display: block;
+}
+
+.merge-two-rows { grid-row-end: span 2;}
+.merge-three-rows { grid-row-end: span 3;}
+.merge-four-rows { grid-row-end: span 4;}
+.merge-five-rows { grid-row-end: span 5;}
+.merge-six-rows { grid-row-end: span 6;}
+
+.col-one { grid-column-end: span 1;}
+.col-two { grid-column-end: span 2;}
+.col-three { grid-column-end: span 3;}
+.col-four { grid-column-end: span 4;}
+.col-five { grid-column-end: span 5;}
+.col-six { grid-column-end: span 6;}
+.col-seven { grid-column-end: span 7;}
+.col-eight { grid-column-end: span 8;}
+.col-nine { grid-column-end: span 9;}
+.col-ten { grid-column-end: span 10;}
+.col-eleven { grid-column-end: span 11;}
+
+@media only screen and (max-width: 54rem) {
+	.col-one { grid-column-end: span 4;}
+	.col-two { grid-column-end: span 4;}
+	.col-three { grid-column-end: span 6;}
+	.col-four { grid-column-end: span 6;}
+	.col-five { grid-column-end: span 12;}
+	.col-six { grid-column-end: span 12;}
+	.col-seven { grid-column-end: span 12;}
+	.col-eight { grid-column-end: span 12;}
+	.col-nine { grid-column-end: span 12;}
+	.col-ten { grid-column-end: span 12;}
+	.col-eleven { grid-column-end: span 12;}
+	
+	.grid {
+		grid-gap: 40px;
+	}
+
+	.grid.portfolio {
+		grid-gap: 20px;
+	}
+}
+
+@media only screen and (max-width: 35rem) {
+	.col-one { grid-column-end: span 12;}
+	.col-two { grid-column-end: span 12;}
+	.col-three { grid-column-end: span 12;}
+	.col-four { grid-column-end: span 12;}
+	.col-five { grid-column-end: span 12;}
+	.col-six { grid-column-end: span 12;}
+	.col-seven { grid-column-end: span 12;}
+	.col-eight { grid-column-end: span 12;}
+	.col-nine { grid-column-end: span 12;}
+	.col-ten { grid-column-end: span 12;}
+	.col-eleven { grid-column-end: span 12;}
+	
+	.grid, .grid.portfolio {
+		grid-gap: 20px;
+	}
+}
+
+/*	==============================================
+	2: Fonts & Text
+	============================================== */
 
 /* 2.1: Headings */
 
@@ -144,46 +290,33 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	line-height: 1;
-	margin: 12px 0;
+}
+h2.tagline {
+	font-family: var(--body-font);
+	font-weight: var(--body-weight);
 }
 
-h1 {font-size: 72px;}
-h2 {font-size: 64px;}
-h3 {font-size: 56px;}
-h4 {font-size: 48px;}
-h5 {font-size: 40px;}
-h6 {font-size: 32px;}
-
-.small h1, h1.small {font-size: 54px}
-.small h2, h2.small {font-size: 48px}
-.small h3, h3.small {font-size: 42px}
-.small h4, h4.small {font-size: 36px}
-.small h5, h5.small {font-size: 30px}
-.small h6, h6.small {font-size: 24px}
-
-.large h1, h1.large {font-size: 90px}
-.large h2, h2.large {font-size: 80px}
-.large h3, h3.large {font-size: 70px}
-.large h4, h4.large {font-size: 60px}
-.large h5, h5.large {font-size: 50px}
-.large h6, h6.large {font-size: 40px}
-
+h1 {font-size: var(--title-size);}
+h2 {font-size: calc(var(--title-size) * 8/9);}
+h3 {font-size: calc(var(--title-size) * 7/9);}
+h4 {font-size: calc(var(--title-size) * 6/9);}
+h5 {font-size: calc(var(--title-size) * 5/9);}
+h6 {font-size: calc(var(--title-size) * 4/9);}
+h2.tagline {font-size: calc(var(--body-size) * 3/2);}
 
 h1 {
 	text-transform: uppercase;
 }
 
-tagline {
-	font-size: 32px;
+h2.tagline {
 	font-weight: 300;
 }
 
-.small tagline, tagline.small {
-	font-size: 24px;
+.small {
+	--title-size: calc(var(--title-size-raw) * 3/4);
 }
-
-.large tagline, tagline.large {
-	font-size: 40px;
+.large {
+	--title-size: calc(var(--title-size-raw) * 6/4);
 }
 
 /* 2.2: Body Fonts */
@@ -193,263 +326,281 @@ tagline {
 }
 
 p {
-	font-size: 16px;
-	margin: 0;
-	margin-top: 12px;
+	font-size: var(--body-size);
 }
-.large p, p.large {font-size: 20px;}
-.small p, p.small {font-size: 12px;}
 
 p .dropcap {
 	font-family: var(--body-font);
 	font-weight: var(--title-weight);
-	font-size: 64px;
-	line-height: 48px;
+	font-size: calc(var(--body-size) * 4);
+	line-height: calc(var(--body-size) * 3);
 	float: left;
-	padding-top: 8px;
-	padding-right: 8px;
-	padding-left: 4px;
+	padding-top: calc(var(--body-size) * 1/2);
+	padding-right: calc(var(--body-size) * 1/2);
+	padding-left: calc(var(--body-size) * 1/3);
 	text-transform: uppercase;
 }
-.small p .dropcap, p.small .dropcap {
-	font-size: 48px;
-	line-height: 36px;
-	padding-top: 6px;
-	padding-right: 6px;
-	padding-left: 3px;
-}
-.large p .dropcap, p.large .dropcap {
-	font-size: 96px;
-	line-height: 72px;
-	padding-top: 10px;
-	padding-right: 10px;
-	padding-left: 5px;
+
+a:hover {
+	opacity: 0.75;
 }
 
-i.fa, i.fab, i.far, i.fas, i.fa-solid, i.fa-regular {
-	font-size: 48px;
+.portfolio a {
+	text-decoration: none;
 }
 
-p i.fa, p i.fab, p i.far, p i.fas, p i.fa-solid, p i.fa-regular {
-	font-size: 16px;
+.fa-icon i.fa, i.fa.fa-icon, .fa-icon i.fab, i.fab.fa-icon, .fa-icon i.far, i.far.fa-icon, .fa-icon i.fa-regular, i.fa-regular.fa-icon, .fa-icon i.fas, i.fas.fa-icon, .fa-icon i.fa-solid, i.fa-solid.fa-icon {
+	font-size: calc(var(--body-size) * 3);
+}
+
+.small {
+	--body-size: calc(var(--body-size-raw) * 3/4);
+}
+.large {
+	--body-size: calc(var(--body-size-raw) * 5/4);
 }
 
 /* 2.3: Small Screens */
 
 @media only screen and (max-width: 54rem) {
-	h1 {font-size: 54px;}
-	h2 {font-size: 48px;}
-	h3 {font-size: 42px;}
-	h4 {font-size: 36px;}
-	h5 {font-size: 30px;}
-	h6 {font-size: 24px;}
-
-	.small h1, h1.small {font-size: 36px}
-	.small h2, h2.small {font-size: 32px}
-	.small h3, h3.small {font-size: 28px}
-	.small h4, h4.small {font-size: 24px}
-	.small h5, h5.small {font-size: 20px}
-	.small h6, h6.small {font-size: 16px}
-
-	.large h1, h1.large {font-size: 72px}
-	.large h2, h2.large {font-size: 64px}
-	.large h3, h3.large {font-size: 56px}
-	.large h4, h4.large {font-size: 48px}
-	.large h5, h5.large {font-size: 40px}
-	.large h6, h6.large {font-size: 32px}
-	
-	tagline {
-		font-size: 24px;
-	}
-
-	.small tagline, tagline.small {
-		font-size: 16px;
-	}
-
-	.large tagline, tagline.large {
-		font-size: 32px;
+	:root {
+		--title-size: calc(var(--title-size-raw) * 3/4);
+		--body-size: calc(var(--body-size-raw) * 3/4);
 	}
 	
-	p {font-size: 12px;}
-	.large p, p.large {font-size: 16px;}
-	.small p, p.small {font-size: 8px;}
-	
-	p .dropcap {
-		font-size: 48px;
-		line-height: 36px;
-		padding-top: 6px;
-		padding-right: 6px;
-		padding-left: 3px;
+	.small {
+	--title-size: calc(var(--title-size-raw) * 3/4 * 3/4);
+	--body-size: calc(var(--body-size-raw) * 3/4 * 3/4);
 	}
-	.small p .dropcap, p.small .dropcap {
-		font-size: 32px;
-		line-height: 24px;
-		padding-top: 4px;
-		padding-right: 4px;
-		padding-left: 2px;
-	}
-	.large p .dropcap, p.large .dropcap {
-		font-size: 64px;
-		line-height: 48px;
-		padding-top: 8px;
-		padding-right: 8px;
-		padding-left: 4px;
-	}
-	
-	p i.fa, p i.fab, p i.far, p i.fas, p i.fa-solid, p i.fa-regular {
-		font-size: 12px;
+	.large {
+		--title-size: calc(var(--title-size-raw) * 5/4 * 3/4);
+		--body-size: calc(var(--body-size-raw) * 5/4 * 3/4);
 	}
 }
 
 @media only screen and (max-width: 25rem) {
-	h1 {font-size: 36px;}
-	h2 {font-size: 32px;}
-	h3 {font-size: 28px;}
-	h4 {font-size: 24px;}
-	h5 {font-size: 20px;}
-	h6 {font-size: 16px;}
-
-	.large h1, h1.large {font-size: 54px}
-	.large h2, h2.large {font-size: 48px}
-	.large h3, h3.large {font-size: 42px}
-	.large h4, h4.large {font-size: 36px}
-	.large h5, h5.large {font-size: 30px}
-	.large h6, h6.large {font-size: 24px}
+	:root {
+		--title-size: calc(var(--title-size-raw) * 2/4);
+	}
 	
-	tagline {
-		font-size: 16px;
+	.small {
+	--title-size: calc(var(--title-size-raw) * 3/4 * 2/4);
+	--body-size: calc(var(--body-size-raw) * 3/4 * 2/4);
 	}
-
-	.small tagline, tagline.small {
-		font-size: 16px;
-	}
-
-	.large tagline, tagline.large {
-		font-size: 24px;
+	.large {
+		--title-size: calc(var(--title-size-raw) * 5/4 * 2/4);
+		--body-size: calc(var(--body-size-raw) * 5/4 * 2/4);
 	}
 }
 
-/* ==============================================
-   3: Section  Colors
-   ============================================== */
+/*	==============================================
+	3: Colors
+	============================================== */
+
+* {
+	color: var(--body-color)
+}
+
+/* 3.1: Section Colors */
 
 .section-black {
-	background-color: var(--color-black);
-	color: var(--color-white);
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
 }
-.section-black * {color: var(--color-white);}
 
 .section-dark {
-	background-color: var(--color-dark);
-	color: var(--color-light);
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
 }
-.section-dark * {color: var(--color-light);}
 
 .section-white {
-	background-color: var(--color-white);
-	color: var(--color-black);
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
 }
-.section-white * {color: var(--color-black);}
 
 .section-light {
-	background-color: var(--color-light);
-	color: var(--color-dark);
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
 }
-.section-light * {color: var(--color-dark);}
 
 .section-theme {
-	background-color: var(--color-theme);
-	color: var(--color-light);
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
 }
-.section-theme * {color: var(--color-light);}
 
 .section-theme-inverted {
-	background-color: var(--color-white);
-	color: var(--color-theme);
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
 }
-.section-theme-inverted * {color: var(--color-theme);}
+
+.section-theme-accents {
+	--body-color: var(--theme-color);
+}
+
+.section-transparent {
+	--background-color: transparent;
+}
 
 .section-dots {
 	background-image: url("../images/background/dot.svg");
 }
 
-.section-theme-accents, .section-theme-accents * {
-	color: var(--color-theme);
+html:is([data-scroll='0']) .top-section-black {
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
 }
 
-.section-transparent {
-	background-color: transparent;
+html:is([data-scroll='0']) .top-section-dark {
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
 }
 
-/* ==============================================
-   4: Element  Colors
-   ============================================== */
-
-.element-black *, *.element-black {
-	color: var(--color-black);
+html:is([data-scroll='0']) .top-section-white {
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
 }
 
-.element-dark *, *.element-dark {
-	color: var(--color-dark);
+html:is([data-scroll='0']) .top-section-light {
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
 }
 
-
-.element-white *, *.element-white {
-	color: var(--color-white);
+html:is([data-scroll='0']) .top-section-theme {
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
 }
 
-.element-light *, *.element-light {
-	color: var(--color-light);
+html:is([data-scroll='0']) .top-section-theme-inverted {
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
 }
 
-.element-theme *, *.element-theme {
-	color: var(--color-theme);
+html:is([data-scroll='0']) .top-section-theme-accents, html:is([data-scroll='0']) .top-section-theme-accents * {
+	--body-color: var(--theme-color);
 }
 
-/* ==============================================
-   5: Buttons
-   ============================================== */
+html:is([data-scroll='0']) .top-section-transparent {
+	--background-color: transparent;
+}
+
+html:is([data-scroll='0']) .top-section-dots {
+	background-image: url("../images/background/dot.svg");
+}
+
+/* 3.2: Element Colors */
+
+.element-black {
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
+}
+
+.element-dark {
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
+}
+
+.element-white {
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
+}
+
+.element-light {
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
+}
+
+.element-theme {
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
+}
+
+.element-theme-inverted {
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
+}
+
+html:is([data-scroll='0']) .top-element-black {
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
+}
+
+html:is([data-scroll='0']) .top-element-dark {
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
+}
+
+html:is([data-scroll='0']) .top-element-white {
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
+}
+
+html:is([data-scroll='0']) .top-element-light {
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
+}
+
+html:is([data-scroll='0']) .top-element-theme {
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
+}
+
+html:is([data-scroll='0']) .top-element-theme-inverted {
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
+}
+
+/*	==============================================
+	4: Buttons
+	============================================== */
 a.button {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
-	font-size: 16px;
-	padding: 8px;
-	margin-right: 8px;
+	font-size: var(--body-size);
+	color: var(--background-color);
+	padding: calc(var(--body-size) * 4/10);
+	padding-bottom: calc(var(--body-size) * 3/10);
 	text-transform: uppercase;
 	text-align: center;
 	text-decoration: none;
-	border: 2px solid var(--color-black);
-	background-color: var(--color-black);
-	color: var(--color-white);
+	border: var(--border-width) solid var(--body-color);
+	background-color: var(--body-color);
 	display: inline-block;
-}
-p a.button {
-	margin: 0;
+	line-height: 1;
 }
 a.button * {
-	font-size: 16px;
-	color: var(--color-white);
+	font-size: calc(var(--body-size));
+	color: var(--background-color);
+	line-height: 1;
 }
+
+p a.button {
+	margin-right: calc(var(--body-size) * 1/3);
+}
+
 a.button:hover {
 	background-color: transparent;
-	color: var(--color-black);
+	color: var(--body-color);
+	opacity: 1;
 }
 a.button:hover * {
-	color: var(--color-black);
+	color: var(--body-color);
 }
+
 a.button.hollow {
 	background-color: transparent;
+	color: var(--body-color);
 }
 a.button.hollow * {
 	background-color: transparent;
-	color: var(--color-black);
+	color: var(--body-color);
 }
+
 a.button.hollow:hover {
-	background-color: var(--color-white);
-	color: var(--color-black)
+	background-color: var(--body-color);
+	color: var(--background-color);
 }
 a.button.hollow:hover * {
-	color: var(--color-black);
+	color: var(--background-color);
 }
 
 a.button.rounded {
@@ -460,459 +611,47 @@ a.button.pill {
 	border-radius: 1000px;
 }
 
-.large a.button, a.button.large {
-	font-size: 20px;
-	padding: 10px;
-	border: 3px solid var(--color-black);
-}
-
-.large a.button *, a.button.large * {
-	font-size: 20px;
-}
-
-.small a.button, a.button.small {
-	font-size: 12px;
-	padding: 6px;
-	border: 2px solid var(--color-black);
-}
-
-.small a.button *, a.button.small * {
-	font-size: 12px;
-}
-
 header a.button {
 	margin: -12px 0;
 }
 
-/* 5.1: Button Colors Section */
-.section-black a.button {
-	background-color: var(--color-white);
-	color: var(--color-black);
-	border-color: var(--color-white)
-}
-.section-black a.button * {
-	color: var(--color-black);
-}
-.section-black a.button:hover {
-	background-color: transparent;
-	color: var(--color-white);
-}
-.section-black a.button:hover * {
-	color: var(--color-white);
-}
-.section-black a.button.hollow {
-	background-color: transparent;
-	color: var(--color-white);
-}
-.section-black a.button.hollow * {
-	color: var(--color-white);
-}
-.section-black a.button.hollow:hover {
-	background-color: var(--color-white);
-	color: var(--color-black)
-}
-.section-black a.button.hollow:hover * {
-	color: var(--color-black);
-}
-
-.section-dark a.button {
-	background-color: var(--color-light);
-	color: var(--color-dark);
-	border-color: var(--color-light)
-}
-.section-dark a.button * {
-	color: var(--color-dark);
-}
-.section-dark a.button:hover {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.section-dark a.button:hover * {
-	color: var(--color-light);
-}
-.section-dark a.button.hollow {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.section-dark a.button.hollow * {
-	color: var(--color-light);
-}
-.section-dark a.button.hollow:hover {
-	background-color: var(--color-light);
-	color: var(--color-dark)
-}
-.section-dark a.button.hollow:hover * {
-	color: var(--color-dark);
-}
-
-.section-white a.button {
-	background-color: var(--color-black);
-	color: var(--color-white);
-	border-color: var(--color-black)
-}
-.section-white a.button * {
-	color: var(--color-white);
-}
-.section-white a.button:hover {
-	background-color: transparent;
-	color: var(--color-black);
-}
-.section-white a.button:hover * {
-	color: var(--color-black);
-}
-.section-white a.button.hollow {
-	background-color: transparent;
-	color: var(--color-black);
-}
-.section-white a.button.hollow * {
-	color: var(--color-black);
-}
-.section-white a.button.hollow:hover {
-	background-color: var(--color-black);
-	color: var(--color-white)
-}
-.section-white a.button.hollow:hover * {
-	color: var(--color-white);
-}
-
-.section-light a.button {
-	background-color: var(--color-dark);
-	color: var(--color-light);
-	border-color: var(--color-dark)
-}
-.section-light a.button * {
-	color: var(--color-light);
-}
-.section-light a.button:hover {
-	background-color: transparent;
-	color: var(--color-dark);
-}
-.section-light a.button:hover * {
-	color: var(--color-dark);
-}
-.section-light a.button.hollow {
-	background-color: transparent;
-	color: var(--color-dark);
-}
-.section-light a.button.hollow * {
-	color: var(--color-dark);
-}
-.section-light a.button.hollow:hover {
-	background-color: var(--color-dark);
-	color: var(--color-light)
-}
-.section-light a.button.hollow:hover * {
-	color: var(--color-light);
-}
-
-.section-theme a.button {
-	background-color: var(--color-light);
-	color: var(--color-theme);
-	border-color: var(--color-light)
-}
-.section-theme a.button * {
-	color: var(--color-theme);
-}
-.section-theme a.button:hover {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.section-theme a.button:hover * {
-	color: var(--color-light);
-}
-.section-theme a.button.hollow {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.section-theme a.button.hollow * {
-	color: var(--color-light);
-}
-.section-theme a.button.hollow:hover {
-	background-color: var(--color-light);
-	color: var(--color-theme)
-}
-.section-theme a.button.hollow:hover * {
-	color: var(--color-theme);
-}
-
-.section-theme-inverted a.button {
-	background-color: var(--color-theme);
-	color: var(--color-light);
-	border-color: var(--color-theme)
-}
-.section-theme-inverted a.button * {
-	color: var(--color-light);
-}
-.section-theme-inverted a.button:hover {
-	background-color: transparent;
-	color: var(--color-theme);
-}
-.section-theme-inverted a.button:hover * {
-	color: var(--color-theme);
-}
-.section-theme-inverted a.button.hollow {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.section-theme-inverted a.button.hollow * {
-	color: var(--color-theme);
-}
-.section-theme-inverted a.button.hollow:hover {
-	background-color: var(--color-theme);
-	color: var(--color-light)
-}
-.section-theme-inverted a.button.hollow:hover * {
-	color: var(--color-light);
-}
-
-/* 5.1: Button Colors Element */
-.element-black a.button, a.button.element-black {
-	background-color: var(--color-black);
-	color: var(--color-white);
-	border-color: var(--color-black)
-}
-.element-black a.button *, a.button.element-black * {
-	color: var(--color-white);
-}
-.element-black a.button:hover, a.button.element-black:hover {
-	background-color: transparent;
-	color: var(--color-black);
-}
-.element-black a.button:hover *, a.button.element-black:hover * {
-	color: var(--color-black);
-}
-.element-black a.button.hollow, a.button.element-black.hollow {
-	background-color: transparent;
-	color: var(--color-black)
-}
-.element-black a.button.hollow *, a.button.element-black.hollow * {
-	color: var(--color-black);
-}
-.element-black a.button.hollow:hover, a.button.element-black.hollow:hover {
-	background-color: var(--color-black);
-	color: var(--color-white)
-}
-.element-black a.button.hollow:hover *, a.button.element-dark.hollow:hover * {
-	color: var(--color-white);
-}
-
-.element-dark a.button, a.button.element-dark {
-	background-color: var(--color-dark);
-	color: var(--color-light);
-	border-color: var(--color-dark)
-}
-.element-dark a.button *, a.button.element-dark * {
-	color: var(--color-light);
-}
-.element-dark a.button:hover, a.button.element-dark:hover {
-	background-color: transparent;
-	color: var(--color-dark);
-}
-.element-dark a.button:hover *, a.button.element-dark:hover * {
-	color: var(--color-dark);
-}
-.element-dark a.button.hollow, a.button.element-dark.hollow {
-	background-color: transparent;
-	color: var(--color-dark)
-}
-.element-dark a.button.hollow *, a.button.element-dark.hollow * {
-	color: var(--color-dark);
-}
-.element-dark a.button.hollow:hover, a.button.element-dark.hollow:hover {
-	background-color: var(--color-dark);
-	color: var(--color-light)
-}
-.element-dark a.button.hollow:hover *, a.button.element-dark.hollow:hover * {
-	color: var(--color-light);
-}
-
-.element-white a.button, a.button.element-white {
-	background-color: var(--color-white);
-	color: var(--color-black);
-	border-color: var(--color-white)
-}
-.element-white a.button *, a.button.element-white * {
-	color: var(--color-black);
-}
-.element-white a.button:hover, a.button.element-white:hover {
-	background-color: transparent;
-	color: var(--color-white);
-}
-.element-white a.button:hover *, a.button.element-white:hover * {
-	color: var(--color-white);
-}
-.element-white a.button.hollow, a.button.element-white.hollow {
-	background-color: transparent;
-	color: var(--color-white)
-}
-.element-white a.button.hollow *, a.button.element-white.hollow * {
-	color: var(--color-white);
-}
-.element-white a.button.hollow:hover, a.button.element-white.hollow:hover {
-	background-color: var(--color-white);
-	color: var(--color-black)
-}
-.element-white a.button.hollow:hover *, a.button.element-white.hollow:hover * {
-	color: var(--color-black);
-}
-
-.element-light a.button, a.button.element-white {
-	background-color: var(--color-light);
-	color: var(--color-dark);
-	border-color: var(--color-light)
-}
-.element-light a.button *, a.button.element-white * {
-	color: var(--color-dark);
-}
-.element-light a.button:hover, a.button.element-white:hover {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.element-light a.button:hover *, a.button.element-white:hover * {
-	color: var(--color-light);
-}
-.element-light a.button.hollow, a.button.element-light.hollow {
-	background-color: transparent;
-	color: var(--color-light)
-}
-.element-light a.button.hollow *, a.button.element-light.hollow * {
-	color: var(--color-light);
-}
-.element-light a.button.hollow:hover, a.button.element-light.hollow:hover {
-	background-color: var(--color-light);
-	color: var(--color-dark)
-}
-.element-light a.button.hollow:hover *, a.button.element-light.hollow:hover * {
-	color: var(--color-dark);
-}
-
-.element-theme a.button, a.button.element-theme {
-	background-color: var(--color-theme);
-	color: var(--color-light);
-	border-color: var(--color-theme)
-}
-.element-theme a.button *, a.button.element-theme * {
-	color: var(--color-light);
-}
-.element-theme a.button:hover, a.button.element-theme:hover {
-	background-color: transparent;
-	color: var(--color-theme);
-}
-.element-theme a.button:hover *, a.button.element-theme:hover * {
-	color: var(--color-theme);
-}
-.element-theme a.button.hollow, a.button.element-theme.hollow {
-	background-color: transparent;
-	color: var(--color-theme)
-}
-.element-theme a.button.hollow *, a.button.element-theme.hollow * {
-	color: var(--color-theme);
-}
-.element-theme a.button.hollow:hover, a.button.element-theme.hollow:hover {
-	background-color: var(--color-theme);
-	color: var(--color-light)
-}
-.element-theme a.button.hollow:hover *, a.button.element-theme.hollow:hover * {
-	color: var(--color-light);
-}
-
-.element-theme-inverted a.button, a.button.element-theme-inverted {
-	background-color: var(--color-light);
-	color: var(--color-theme);
-	border-color: var(--color-light)
-}
-.element-theme-inverted a.button *, a.button.element-theme-inverted * {
-	color: var(--color-theme);
-}
-.element-theme-inverted a.button:hover, a.button.element-theme-inverted:hover {
-	background-color: transparent;
-	color: var(--color-light);
-}
-.element-theme-inverted a.button:hover *, a.button.element-theme-inverted:hover * {
-	color: var(--color-light);
-}
-.element-theme-inverted a.button.hollow, a.button.element-theme-inverted.hollow {
-	background-color: transparent;
-	color: var(--color-light)
-}
-.element-theme-inverted a.button.hollow *, a.button.element-theme-inverted.hollow * {
-	color: var(--color-light);
-}
-.element-theme-inverted a.button.hollow:hover, a.button.element-theme-inverted.hollow:hover {
-	background-color: var(--color-light);
-	color: var(--color-theme)
-}
-.element-theme-inverted a.button.hollow:hover *, a.button.element-theme-inverted.hollow:hover * {
-	color: var(--color-theme);
-}
-
-/* 5.3: Small Screens */
-@media only screen and (max-width: 54em) {
-	a.button {
-		font-size: 12px;
-	}
-	a.button * {
-		font-size: 12px;
-	}
-	
-	.large a.button, a.button.large {
-		font-size: 16px;
-		padding: 8px;
-		border-width: 2px;
-	}
-	.large a.button *, a.button.large * {
-		font-size: 16px;
-	}
-
-	.small a.button, a.button.small {
-		font-size: 8px;
-		padding: 4px;
-		border-width: 2px;
-	}
-	.small a.button *, a.button.small * {
-		font-size: 8px;
-	}
-}
-
-@media only screen and (max-width: 30rem) {
-	.large a.button, a.button.large {
-		font-size: 12px;
-		padding: 8px;
-		border-width: 2px;
-	}
-	.large a.button *, a.button.large * {
-		font-size: 12px;
-	}
-}
-
-/* ==============================================
-   6: Code
-   ============================================== */
+/*	==============================================
+	5: Code
+	============================================== */
 
 code, pre, .code {
 	font-family: var(--monospace-font);
-	background-color: rgba(var(--color-dark-rgb), 0.1);
+	font-size: calc(var(--body-size) * 3/4);
 }
 
 pre {
-	padding: 8px;
-	overflow-x: scroll;
+	background-color: #e8e8e8;
 }
 
-/* 6.1: Code Colors */
+pre {
+	padding: calc(var(--body-size) * 1/2);
+	overflow-x: auto;
+}
 
-/* ==============================================
-   7: Header
-   ============================================== */
+
+@media only screen and (max-width: 54rem) {
+	pre {
+	}
+}
+
+/*	==============================================
+	6: Header
+	============================================== */
 
 header {
 	padding: 12px 0;
 	font-weight: var(--title-weight);
-	background-color: transparent;
+	background-color: var(--background-color);
 }
 
 header, header *, header a.button {
 	font-family: var(--body-font);
+	font-size: calc(var(--body-font));
 }
 
 header.sticky {
@@ -935,159 +674,90 @@ header ul a {
 }
 
 header ul li {
-	margin-right: 24px;
+	margin: 12px 0;
+	margin-right: 16px;
 	display: inline-block;
 	text-transform: uppercase;
 }
 
-/* 7.1: Header Colors */
+/* 6.1: Header Colors */
 
 header.sticky {
-	border-bottom: 2px solid var(--color-black);
+	border-bottom: var(--border-width) solid var(--body-color);
 }
 
-header.sticky.section-black {
-	border-bottom: var(--color-white);
+/* 6.2: Sticky headers */
+html:is([data-scroll='0']) header.sticky.transparent {
+	background-color: transparent;
+	border: none;
 }
 
-header.sticky.section-dark {
-	border-color: var(--color-light);
-}
-
-header.sticky.section-white {
-	border-color: var(--color-black);
-}
-
-header.sticky.section-light {
-	border-color: var(--color-dark);
-}
-
-header.sticky.section-theme {
-	border-color: var(--color-light);
-}
-
-header.sticky.section-theme-inverted {
-	border-color: var(--color-theme);
-}
-
-/* 7.2: Sticky headers */
-html:is([data-scroll='0']) header.sticky {
-  background-color: transparent;
-  border: none;
-}
-
-/* 7.4: Small Screens */
-@media only screen and (max-width: 54em) {
-	header li, header a.button {
-		font-size: 12px;
-	}
-}
-
-@media only screen and (max-width: 30rem) {
-	header li, header a.button {
-		font-size: 12px;
-	}
-}
-
-/* ==============================================
-   8: Footer
-   ============================================== */
+/*	==============================================
+	7: Footer
+	============================================== */
 
 footer {
 	margin: 0;
 	padding: 10px 0;
 }
 
-footer h1 {font-size:54px;}
-footer h2 {font-size:48px;}
-footer h3 {font-size:42px;}
-footer h4 {font-size:36px;}
-footer h5 {font-size:30px;}
-footer h6 {font-size:24px;}
-
-/* ==============================================
-   9: Portfolio
-   ============================================== */
-
-.portfolio {
-	display: grid;
-	grid-row-gap: 16px;
-	grid-column-gap: 16px;
-	grid-template-columns: 6fr 6fr;
+footer.section-edgless {
+	padding: 0;
 }
 
-.portfolio article {
-	grid-row-end: var(--row-span, span 1);
-	padding: 10px;
+footer h1 {font-size: calc(var(--title-size) * 3/4 * 9/9);}
+footer h2 {font-size: calc(var(--title-size) * 3/4 * 8/9);}
+footer h3 {font-size: calc(var(--title-size) * 3/4 * 7/9);}
+footer h4 {font-size: calc(var(--title-size) * 3/4 * 6/9);}
+footer h5 {font-size: calc(var(--title-size) * 3/4 * 5/9);}
+footer h6 {font-size: calc(var(--title-size) * 3/4 * 4/9);}
+
+
+/*	==============================================
+	8: Table
+	============================================== */
+
+table {
+	border-spacing: 0px;
+	width: 100%
 }
 
-.portfolio.col6 {
-	grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+th {
+	padding: calc(var(--body-size) * 1/2);
+	font-weight: 700;
 }
 
-.portfolio.col5 {
-	grid-template-columns: auto auto auto auto auto;
+td {
+	padding: calc(var(--body-size) * 1/4) calc(var(--body-size) * 1/2);
 }
 
-.portfolio.col4 {
-	grid-template-columns: 3fr 3fr 3fr 3fr;
+tr td, tr th {
+	text-align: right;
+	border-right: calc(var(--border-width) * 1/2) solid var(--body-color);
 }
 
-.portfolio.col3 {
-	grid-template-columns: 4fr 4fr 4fr;
+td + td, th + th {
+	text-align: center;
+	border-right: none;
 }
 
-.portfolio.col2 {
-	grid-template-columns: 6fr 6fr;
+table.index {
+	font-family: var(--monospace-font);
+	border: none;
 }
 
-.portfolio.col1 {
-	grid-template-columns: 12fr;
+table.index th {
+	font-weight: bold;
+	border-bottom: var(--border-width) solid var(--body-color);
 }
 
-@media (max-width: 54em) {
-	.portfolio.col6 {
-		grid-template-columns: 3fr 3fr 3fr 3fr;
-	}
-
-	.portfolio.col5 {
-		grid-template-columns: 4fr 4fr 4fr;
-	}
-
-	.portfolio.col4 {
-		grid-template-columns: 6fr 6fr;
-	}
-
-	.portfolio.col3 {
-		grid-template-columns: 6fr 6fr;
-	}
-
-	.portfolio.col2 {
-		grid-template-columns: 12fr;
-	}
-
-	.portfolio.col1 {
-		grid-template-columns: 12fr;
-	}
-	
-	.portfolio {
-		grid-template-columns: 12fr;
-	}
+table.index tr + table.index tr {
+	border: none;
 }
 
-@media (max-width: 30rem) {
-	.portfolio, .portfolio.col5, .portfolio.col4, .portfolio.col3, .portfolio.col2, .portfolio.col1 {
-		grid-template-columns: 12fr;
-	}
-	
-	.portfolio.col6 {
-		grid-template-columns: 6fr 6fr;
-	}
-}
-
-/* ==============================================
-   10: Override
-   ============================================== */
+/*	==============================================
+	9: Override
+	============================================== */
 
 .text-left {
 	text-align: left;
@@ -1095,6 +765,9 @@ footer h6 {font-size:24px;}
 
 .text-center {
 	text-align: center;
+}
+.text-center * {
+	margin: auto;
 }
 
 .text-right {

@@ -1,11 +1,11 @@
 /* Benjistokman CSS Theme for Mable Template */
 
-@import url('https://fonts.benstokman.me/odibee-sans.css');
-@import url('https://fonts.benstokman.me/montserrat.css');
-@import url('https://fonts.benstokman.me/share-tech-mono.css');
+@import url('../../fonts/odibee-sans.css');
+@import url('../../fonts/montserrat.css');
+@import url('../../fonts/share-tech-mono.css');
 
  :root {
-	--color-theme: #fc4651;
+	--theme-color: #fc4651;
 	--title-font: "Odibee Sans", sans-serif;
 	--title-weight: 700;
 	--body-font: "Montserrat", sans-serif;
@@ -13,48 +13,12 @@
 	--monospace-font: "Share Tech Mono", monospace;
 }
 
-a.button {
-	font-size: 20px;
-
-}
-a.button * {
-	font-size: 20px;
-}
-
-@media only screen and (max-width: 54em) {
-	a.button {
-		font-size: 16px;
-	}
-	a.button * {
-		font-size: 16px;
-	}
-	
-	.large a.button, a.button.large {
-		font-size: 20px;
-	}
-	.large a.button *, a.button.large * {
-		font-size: 20px;
-	}
-
-	.small a.button, a.button.small {
-		font-size: 12px;
-	}
-	.small a.button *, a.button.small * {
-		font-size: 12px;
-	}
-}
-
-@media only screen and (max-width: 30rem) {
-	.large a.button, a.button.large {
-		font-size: 16px;
-	}
-	.large a.button *, a.button.large * {
-		font-size: 16px;
-	}
-}
-
 header li, header a.button {
-	font-size: 16px;
+	font-size: 14px;
+}
+
+header.sticky {
+	border-width: 6px;
 }
 
 @media only screen and (max-width: 54em) {
