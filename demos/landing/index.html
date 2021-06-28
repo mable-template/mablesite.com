@@ -8,8 +8,12 @@
 		<link rel="stylesheet" type="text/css" href="../../custom-theme-here" id="custom-theme-sheet">
 		<style>
 			:root {
-				--theme-color: #24988f
+				--theme-color: #3f7882
 			}
+			
+			 body {
+  overflow: hidden; /* Hide scrollbars */
+}
 		</style>
 		
 		<!-- Other Things -->
@@ -17,20 +21,20 @@
 	</head>
 	<body>
 		<!-- Header -->
-		<header class="section-dark sticky">
-			<div class="container-fluid">
+		<header class="section-dark transparent sticky top-element-theme-inverted">
+			<div class="container-large">
 				<ul>
-					<li><a href="../../#features">Features</a></li>
-					<li><a href="../../#themes">Themes</a></li>
-					<li><a href="../../#demos">Demos</a></li>
-					<li><a href="../../#sample-text">Sample Text</a></li>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#pricing">Pricing</a></li>
+					<li><a class="button pill">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a></li>
+					
 				</ul>
 			</div>
 		</header>
 		
 		<!-- Title Section -->
-		<section class="section-large section-theme" id="title-section">
-			<div class="container">
+		<section class="section-large section-theme large" id="title-section">
+			<div class="container-large">
 				<div class="row">
 					<h1>Something to grab attention</h1>
 					<h2 class="tagline">You should describe what you do here in a short and sweet way.</h2>
@@ -40,13 +44,96 @@
 		</section>
 		
 		<!-- Features Section -->
-		<section id="features">
-			<div class="container-large">
+		<section class="section-light" id="features">
+			<div class="container">
 				<div class="row">
 					<h1>Some big feature here</h1>
+					<h2 class="tagline">This section is best used to show possible customers the features for your service. It's best to put it near the top.</h2>
+				</div>
+				<div class="row grid fa-icon text-center">
+					<div class="col-two">
+							<i class="fa-solid fa-calendar"></i>
+							<p>Feature</p>
+					</div>
+					<div class="col-two">
+							<i class="fa-solid fa-video-slash"></i>
+							<p>Feature</p>
+					</div>
+					<div class="col-two">
+							<i class="fa-solid fa-school"></i>
+							<p>Feature</p>
+					</div>
+					<div class="col-two">
+							<i class="fa-solid fa-server"></i>
+							<p>Feature</p>
+					</div>
+					<div class="col-two">
+							<i class="fa-solid fa-upload"></i>
+							<p>Feature</p>
+					</div>
+					<div class="col-two">
+							<i class="fa-solid fa-globe"></i>
+							<p>Feature</p>
+					</div>
 				</div>
 			</div>
-		</section
+		</section>
+		
+		<!-- Pricing Section -->
+		<section id="pricing">
+			<div class="container-large">
+				<div class="row">
+					<h1>Pricing</h1>
+				</div>
+				<div class="row grid">
+					<div class="col-four section-light text-center element-theme" style="padding:20px">
+						<h6>Basic</h6>
+						<h2 class="tagline">5 shares per month</h2>
+						<h1 style="margin:20px 0">$8/mo</h1>
+						<ul>
+							<li>30 Day Refunds</li>
+							<li>Basic Support</li>
+							<li>Full attack protection</li>
+						</ul>
+						<a class="button">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+					</div>
+					<div class="col-four section-theme text-center" style="padding:20px">
+						<h6>Standard</h6>
+						<h2 class="tagline">10 shares per month</h2>
+						<h1 style="margin:20px 0">$15/mo</h1>
+						<ul>
+							<li>30 Day Refunds</li>
+							<li>Advanced Support</li>
+							<li>Full attack protection</li>
+							<li>90 day backup</li>
+						</ul>
+						<a class="button">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+					</div>
+					<div class="col-four section-theme-inverted text-center" style="padding:20px">
+						<h6>Premeir</h6>
+						<h2 class="tagline">25 shares per month</h2>
+						<h1 style="margin:20px 0">$25/mo</h1>
+						<ul>
+							<li>30 Day Refunds</li>
+							<li>Advanced Support</li>
+							<li>Full attack protection</li>
+							<li>180 day backup</li>
+						</ul>
+						<a class="button">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Call To Action Section -->
+		<section class="section-thin section-dark text-center" id="call-to-action">
+			<div class="container-large">
+				<div class="row">
+						<h1>Get the best</h1>
+						<a class="button">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+				</div>
+			</div>
+		</section>
 		
 		<!-- Footer -->
 		<footer class="section-theme">
@@ -59,7 +146,7 @@
 						<p>Distributed under an <a href="../../license.txt">MIT License</a>.</p>
 					</div>
 					<div class="col-four">
-						<p><a href="../../https://github.com/benjistokman/mable-html-template/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+						<p><a href="https://github.com/benjistokman/mable-html-template/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
 					</div>
 				</div>
 			</div>

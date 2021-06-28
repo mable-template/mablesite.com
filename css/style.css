@@ -17,8 +17,8 @@ Table of Contents
 	2.2: Body Fonts
 	2.3: Small Screens
 3: Colors
-	3.1: Section Colors
-	3.2: Element Colors
+	3.1: Element Colors
+	3.2: Section Colors
 4: Buttons
 5: Code
 6: Header
@@ -26,8 +26,8 @@ Table of Contents
 	6.2: Sticky Headers
 7: Footer
 8: Table
-9: Override
-
+9: Lists
+10: Forms
 */
 
 /*	==============================================
@@ -56,6 +56,7 @@ Table of Contents
 	--body-font: "Montserrat", sans-serif;
 	--body-size-raw: 20px;
 	--body-size: var(--body-size-raw);
+	--bold-weight: 700;
 	--reading-font: serif;
 	--monospace-font: monospace;
 	--border-width: 3px;
@@ -66,20 +67,14 @@ Table of Contents
 * {
 	margin: 0;
 	padding: 0;
+	transition-duration: 0.25s;
+	background-position: center;
+	background-size: cover;
+	font-size: var(--body-size);
 }
 
 html, body {
 	scroll-behavior: smooth;
-}
-
-* {
-	transition-duration: 0.25s;
-	background-position: center;
-	background-size: cover;
-}
-
-[class*="section-"] {
-	background-color: var(--background-color);
 }
 
 iframe {
@@ -88,10 +83,6 @@ iframe {
 
 img {
 	max-width: 100%;
-}
-
-.row *, .row p {
-	margin: calc(var(--body-size) * 1/2) 0;
 }
 
 body {
@@ -110,11 +101,6 @@ section {
 
 .section-edgeless {
 	padding: 0;
-}
-
-.breadcrumbs {
-	padding: 10px 0;
-	font-family: var(--monospace-font);
 }
 
 .section-thin {
@@ -137,13 +123,18 @@ section {
 	align-items: center;
 }
 
+.breadcrumbs {
+	padding: 10px 0;
+	font-family: var(--monospace-font);
+}
+
 .container, .container-fluid, .container-large {
 	width: calc(100%-60px);
 	margin: 0 30px;
 }
 
 .row {
-	margin: 20px 0;
+	margin: 30px 0;
 	width: 100%;
 }
 
@@ -210,18 +201,21 @@ section {
 	margin: 0;
 }
 
+.grid > [class^="col-"] > a.button {
+	margin: calc(var(--body-size) * 2/3);
+}
+
 .grid > [class^="col-"] > a > * {
 	margin: calc(var(--body-size) * 2/3);
 }
 
-.grid > [class^="col-"] > a > img {
+.grid > [class^="col-"] > a.button > * {
 	margin: 0;
 }
 
-.hidden-sm {
-	display: block;
+.grid > [class^="col-"] > a > img, .grid > [class^="fa-"] {
+	margin: 0;
 }
-
 .merge-two-rows { grid-row-end: span 2;}
 .merge-three-rows { grid-row-end: span 3;}
 .merge-four-rows { grid-row-end: span 4;}
@@ -275,7 +269,7 @@ section {
 	.col-ten { grid-column-end: span 12;}
 	.col-eleven { grid-column-end: span 12;}
 	
-	.grid, .grid.portfolio {
+	.grid {
 		grid-gap: 20px;
 	}
 }
@@ -284,6 +278,22 @@ section {
 	2: Fonts & Text
 	============================================== */
 
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-justified {
+	text-align: justify;
+}
+
 /* 2.1: Headings */
 
 h1, h2, h3, h4, h5, h6 {
@@ -291,25 +301,22 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: var(--title-weight);
 	line-height: 1;
 }
+
 h2.tagline {
 	font-family: var(--body-font);
-	font-weight: var(--body-weight);
+	font-weight: calc(var(--title-weight) * 2/5);
 }
 
-h1 {font-size: var(--title-size);}
-h2 {font-size: calc(var(--title-size) * 8/9);}
-h3 {font-size: calc(var(--title-size) * 7/9);}
-h4 {font-size: calc(var(--title-size) * 6/9);}
-h5 {font-size: calc(var(--title-size) * 5/9);}
-h6 {font-size: calc(var(--title-size) * 4/9);}
-h2.tagline {font-size: calc(var(--body-size) * 3/2);}
+h1, h1 * {font-size: var(--title-size);}
+h2, h2 * {font-size: calc(var(--title-size) * 8/9);}
+h3, h3 * {font-size: calc(var(--title-size) * 7/9);}
+h4, h4 * {font-size: calc(var(--title-size) * 6/9);}
+h5, h5 * {font-size: calc(var(--title-size) * 5/9);}
+h6, h6 * {font-size: calc(var(--title-size) * 4/9);}
+h2.tagline, h2.tagline * {font-size: calc(var(--body-size) * 3/2);}
 
 h1 {
 	text-transform: uppercase;
-}
-
-h2.tagline {
-	font-weight: 300;
 }
 
 .small {
@@ -353,6 +360,10 @@ a:hover {
 	font-size: calc(var(--body-size) * 3);
 }
 
+b, .bold {
+	font-weight: var(--bold-weight);
+}
+
 .small {
 	--body-size: calc(var(--body-size-raw) * 3/4);
 }
@@ -373,8 +384,8 @@ a:hover {
 	--body-size: calc(var(--body-size-raw) * 3/4 * 3/4);
 	}
 	.large {
-		--title-size: calc(var(--title-size-raw) * 5/4 * 3/4);
-		--body-size: calc(var(--body-size-raw) * 5/4 * 3/4);
+		--title-size: calc(var(--title-size-raw) * 4/4 * 3/4);
+		--body-size: calc(var(--body-size-raw) * 4/4 * 3/4);
 	}
 }
 
@@ -388,8 +399,8 @@ a:hover {
 	--body-size: calc(var(--body-size-raw) * 3/4 * 2/4);
 	}
 	.large {
-		--title-size: calc(var(--title-size-raw) * 5/4 * 2/4);
-		--body-size: calc(var(--body-size-raw) * 5/4 * 2/4);
+		--title-size: calc(var(--title-size-raw) * 4/4 * 2/4);
+		--body-size: calc(var(--body-size-raw) * 4/4 * 2/4);
 	}
 }
 
@@ -401,93 +412,7 @@ a:hover {
 	color: var(--body-color)
 }
 
-/* 3.1: Section Colors */
-
-.section-black {
-	--background-color: var(--black-color);
-	--body-color: var(--white-color);
-}
-
-.section-dark {
-	--background-color: var(--dark-color);
-	--body-color: var(--light-color);
-}
-
-.section-white {
-	--background-color: var(--white-color);
-	--body-color: var(--black-color);
-}
-
-.section-light {
-	--background-color: var(--light-color);
-	--body-color: var(--dark-color);
-}
-
-.section-theme {
-	--background-color: var(--theme-color);
-	--body-color: var(--light-color);
-}
-
-.section-theme-inverted {
-	--background-color: var(--light-color);
-	--body-color: var(--theme-color);
-}
-
-.section-theme-accents {
-	--body-color: var(--theme-color);
-}
-
-.section-transparent {
-	--background-color: transparent;
-}
-
-.section-dots {
-	background-image: url("../images/background/dot.svg");
-}
-
-html:is([data-scroll='0']) .top-section-black {
-	--background-color: var(--black-color);
-	--body-color: var(--white-color);
-}
-
-html:is([data-scroll='0']) .top-section-dark {
-	--background-color: var(--dark-color);
-	--body-color: var(--light-color);
-}
-
-html:is([data-scroll='0']) .top-section-white {
-	--background-color: var(--white-color);
-	--body-color: var(--black-color);
-}
-
-html:is([data-scroll='0']) .top-section-light {
-	--background-color: var(--light-color);
-	--body-color: var(--dark-color);
-}
-
-html:is([data-scroll='0']) .top-section-theme {
-	--background-color: var(--theme-color);
-	--body-color: var(--light-color);
-}
-
-html:is([data-scroll='0']) .top-section-theme-inverted {
-	--background-color: var(--light-color);
-	--body-color: var(--theme-color);
-}
-
-html:is([data-scroll='0']) .top-section-theme-accents, html:is([data-scroll='0']) .top-section-theme-accents * {
-	--body-color: var(--theme-color);
-}
-
-html:is([data-scroll='0']) .top-section-transparent {
-	--background-color: transparent;
-}
-
-html:is([data-scroll='0']) .top-section-dots {
-	background-image: url("../images/background/dot.svg");
-}
-
-/* 3.2: Element Colors */
+/* 3.1: Element Colors */
 
 .element-black {
 	--background-color: var(--white-color);
@@ -549,16 +474,94 @@ html:is([data-scroll='0']) .top-element-theme-inverted {
 	--body-color: var(--light-color);
 }
 
+/* 3.2: Section Colors */
+
+.section-black {
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
+}
+
+.section-dark {
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
+}
+
+.section-white {
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
+}
+
+.section-light {
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
+}
+
+.section-theme {
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
+}
+
+.section-theme-inverted {
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
+}
+
+.section-transparent {
+	--background-color: transparent;
+}
+
+html:is([data-scroll='0']) .top-section-black {
+	--background-color: var(--black-color);
+	--body-color: var(--white-color);
+}
+
+html:is([data-scroll='0']) .top-section-dark {
+	--background-color: var(--dark-color);
+	--body-color: var(--light-color);
+}
+
+html:is([data-scroll='0']) .top-section-white {
+	--background-color: var(--white-color);
+	--body-color: var(--black-color);
+}
+
+html:is([data-scroll='0']) .top-section-light {
+	--background-color: var(--light-color);
+	--body-color: var(--dark-color);
+}
+
+html:is([data-scroll='0']) .top-section-theme {
+	--background-color: var(--theme-color);
+	--body-color: var(--light-color);
+}
+
+html:is([data-scroll='0']) .top-section-theme-inverted {
+	--background-color: var(--light-color);
+	--body-color: var(--theme-color);
+}
+
+html:is([data-scroll='0']) .top-section-transparent {
+	--background-color: transparent;
+}
+
+.section-black, .top-section-black,
+.section-dark, .top-section-dark,
+.section-white, .top-section-white,
+.section-light, .top-section-light,
+.section-theme, .top-section-theme,
+.section-theme-inverted, .top-section-theme-inverted {
+	background-color: var(--background-color);
+}
+
 /*	==============================================
 	4: Buttons
 	============================================== */
-a.button {
+button, a.button, input[type=submit] {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	font-size: var(--body-size);
 	color: var(--background-color);
-	padding: calc(var(--body-size) * 4/10);
-	padding-bottom: calc(var(--body-size) * 3/10);
+	padding: calc(var(--body-size) * 5/10);
 	text-transform: uppercase;
 	text-align: center;
 	text-decoration: none;
@@ -567,51 +570,52 @@ a.button {
 	display: inline-block;
 	line-height: 1;
 }
-a.button * {
-	font-size: calc(var(--body-size));
+button *, a.button *, input[type=submit] * {
+	font-size: var(--body-size);
 	color: var(--background-color);
 	line-height: 1;
 }
 
-p a.button {
+p button, p a.button {
 	margin-right: calc(var(--body-size) * 1/3);
 }
 
-a.button:hover {
+button:hover, a.button:hover, input[type=submit]:hover {
 	background-color: transparent;
 	color: var(--body-color);
 	opacity: 1;
 }
-a.button:hover * {
+button:hover *, a.button:hover *, input[type=submit]:hover * {
 	color: var(--body-color);
 }
 
-a.button.hollow {
+button.hollow, a.button.hollow, input[type=submit].hollow {
 	background-color: transparent;
 	color: var(--body-color);
 }
-a.button.hollow * {
+button.hollow *, a.button.hollow *, input[type=submit].hollow * {
 	background-color: transparent;
 	color: var(--body-color);
 }
 
-a.button.hollow:hover {
+button.hollow:hover, a.button.hollow:hover, input[type=submit].hollow:hover {
 	background-color: var(--body-color);
 	color: var(--background-color);
 }
-a.button.hollow:hover * {
+button.hollow:hover *, a.button.hollow:hover *, input[type=submit].hollow:hover {
 	color: var(--background-color);
 }
 
-a.button.rounded {
+button.rounded, a.button.rounded, input[type=submit].rounded {
 	border-radius: 6px;
 }
 
-a.button.pill {
+button.pill, a.button.pill, input[type=submit].pill {
 	border-radius: 1000px;
+	padding: calc(var(--body-size) * 5/10) calc(var(--body-size) * 7/10);
 }
 
-header a.button {
+header button, header a.button {
 	margin: -12px 0;
 }
 
@@ -623,20 +627,17 @@ code, pre, .code {
 	font-family: var(--monospace-font);
 	font-size: calc(var(--body-size) * 3/4);
 }
+.small code, code.small, .small pre, pre.small, .small .code, .code.small {
+	font-size: calc(var(--body-size) * 2/4);
+}
+.large code, code.large, .large pre, pre.large, .large .code, .code.large {
+	font-size: var(--body-size);
+}
 
 pre {
 	background-color: #e8e8e8;
-}
-
-pre {
 	padding: calc(var(--body-size) * 1/2);
 	overflow-x: auto;
-}
-
-
-@media only screen and (max-width: 54rem) {
-	pre {
-	}
 }
 
 /*	==============================================
@@ -718,17 +719,17 @@ footer h6 {font-size: calc(var(--title-size) * 3/4 * 4/9);}
 	============================================== */
 
 table {
-	border-spacing: 0px;
+	border-spacing: 0;
 	width: 100%
 }
 
 th {
-	padding: calc(var(--body-size) * 1/2);
-	font-weight: 700;
+	font-weight: var(--bold-weight);
+	border-bottom: var(--border-width) solid var(--body-color);
 }
 
-td {
-	padding: calc(var(--body-size) * 1/4) calc(var(--body-size) * 1/2);
+th, td {
+	padding: calc(var(--body-size) * 1/3) calc(var(--body-size) * 1/2);
 }
 
 tr td, tr th {
@@ -747,7 +748,7 @@ table.index {
 }
 
 table.index th {
-	font-weight: bold;
+	font-weight: var(--bold-weight);
 	border-bottom: var(--border-width) solid var(--body-color);
 }
 
@@ -756,24 +757,35 @@ table.index tr + table.index tr {
 }
 
 /*	==============================================
-	9: Override
+	9: Lists
 	============================================== */
 
-.text-left {
-	text-align: left;
+li {
+	padding: calc(var(--body-size) * 1/5) 0;
 }
 
-.text-center {
-	text-align: center;
-}
-.text-center * {
-	margin: auto;
+dt {
+	font-weight: var(--bold-weight);
+	text-decoration: underline;
 }
 
-.text-right {
-	text-align: right;
+dd {
+	margin-bottom: calc(var(--body-size) * 1/2);
 }
 
-.text-justified {
-	text-align: justify;
+/*	==============================================
+	10: Forms
+	============================================== */
+
+form * {
+	margin: calc(var(--body-size) * 1/3) 0;
+}
+
+form label {
+	font-weight: var(--bold-weight);
+}
+
+form input[type=text] {
+	width: 100%;
+	padding: calc(var(--body-size) * 1/6);
 }
