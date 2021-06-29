@@ -51,7 +51,7 @@ Table of Contents
 	--body-color: var(--black-color);
 	--title-font: "Montserrat", sans-serif;
 	--title-weight: 900;
-	--title-size-raw: 72px;
+	--title-size-raw: 64px;
 	--title-size: var(--title-size-raw);
 	--body-font: "Montserrat", sans-serif;
 	--body-size-raw: 20px;
@@ -170,6 +170,10 @@ section {
 		section, .section-thin {
 		padding: 10px 0;
 	}
+}
+
+.section-full > * {
+	margin: auto;
 }
 
 /* 1.2: Grid */
@@ -646,7 +650,7 @@ pre {
 
 header {
 	padding: 12px 0;
-	font-weight: var(--title-weight);
+	font-weight: var(--bold-weight);
 	background-color: var(--background-color);
 }
 
