@@ -32,3 +32,7 @@ header.sticky {
 		font-size: 12px;
 	}
 }
+
+button, a.button, input[type=submit] {
+	padding-bottom: calc(var(--body-size) * 3/10);
+}
