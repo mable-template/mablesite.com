@@ -1,9 +1,9 @@
 /*
 Mable Main CSS File
 
-=================
+=================================================
 Table of Contents
-=================
+=================================================
 
 0: Root Variables & Reset
 	0.1: Import
@@ -53,7 +53,7 @@ Table of Contents
 	--border-width-raw: 2px;
 	--border-width: calc(var(--border-width-raw) * var(--text-scale));
 	--border-radius-raw: 6px;
-	--border-radius: calc(var(--border-rad-raw) * var(--text-scale));
+	--border-radius: calc(var(--border-radius-raw) * var(--text-scale));
 	
 	--title-font: "Montserrat", sans-serif;
 	--title-weight: 700;
@@ -61,8 +61,8 @@ Table of Contents
 	
 	--body-font: "Montserrat", sans-serif;
 	--body-size: 20px;
-	
 	--bold-weight: 700;
+	
 	--reading-font: serif;
 	--monospace-font: monospace;
 	
@@ -94,10 +94,6 @@ img {
 	max-width: 100%;
 }
 
-body {
-	font-family: var(--body-font);
-}
-
 /*	==============================================
 	1: Layout
 	============================================== */
@@ -109,40 +105,19 @@ section {
 	overflow: hidden;
 }
 
-header.sticky + section {
-	padding-top: 145px;
-}
-
 .section-edgeless {
 	padding: 0;
-}
-
-header.sticky + .section-edgeless {
-	padding-top: 75px;
 }
 
 .section-thin {
 	padding: 30px 0;
 }
-
-header.sticky + .section-thin {
-	padding-top: 105px;
-}
-
 .section-large {
 	padding: 150px 0;
 }
 
-header.sticky + .section-large {
-	padding-top: 150px;
-}
-
 .section-huge {
 	padding: 230px 0;
-}
-
-header.sticky + .section-huge {
-	padding-top: 230px;
 }
 
 .section-full {
@@ -152,6 +127,11 @@ header.sticky + .section-huge {
 	display: flex;
 	align-items: center;
 }
+
+.section-full > * {
+	margin: auto;
+}
+
 
 .breadcrumbs {
 	padding: 10px 0;
@@ -195,16 +175,8 @@ header.sticky + .section-huge {
 		padding: 30px 0;
 	}
 	
-	header.sticky + section{
-		padding-top: 105px;
-	}
-	
 	.section-large {
 		padding: 70px 0;
-	}
-	
-	header.sticky + .section-large {
-		padding-top: 145px;
 	}
 	
 	.section-huge {
@@ -238,16 +210,12 @@ header.sticky + .section-huge {
 	}
 }
 
-.section-full > * {
-	margin: auto;
-}
-
 /* 1.2: Grid */
 
 .grid {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-gap: 30px;
+	grid-gap: 40px;
 }
 
 .grid.portfolio {
@@ -286,39 +254,40 @@ header.sticky + .section-huge {
 .grid > [class^="col-"] > a > img, .grid > [class^="fa-"] {
 	margin: 0;
 }
-.merge-two-rows { grid-row-end: span 2;}
-.merge-three-rows { grid-row-end: span 3;}
-.merge-four-rows { grid-row-end: span 4;}
-.merge-five-rows { grid-row-end: span 5;}
-.merge-six-rows { grid-row-end: span 6;}
+.merge-two-rows {grid-row-end: span 2;}
+.merge-three-rows {grid-row-end: span 3;}
+.merge-four-rows {grid-row-end: span 4;}
+.merge-five-rows {grid-row-end: span 5;}
+.merge-six-rows {grid-row-end: span 6;}
 
-.col-one { grid-column-end: span 1;}
-.col-two { grid-column-end: span 2;}
-.col-three { grid-column-end: span 3;}
-.col-four { grid-column-end: span 4;}
-.col-five { grid-column-end: span 5;}
-.col-six { grid-column-end: span 6;}
-.col-seven { grid-column-end: span 7;}
-.col-eight { grid-column-end: span 8;}
-.col-nine { grid-column-end: span 9;}
-.col-ten { grid-column-end: span 10;}
-.col-eleven { grid-column-end: span 11;}
+.col {grid-column-end: span 12;}
+.col-one {grid-column-end: span 1;}
+.col-two {grid-column-end: span 2;}
+.col-three {grid-column-end: span 3;}
+.col-four {grid-column-end: span 4;}
+.col-five {grid-column-end: span 5;}
+.col-six {grid-column-end: span 6;}
+.col-seven {grid-column-end: span 7;}
+.col-eight {grid-column-end: span 8;}
+.col-nine {grid-column-end: span 9;}
+.col-ten {grid-column-end: span 10;}
+.col-eleven {grid-column-end: span 11;}
 
 @media only screen and (max-width: 60rem) {
-	.col-one { grid-column-end: span 4;}
-	.col-two { grid-column-end: span 4;}
-	.col-three { grid-column-end: span 6;}
-	.col-four { grid-column-end: span 6;}
-	.col-five { grid-column-end: span 6;}
-	.col-six { grid-column-end: span 6;}
-	.col-seven { grid-column-end: span 12;}
-	.col-eight { grid-column-end: span 12;}
-	.col-nine { grid-column-end: span 12;}
-	.col-ten { grid-column-end: span 12;}
-	.col-eleven { grid-column-end: span 12;}
+	.col-one {grid-column-end: span 4;}
+	.col-two {grid-column-end: span 4;}
+	.col-three {grid-column-end: span 6;}
+	.col-four {grid-column-end: span 6;}
+	.col-five {grid-column-end: span 6;}
+	.col-six {grid-column-end: span 6;}
+	.col-seven {grid-column-end: span 12;}
+	.col-eight {grid-column-end: span 12;}
+	.col-nine {grid-column-end: span 12;}
+	.col-ten {grid-column-end: span 12;}
+	.col-eleven {grid-column-end: span 12;}
 	
 	.grid {
-		grid-gap: 40px;
+		grid-gap: 30px;
 	}
 
 	.grid.portfolio {
@@ -327,17 +296,17 @@ header.sticky + .section-huge {
 }
 
 @media only screen and (max-width: 30rem) {
-	.col-one { grid-column-end: span 6;}
-	.col-two { grid-column-end: span 6;}
-	.col-three { grid-column-end: span 12;}
-	.col-four { grid-column-end: span 12;}
-	.col-five { grid-column-end: span 12;}
-	.col-six { grid-column-end: span 12;}
-	.col-seven { grid-column-end: span 12;}
-	.col-eight { grid-column-end: span 12;}
-	.col-nine { grid-column-end: span 12;}
-	.col-ten { grid-column-end: span 12;}
-	.col-eleven { grid-column-end: span 12;}
+	.col-one {grid-column-end: span 6;}
+	.col-two {grid-column-end: span 6;}
+	.col-three {grid-column-end: span 12;}
+	.col-four {grid-column-end: span 12;}
+	.col-five {grid-column-end: span 12;}
+	.col-six {grid-column-end: span 12;}
+	.col-seven {grid-column-end: span 12;}
+	.col-eight {grid-column-end: span 12;}
+	.col-nine {grid-column-end: span 12;}
+	.col-ten {grid-column-end: span 12;}
+	.col-eleven {grid-column-end: span 12;}
 	
 	.grid {
 		grid-gap: 20px;
@@ -349,6 +318,7 @@ header.sticky + .section-huge {
 	============================================== */
 
 * {
+	font-family: var(--body-font);
 	font-size: calc(var(--body-size) * var(--text-scale) * var(--item-scale) * var(--style-scale));
 }
 
@@ -373,6 +343,9 @@ header.sticky + .section-huge {
 }
 .large {
 	--style-scale: 5/4
+}
+.huge {
+	--style-scale: 6/4
 }
 
 /* 2.1: Headings */
@@ -407,11 +380,11 @@ p .dropcap {
 	font-family: var(--body-font);
 	font-weight: var(--title-weight);
 	--item-scale: 4;
-	line-height: calc(var(--body-size) * 3);
+	line-height: calc(var(--body-size) * var(--text-scale) * 3 * var(--style-scale));
 	float: left;
-	padding-top: calc(var(--body-size) * 1/2);
-	padding-right: calc(var(--body-size) * 1/2);
-	padding-left: calc(var(--body-size) * 1/3);
+	padding-top: calc(var(--body-size) * var(--text-scale) * 1/2 * var(--style-scale));
+	padding-right: calc(var(--body-size) * var(--text-scale) * 1/2 * var(--style-scale));
+	padding-left: ccalc(var(--body-size) * var(--text-scale) * 1/3 * var(--style-scale));
 	text-transform: uppercase;
 }
 
@@ -456,6 +429,15 @@ b, .bold {
 
 * {
 	color: var(--body-color)
+}
+
+.section-black, .top-section-black,
+.section-dark, .top-section-dark,
+.section-white, .top-section-white,
+.section-light, .top-section-light,
+.section-theme, .top-section-theme,
+.section-theme-inverted, .top-section-theme-inverted {
+	background-color: var(--background-color);
 }
 
 /* 3.1: Element Colors */
@@ -590,15 +572,6 @@ html:is([data-scroll='0']) .top-section-transparent {
 	--background-color: transparent;
 }
 
-.section-black, .top-section-black,
-.section-dark, .top-section-dark,
-.section-white, .top-section-white,
-.section-light, .top-section-light,
-.section-theme, .top-section-theme,
-.section-theme-inverted, .top-section-theme-inverted {
-	background-color: var(--background-color);
-}
-
 /*	==============================================
 	4: Buttons
 	============================================== */
@@ -657,11 +630,10 @@ button.rounded, a.button.rounded, input[type=submit].rounded {
 
 button.pill, a.button.pill, input[type=submit].pill {
 	border-radius: 1000px;
-	padding: calc(var(--body-size) * 5/10) calc(var(--body-size) * 7/10);
 }
 
 header button, header a.button {
-	margin: -12px 0;
+	margin: calc(var(--body-size) * -5/10);
 }
 
 /*	==============================================
@@ -696,12 +668,12 @@ header {
 	--item-scale: 3/4;
 }
 
-header, header *, header a.button {
-	font-family: var(--body-font);
-	--body-size: calc(var(--body-size-raw) * 4/5);
+header {
+	--item-scale: 5/7;
 }
 
-header a.button {
+ header * {
+ 	font-family: var(--body-font);
 }
 
 header.sticky {
@@ -710,16 +682,12 @@ header.sticky {
 	width: 100%;
 }
 
-header.transparent {
-	margin-bottom: -80px;
-}
-
 header ul {
 	margin: 0;
 	padding: 0;
 }
 
-header ul a {
+header ul a, header ul a * {
 	text-decoration: none;
 }
 
@@ -742,7 +710,6 @@ html:is([data-scroll='0']) header.sticky.transparent {
 	background-color: transparent;
 	border: none;
 }
-	
 
 /*	==============================================
 	7: Footer
@@ -775,11 +742,6 @@ table {
 	width: 100%
 }
 
-th {
-	font-weight: var(--bold-weight);
-	border-bottom: var(--border-width) solid var(--body-color);
-}
-
 th, td {
 	padding: calc(var(--body-size) * 1/3) calc(var(--body-size) * 1/2);
 }
@@ -787,25 +749,29 @@ th, td {
 tr td, tr th {
 	text-align: right;
 	border-right: calc(var(--border-width) * 1/2) solid var(--body-color);
+	border-bottom: calc(var(--border-width) * 1/2) solid var(--body-color);
+}
+
+tr td:first-child, tr th:first-child {
+	border-left: calc(var(--border-width) * 1/2) solid var(--body-color);
+}
+
+thead th {
+	border-top: calc(var(--border-width) * 1/2) solid var(--body-color);
+	font-weight: var(--bold-weight);
+	border-bottom: var(--border-width) solid var(--body-color);
 }
 
 td + td, th + th {
 	text-align: center;
+}
+
+table.clean td + td, table.clean th + th {
 	border-right: none;
 }
 
 table.index {
 	font-family: var(--monospace-font);
-	border: none;
-}
-
-table.index th {
-	font-weight: var(--bold-weight);
-	border-bottom: var(--border-width) solid var(--body-color);
-}
-
-table.index tr + table.index tr {
-	border: none;
 }
 
 /*	==============================================
