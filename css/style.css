@@ -46,20 +46,30 @@ Table of Contents
 	--dark-color: #202020;
 	--white-color: #ffffff;
 	--light-color: #f5f5f5;
-	--theme-color: #f2ab23;
+	--theme-color: #69a34f;
 	--background-color: var(--white-color);
 	--body-color: var(--black-color);
+	
+	--border-width-raw: 2px;
+	--border-width: calc(var(--border-width-raw) * var(--text-scale));
+	--border-radius-raw: 6px;
+	--border-radius: calc(var(--border-rad-raw) * var(--text-scale));
+	
 	--title-font: "Montserrat", sans-serif;
-	--title-weight: 900;
-	--title-size-raw: 64px;
-	--title-size: var(--title-size-raw);
+	--title-weight: 700;
+	--title-size: 72px;
+	
 	--body-font: "Montserrat", sans-serif;
-	--body-size-raw: 20px;
-	--body-size: var(--body-size-raw);
+	--body-size: 20px;
+	
 	--bold-weight: 700;
 	--reading-font: serif;
 	--monospace-font: monospace;
-	--border-width: 3px;
+	
+	--text-scale: 1;
+	--title-scale: 1;
+	--item-scale: 1;
+	--style-scale: 1
 }
 
 /* 0.3: Reset */
@@ -70,7 +80,6 @@ Table of Contents
 	transition-duration: 0.25s;
 	background-position: center;
 	background-size: cover;
-	font-size: var(--body-size);
 }
 
 html, body {
@@ -97,22 +106,43 @@ body {
 
 section {
 	padding: 70px 0;
+	overflow: hidden;
+}
+
+header.sticky + section {
+	padding-top: 145px;
 }
 
 .section-edgeless {
 	padding: 0;
 }
 
+header.sticky + .section-edgeless {
+	padding-top: 75px;
+}
+
 .section-thin {
 	padding: 30px 0;
+}
+
+header.sticky + .section-thin {
+	padding-top: 105px;
 }
 
 .section-large {
 	padding: 150px 0;
 }
 
+header.sticky + .section-large {
+	padding-top: 150px;
+}
+
 .section-huge {
-	padding: 310px 0;
+	padding: 230px 0;
+}
+
+header.sticky + .section-huge {
+	padding-top: 230px;
 }
 
 .section-full {
@@ -125,16 +155,22 @@ section {
 
 .breadcrumbs {
 	padding: 10px 0;
-	font-family: var(--monospace-font);
 }
 
-.container, .container-fluid, .container-large {
-	width: calc(100%-60px);
+.container, .container-large, .container-fluid {
 	margin: 0 30px;
 }
 
+.container {
+	margin: 0 calc((100% - 800px) / 2);
+}
+
+.container-large {
+	margin: 0 calc((100% - 1200px) / 2);
+}
+
 .row {
-	margin: 30px 0;
+	margin: 20px 0;
 	width: 100%;
 }
 
@@ -142,33 +178,63 @@ section {
 	margin: calc(var(--body-size) * 2/3) 0;
 }
 
-@media only screen and (min-width: 54rem) {
-	.container {
-		max-width: 800px;
-		margin-left: calc(50% - 400px);
-	}
-}
-
-@media only screen and (min-width: 78.75rem) {
+@media only screen and (max-width: 1260px) {
 	.container-large {
-		max-width: 1200px;
-		margin: 0 calc(50% - 600px);
+		margin: 0 30px;
 	}
 }
 
-@media only screen and (max-width: 54rem) {
-		section, .section-thin {
+@media only screen and (max-width: 860px) {
+	.container {
+		margin: 0 30px;
+	}
+}
+
+@media only screen and (max-width: 60rem) {
+	section {
 		padding: 30px 0;
+	}
+	
+	header.sticky + section{
+		padding-top: 105px;
+	}
+	
+	.section-large {
+		padding: 70px 0;
+	}
+	
+	header.sticky + .section-large {
+		padding-top: 145px;
 	}
 	
 	.section-huge {
 		padding: 150px 0;
 	}
+	
+	header.sticky + .section-huge {
+		padding-top: 150px;
+	}
 }
 
-@media only screen and (max-width: 35rem) {
-		section, .section-thin {
-		padding: 10px 0;
+@media only screen and (max-width: 30rem) {
+	.section-large {
+		padding: 30px 0;
+	}
+	
+	header.sticky + .section-large {
+		padding-top: 55px;
+	}
+
+	.section-huge {
+		padding: 70px 0;
+	}
+	
+	header.sticky + .section-huge {
+		padding-top: 95px;
+	}
+	
+	.container, .container-large, .container-fluid {
+		margin: 0 20px;
 	}
 }
 
@@ -238,13 +304,13 @@ section {
 .col-ten { grid-column-end: span 10;}
 .col-eleven { grid-column-end: span 11;}
 
-@media only screen and (max-width: 54rem) {
+@media only screen and (max-width: 60rem) {
 	.col-one { grid-column-end: span 4;}
 	.col-two { grid-column-end: span 4;}
 	.col-three { grid-column-end: span 6;}
 	.col-four { grid-column-end: span 6;}
-	.col-five { grid-column-end: span 12;}
-	.col-six { grid-column-end: span 12;}
+	.col-five { grid-column-end: span 6;}
+	.col-six { grid-column-end: span 6;}
 	.col-seven { grid-column-end: span 12;}
 	.col-eight { grid-column-end: span 12;}
 	.col-nine { grid-column-end: span 12;}
@@ -260,9 +326,9 @@ section {
 	}
 }
 
-@media only screen and (max-width: 35rem) {
-	.col-one { grid-column-end: span 12;}
-	.col-two { grid-column-end: span 12;}
+@media only screen and (max-width: 30rem) {
+	.col-one { grid-column-end: span 6;}
+	.col-two { grid-column-end: span 6;}
 	.col-three { grid-column-end: span 12;}
 	.col-four { grid-column-end: span 12;}
 	.col-five { grid-column-end: span 12;}
@@ -282,6 +348,10 @@ section {
 	2: Fonts & Text
 	============================================== */
 
+* {
+	font-size: calc(var(--body-size) * var(--text-scale) * var(--item-scale) * var(--style-scale));
+}
+
 .text-left {
 	text-align: left;
 }
@@ -298,9 +368,17 @@ section {
 	text-align: justify;
 }
 
+.small {
+	--style-scale: 3/4
+}
+.large {
+	--style-scale: 5/4
+}
+
 /* 2.1: Headings */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
+	font-size: calc(var(--title-size) * var(--title-scale) * var(--item-scale) * var(--style-scale));
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	line-height: 1;
@@ -308,42 +386,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h2.tagline {
 	font-family: var(--body-font);
-	font-weight: calc(var(--title-weight) * 2/5);
+	font-weight: var(--body-weight);
 }
 
-h1, h1 * {font-size: var(--title-size);}
-h2, h2 * {font-size: calc(var(--title-size) * 8/9);}
-h3, h3 * {font-size: calc(var(--title-size) * 7/9);}
-h4, h4 * {font-size: calc(var(--title-size) * 6/9);}
-h5, h5 * {font-size: calc(var(--title-size) * 5/9);}
-h6, h6 * {font-size: calc(var(--title-size) * 4/9);}
-h2.tagline, h2.tagline * {font-size: calc(var(--body-size) * 3/2);}
-
-h1 {
-	text-transform: uppercase;
-}
-
-.small {
-	--title-size: calc(var(--title-size-raw) * 3/4);
-}
-.large {
-	--title-size: calc(var(--title-size-raw) * 6/4);
-}
+h1 {--item-scale: 9/9}
+h2 {--item-scale: 8/9}
+h3 {--item-scale: 7/9}
+h4 {--item-scale: 6/9}
+h5 {--item-scale: 5/9}
+h6 {--item-scale: 4/9}
+h2.tagline {--item-scale: 3/9}
 
 /* 2.2: Body Fonts */
 
-.reading, .reading p, .reading a {
+.reading, .reading * {
 	font-family: var(--reading-font);
-}
-
-p {
-	font-size: var(--body-size);
 }
 
 p .dropcap {
 	font-family: var(--body-font);
 	font-weight: var(--title-weight);
-	font-size: calc(var(--body-size) * 4);
+	--item-scale: 4;
 	line-height: calc(var(--body-size) * 3);
 	float: left;
 	padding-top: calc(var(--body-size) * 1/2);
@@ -361,50 +424,29 @@ a:hover {
 }
 
 .fa-icon i.fa, i.fa.fa-icon, .fa-icon i.fab, i.fab.fa-icon, .fa-icon i.far, i.far.fa-icon, .fa-icon i.fa-regular, i.fa-regular.fa-icon, .fa-icon i.fas, i.fas.fa-icon, .fa-icon i.fa-solid, i.fa-solid.fa-icon {
-	font-size: calc(var(--body-size) * 3);
+	--item-scale: 3;
 }
 
 b, .bold {
 	font-weight: var(--bold-weight);
 }
 
-.small {
-	--body-size: calc(var(--body-size-raw) * 3/4);
-}
-.large {
-	--body-size: calc(var(--body-size-raw) * 5/4);
+.breadcrumbs {
+	font-family: var(--monospace-font);
 }
 
 /* 2.3: Small Screens */
 
-@media only screen and (max-width: 54rem) {
+@media only screen and (min-width: 120rem) {
 	:root {
-		--title-size: calc(var(--title-size-raw) * 3/4);
-		--body-size: calc(var(--body-size-raw) * 3/4);
-	}
-	
-	.small {
-	--title-size: calc(var(--title-size-raw) * 3/4 * 3/4);
-	--body-size: calc(var(--body-size-raw) * 3/4 * 3/4);
-	}
-	.large {
-		--title-size: calc(var(--title-size-raw) * 4/4 * 3/4);
-		--body-size: calc(var(--body-size-raw) * 4/4 * 3/4);
+		--title-scale: 5/4;
 	}
 }
 
-@media only screen and (max-width: 25rem) {
+@media only screen and (max-width: 60rem) {
 	:root {
-		--title-size: calc(var(--title-size-raw) * 2/4);
-	}
-	
-	.small {
-	--title-size: calc(var(--title-size-raw) * 3/4 * 2/4);
-	--body-size: calc(var(--body-size-raw) * 3/4 * 2/4);
-	}
-	.large {
-		--title-size: calc(var(--title-size-raw) * 4/4 * 2/4);
-		--body-size: calc(var(--body-size-raw) * 4/4 * 2/4);
+		--text-scale: 3/4;
+		--title-scale: 3/4;
 	}
 }
 
@@ -563,7 +605,6 @@ html:is([data-scroll='0']) .top-section-transparent {
 button, a.button, input[type=submit] {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
-	font-size: var(--body-size);
 	color: var(--background-color);
 	padding: calc(var(--body-size) * 5/10);
 	text-transform: uppercase;
@@ -611,7 +652,7 @@ button.hollow:hover *, a.button.hollow:hover *, input[type=submit].hollow:hover 
 }
 
 button.rounded, a.button.rounded, input[type=submit].rounded {
-	border-radius: 6px;
+	border-radius: var(--border-radius);
 }
 
 button.pill, a.button.pill, input[type=submit].pill {
@@ -652,11 +693,15 @@ header {
 	padding: 12px 0;
 	font-weight: var(--bold-weight);
 	background-color: var(--background-color);
+	--item-scale: 3/4;
 }
 
 header, header *, header a.button {
 	font-family: var(--body-font);
-	font-size: calc(var(--body-font));
+	--body-size: calc(var(--body-size-raw) * 4/5);
+}
+
+header a.button {
 }
 
 header.sticky {
@@ -689,6 +734,7 @@ header ul li {
 
 header.sticky {
 	border-bottom: var(--border-width) solid var(--body-color);
+	z-index: 99999!important;
 }
 
 /* 6.2: Sticky headers */
@@ -696,6 +742,7 @@ html:is([data-scroll='0']) header.sticky.transparent {
 	background-color: transparent;
 	border: none;
 }
+	
 
 /*	==============================================
 	7: Footer
@@ -710,12 +757,13 @@ footer.section-edgless {
 	padding: 0;
 }
 
-footer h1 {font-size: calc(var(--title-size) * 3/4 * 9/9);}
-footer h2 {font-size: calc(var(--title-size) * 3/4 * 8/9);}
-footer h3 {font-size: calc(var(--title-size) * 3/4 * 7/9);}
-footer h4 {font-size: calc(var(--title-size) * 3/4 * 6/9);}
-footer h5 {font-size: calc(var(--title-size) * 3/4 * 5/9);}
-footer h6 {font-size: calc(var(--title-size) * 3/4 * 4/9);}
+footer h1 {--item-scale: 7/9}
+footer h2 {--item-scale: 6/9}
+footer h3 {--item-scale: 5/9}
+footer h4 {--item-scale: 4/9}
+footer h5 {--item-scale: 3/9}
+footer h6 {--item-scale: 3/9}
+footer h2.tagline {--item-scale: 3/9}
 
 
 /*	==============================================

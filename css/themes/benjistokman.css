@@ -1,8 +1,8 @@
 /* Benjistokman CSS Theme for Mable Template */
 
-@import url('../../fonts/odibee-sans.css');
-@import url('../../fonts/montserrat.css');
-@import url('../../fonts/share-tech-mono.css');
+@import url('https://fonts.benstokman.me/odibee-sans.css');
+@import url('https://fonts.benstokman.me/montserrat.css');
+@import url('https://fonts.benstokman.me/share-tech-mono.css');
 
  :root {
 	--theme-color: #fc4651;
@@ -11,28 +11,14 @@
 	--body-font: "Montserrat", sans-serif;
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
-}
-
-header li, header a.button {
-	font-size: 14px;
-}
-
-header.sticky {
-	border-width: 6px;
-}
-
-@media only screen and (max-width: 54em) {
-	header li, header a.button {
-		font-size: 12px;
-	}
-}
-
-@media only screen and (max-width: 30rem) {
-	header li, header a.button {
-		font-size: 12px;
-	}
+	--border-width-raw: 3px;
 }
 
 button, a.button, input[type=submit] {
-	padding-bottom: calc(var(--body-size) * 3/10);
+	padding-bottom: calc(var(--body-size) * 4/10);
+
+}
+
+header.sticky {
+	border-width: calc(var(--border-width-raw) * 2);
 }
