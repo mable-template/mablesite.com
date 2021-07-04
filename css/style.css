@@ -135,6 +135,7 @@ section {
 
 .breadcrumbs {
 	padding: 10px 0;
+	--body-font: var(--monospace-font);
 }
 
 .container, .container-large, .container-fluid {
@@ -402,10 +403,6 @@ a:hover {
 
 b, .bold {
 	font-weight: var(--bold-weight);
-}
-
-.breadcrumbs {
-	font-family: var(--monospace-font);
 }
 
 /* 2.3: Small Screens */
