@@ -130,10 +130,6 @@ section {
 	align-items: center;
 }
 
-.section-full > * {
-	margin: auto;
-}
-
 
 .breadcrumbs {
 	padding: 10px 0;
@@ -171,6 +167,10 @@ section {
 	.container {
 		margin: 0 30px;
 	}
+}
+
+.section-full > * {
+	margin: auto;
 }
 
 @media only screen and (max-width: 60rem) {
