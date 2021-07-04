@@ -78,8 +78,6 @@ Table of Contents
 	margin: 0;
 	padding: 0;
 	transition-duration: 0.25s;
-	background-position: center;
-	background-size: cover;
 }
 
 html, body {
@@ -92,6 +90,10 @@ iframe {
 
 img {
 	max-width: 100%;
+}
+
+.portfolio img {
+	width: 100%
 }
 
 /*	==============================================
