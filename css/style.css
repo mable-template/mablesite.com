@@ -46,11 +46,11 @@ Table of Contents
 	--dark-color: #202020;
 	--white-color: #ffffff;
 	--light-color: #f5f5f5;
-	--theme-color: #69a34f;
+	--theme-color: #f09811;
 	--background-color: var(--white-color);
 	--body-color: var(--black-color);
 	
-	--border-width-raw: 2px;
+	--border-width-raw: 3px;
 	--border-width: calc(var(--border-width-raw) * var(--text-scale));
 	--border-radius-raw: 6px;
 	--border-radius: calc(var(--border-radius-raw) * var(--text-scale));
@@ -289,6 +289,20 @@ section {
 	.col-ten {grid-column-end: span 12;}
 	.col-eleven {grid-column-end: span 12;}
 	
+	.sm-col {grid-column-end: span 12;}
+	.sm-col-one {grid-column-end: span 1;}
+	.sm-col-two {grid-column-end: span 2;}
+	.sm-col-three {grid-column-end: span 3;}
+	.sm-col-four {grid-column-end: span 4;}
+	.sm-col-five {grid-column-end: span 5;}
+	.sm-col-six {grid-column-end: span 6;}
+	.sm-col-seven {grid-column-end: span 7;}
+	.sm-col-eight {grid-column-end: span 8;}
+	.sm-col-nine {grid-column-end: span 9;}
+	.sm-col-ten {grid-column-end: span 10;}
+	.sm-col-eleven {grid-column-end: span 11;}
+
+	
 	.grid {
 		grid-gap: 30px;
 	}
@@ -310,6 +324,19 @@ section {
 	.col-nine {grid-column-end: span 12;}
 	.col-ten {grid-column-end: span 12;}
 	.col-eleven {grid-column-end: span 12;}
+	
+	.xs-col {grid-column-end: span 12;}
+	.xs-col-one {grid-column-end: span 1;}
+	.xs-col-two {grid-column-end: span 2;}
+	.xs-col-three {grid-column-end: span 3;}
+	.xs-col-four {grid-column-end: span 4;}
+	.xs-col-five {grid-column-end: span 5;}
+	.xs-col-six {grid-column-end: span 6;}
+	.xs-col-seven {grid-column-end: span 7;}
+	.xs-col-eight {grid-column-end: span 8;}
+	.xs-col-nine {grid-column-end: span 9;}
+	.xs-col-ten {grid-column-end: span 10;}
+	.xs-col-eleven {grid-column-end: span 11;}
 	
 	.grid {
 		grid-gap: 20px;
@@ -340,6 +367,43 @@ section {
 .text-justified {
 	text-align: justify;
 }
+
+@media only screen and (max-width: 60rem) {
+	.sm-text-left {
+		text-align: left;
+	}
+
+	.sm-text-center {
+		text-align: center;
+	}
+
+	.sm-text-right {
+		text-align: right;
+	}
+
+	.sm-text-justified {
+		text-align: justify;
+	}
+}
+
+@media only screen and (max-width: 30rem) {
+	.xs-text-left {
+		text-align: left;
+	}
+
+	.xs-text-center {
+		text-align: center;
+	}
+
+	.xs-text-right {
+		text-align: right;
+	}
+
+	.xs-text-justified {
+		text-align: justify;
+	}
+}
+
 
 .small {
 	--style-scale: 3/4
@@ -578,7 +642,7 @@ button, a.button, input[type=submit] {
 	font-family: var(--title-font);
 	font-weight: var(--title-weight);
 	color: var(--background-color);
-	padding: calc(var(--body-size) * 5/10);
+	padding: calc(var(--body-size) * 5/10 * var(--style-scale));
 	text-transform: uppercase;
 	text-align: center;
 	text-decoration: none;
