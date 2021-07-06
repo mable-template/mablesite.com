@@ -725,7 +725,7 @@ pre {
 	============================================== */
 
 header {
-	padding: 12px 0;
+	padding: 24px 0;
 	font-weight: var(--bold-weight);
 	background-color: var(--background-color);
 	--item-scale: 3/4;
@@ -755,7 +755,6 @@ header ul a, header ul a * {
 }
 
 header ul li {
-	margin: 12px 0;
 	margin-right: 16px;
 	display: inline-block;
 	text-transform: uppercase;
