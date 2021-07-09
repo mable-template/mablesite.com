@@ -8,10 +8,15 @@
 	--theme-color: #fc4651;
 	--title-font: "Odibee Sans", sans-serif;
 	--title-weight: 700;
+	--title-size: 72px;
 	--body-font: "Montserrat", sans-serif;
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
 	--border-width-raw: 3px;
+}
+
+button, a.button, input[type=submit] {
+	--item-scale: 1.2;
 }
 
 button, a.button, input[type=submit] {
