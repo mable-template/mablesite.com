@@ -5,6 +5,11 @@
 		
 		<!-- CSS Sheets -->
 		<link href="css/style.css" type="text/css" rel="stylesheet">
+		
+		<!-- Packages -->
+		<link href="packages/font-awesome.css" type="text/css" rel="stylesheet">
+		
+		<!-- Themes -->
 		<link rel="stylesheet" type="text/css" href="custom-theme-here" id="custom-theme-sheet">
 		
 		<!-- Other Things -->
@@ -47,19 +52,19 @@
 				<div class="row grid fa-icon text-center">
 					<div class="col-two">
 						<i class="fas fa-code"></i>
-						<p>Easy to customize</p>
-					</div>
-					<div class="col-two">
-						<i class="fas fa-border-none"></i>
-						<p>Grid Layout</p>
-					</div>
-					<div class="col-two">
-						<i class="fab fa-font-awesome"></i>
-						<p>Font Awesome</p>
+						<p>Simple to build</p>
 					</div>
 					<div class="col-two">
 						<i class="fa-solid fa-paint-roller"></i>
 						<p>Easy to install themes</p>
+					</div>
+					<div class="col-two">
+						<i class="fa-solid fa-box"></i>
+						<p>Expansion Packages</p>
+					</div>
+					<div class="col-two">
+						<i class="fas fa-border-none"></i>
+						<p>Grid Layout</p>
 					</div>
 					<div class="col-two">
 						<i class="fa-solid fa-server"></i>
@@ -67,7 +72,7 @@
 					</div>
 					<div class="col-two">
 							<i class="fa-regular fa-square"></i>
-							<p>Minimal Design</p>
+							<p>Simple Design</p>
 					</div>
 				</div>
 			</div>
@@ -79,8 +84,13 @@
 				<div class="row">
 					<h1>Themes</h1>
 					<p>Click on a theme below to apply it to this page (requires JScript)</p>
-					<p><a href="#!" class="button" id="theme-set-default" onclick="setThemeDefault()">Default</a> <a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBenjistokman()">Benjistokman</a></p>
-					<p><a href="themes" class="button hollow">View themes</a></p>
+					<p>
+						<a href="#!" class="button" id="theme-set-default" onclick="setThemeDefault()">Default</a>
+						<a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBenjistokman()">Benjistokman</a>
+						<a href="#!" class="button" id="theme-set-lines" onclick="setThemeLines()">Lines</a>
+						<a href="#!" class="button" id="theme-set-zen-tokyo-zoo" onclick="setThemeZenTokyoZoo()">Zen Tokyo Zoo</a>
+				  	</p>
+					<p><a href="https://cdn.mablesite.com/themes" class="button hollow">View themes</a></p>
 				</div>
 			</div>
 		</section>
@@ -139,7 +149,7 @@
 		<!-- Footer -->
 		<footer class="section-theme">
 			<div class="container-large">
-				<div class="row grid">
+				<div class="row grid seamless">
 					<div class="col-eight text-right sm-col sm-text-center">
 						<h1>Mable HTML Template</h1>
 							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
@@ -161,7 +171,15 @@
 			}
 			
 			function setThemeBenjistokman() {
-				customTheme.href = "css/themes/benjistokman.css";
+				customTheme.href = "themes/benjistokman.css";
+			}
+			
+			function setThemeZenTokyoZoo() {
+				customTheme.href = "themes/zen-tokyo-zoo.css";
+			}
+			
+			function setThemeLines() {
+				customTheme.href = "themes/lines.css";
 			}
 		</script>
 	</body>
