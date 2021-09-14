@@ -24,6 +24,5 @@ button, a.button, input[type=submit] {
 }
 
 header.sticky {
-	--border-width-raw: 6px;
-	--border-width: calc(var(--border-width-raw) * var(--text-scale));
+	--border-width: 6px;
 }
