@@ -184,15 +184,23 @@ section {
 	.section-sidebar {
 		position: fixed;
 		top: 0px;
-		left: 0px;
 		width: 40%;
 		height: 100%
+	}
+	.section-sidebar.left {
+		left:0px;
+	}
+	.section-sidebar.right {
+		right: 0px;
 	}
 
 	.section-content-wrapper {
 		position: static;
 		overflow: visible;
 		width: 60%;
+	}
+	
+	.section-content-wrapper.right {
 		margin-left: 40%;
 	}
 }
@@ -1220,15 +1228,28 @@ dd {
 	10: Forms
 	============================================== */
 
-form * {
-	margin: ccalc(var(--spacing-size) * 2/5) 0;
+form > * {
+	margin: calc(var(--spacing-size) * 4/5);
 }
 
-form label {
+form * {
+	background: transparent;
+}
+
+form label, form input {
 	font-weight: var(--bold-weight);
 }
 
-form input[type=text] {
+form input, form textarea {
+	padding: calc(var(--spacing-size) * 2/5);
 	width: 100%;
-	padding: calc(var(--body-size) * 1/6);
+	border: calc(var(--border-width) * 2/3) solid var(--body-color); 
+}
+
+form input[type=email] {
+	font-family: var(--monospace-font);
+}
+
+form input[type=buton] {
+	width: min-content;
 }
