@@ -1,7 +1,6 @@
 /* Benjistokman CSS Theme for Mable Template */
 
 @import url('benjistokman/odibee-sans.css');
-@import url('benjistokman/montserrat.css');
 @import url('benjistokman/share-tech-mono.css');
 
  :root {
@@ -12,10 +11,6 @@
 	--body-font: "Montserrat", sans-serif;
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
-}
-
-h1 {
-	text-transform: none;
 }
 
 button, a.button, input[type=submit] {
@@ -29,4 +24,17 @@ button, a.button, input[type=submit] {
 
 header.sticky {
 	--border-width: 6px;
+}
+
+.button rect {
+	fill: none;
+	stroke-width: 4;
+	stroke-dasharray: 412, 0;
+	transition: all 0.5s linear;
+}
+.btn-border-to-line-text:hover rect {
+	stroke-width: 5;
+	stroke-dasharray: 23, 365;
+	stroke-dashoffset: 58;
+	transition: all 1.9s cubic-bezier(0.19, 1, 0.22, 1);
 }
