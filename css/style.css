@@ -1,5 +1,8 @@
 /*
 Mable Main CSS File
+Copyright © Ben stokman
+ben.stokman@protonmail.com
+MIT License
 
 =================================================
 Table of Contents
@@ -14,7 +17,7 @@ Table of Contents
 		1.1.1: Small Screens
 	1.2: Grid
 		1.2.1: Small Screens
-	1.3: Portfolio
+	1.3: Portfolio & Masonry
 		1.3.1: Small Screens
 2: Fonts & Text
 	2.1: Headings
@@ -41,6 +44,9 @@ Table of Contents
 /* 0.1: Import */
 
 @import url("../fonts/montserrat.css");
+@import url("../fonts/noto-sans.css");
+@import url("../fonts/noto-serif.css");
+@import url("../fonts/noto-sans-mono.css");
 
 /* 0.2: Root Variables */
 
@@ -63,9 +69,12 @@ Table of Contents
 	--title-weight: 700;
 	--title-size: 56px;
 	
-	--body-font: "Montserrat", sans-serif;
+	--body-font: "Montserrat", "Noto Sans", sans-serif;
 	--body-size: 20px;
 	--bold-weight: 700;
+	
+	--reading-font: "Noto Serif", serif;
+	--monospace-font: "Noto Sans Mono", monospace;
 	
 	/* Sizing and Spacing */
 	
@@ -74,11 +83,8 @@ Table of Contents
 	--border-radius-raw: 6px;
 	--border-radius: calc(var(--border-radius-raw) * var(--body-scale));
 	
-	--reading-font: serif;
-	--monospace-font: monospace;
-	
-	--body-scale: 1; /* Used for sizing different text elements. */
-	--title-scale: 1; /* Used for sizing different title elements. */
+	--body-scale: 1; /* Used for sizing different text selectors. */
+	--title-scale: 1; /* Used for sizing different title selectors. */
 	--item-scale: 1; /* Used for different screen sizes. */
 	--style-scale: 1; /* Used .huge, .large, and .small classes */
 	
@@ -92,18 +98,11 @@ Table of Contents
 	margin: 0;
 	padding: 0;
 	transition-duration: 0.25s;
-}
-
-html, body {
 	scroll-behavior: smooth;
 }
 
 iframe {
 	border: 0;
-}
-
-.portfolio img {
-	width: 100%
 }
 
 img {
@@ -147,15 +146,6 @@ section {
 	margin: auto;
 }
 
-.section-content-wrapper {
-	padding: 0;
-}
-
-.breadcrumbs {
-	padding: var(--spacing-size) 0;
-	--body-font: var(--monospace-font);
-}
-
 .container, .container-large, .container-fluid {
 	width: calc(100% - 60px);
 	margin: auto;
@@ -178,8 +168,6 @@ section {
 	margin: var(--spacing-size) 0;
 }
 
-/* 1.1.1: Small Screens */
-
 @media only screen and (min-width: 60rem) {
 	.section-sidebar {
 		position: fixed;
@@ -198,12 +186,15 @@ section {
 		position: static;
 		overflow: visible;
 		width: 60%;
+		padding: 0px;
 	}
 	
 	.section-content-wrapper.right {
 		margin-left: 40%;
 	}
 }
+
+/* 1.1.1: Small Screens */
 
 @media only screen and (max-width: 60rem) {
 	section {
@@ -238,26 +229,18 @@ section {
 .grid {
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
-	grid-gap: 30px;
+	grid-gap: calc(var(--spacing-size) * 2);
 }
 
 .grid.compact {
-	grid-gap: 20px;
-}
-
-.grid.seamless {
-	grid-gap: var(--spacing-size);;
+	grid-gap: calc(var(--spacing-size) * 1.5);
 }
 
 .grid.close {
-	grid-gap: 10px;
+	grid-gap: var(--spacing-size);
 }
 
-.grid.no-separator {
-	grid-gap: 0;
-}
-
-.grid.no-gap {
+.grid.seamless {
 	grid-gap: 0px;
 }
 
@@ -309,8 +292,11 @@ section {
 .merge-eighteen-rows {grid-row-end: span 18;}
 .merge-nineteen-rows {grid-row-end: span 19;}
 .merge-twenty-rows {grid-row-end: span 20;}
+.merge-twenty-one-rows {grid-row-end: span 21;}
+.merge-twenty-two-rows {grid-row-end: span 22;}
+.merge-twenty-three-rows {grid-row-end: span 23;}
+.merge-twenty-four-rows {grid-row-end: span 24;}
 
-.grid .col {grid-column-end: span 12;}
 .col-one {grid-column-end: span 1;}
 .col-two {grid-column-end: span 2;}
 .col-three {grid-column-end: span 3;}
@@ -322,15 +308,16 @@ section {
 .col-nine {grid-column-end: span 9;}
 .col-ten {grid-column-end: span 10;}
 .col-eleven {grid-column-end: span 11;}
+.col-twelve, .col {grid-column-end: span 12;}
 
 /* 1.2.1: Small Screens */
 
 @media only screen and (max-width: 60rem) {
 	.grid {
-		grid-gap: 20px;
+		grid-gap: var(--spacing-size);
 	}
 	.grid.compact {
-		grid-gap: 10px;
+		grid-gap: calc(var(--spacing-size) * 0.5);
 	}
 	
 	.col-one {grid-column-end: span 2;}
@@ -345,7 +332,6 @@ section {
 	.col-ten {grid-column-end: span 12;}
 	.col-eleven {grid-column-end: span 12;}
 	
-	.grid .sm-col {grid-column-end: span 12;}
 	.sm-col-one {grid-column-end: span 1;}
 	.sm-col-two {grid-column-end: span 2;}
 	.sm-col-three {grid-column-end: span 3;}
@@ -357,6 +343,7 @@ section {
 	.sm-col-nine {grid-column-end: span 9;}
 	.sm-col-ten {grid-column-end: span 10;}
 	.sm-col-eleven {grid-column-end: span 11;}
+	.sm-col-twelve, .sm-col {grid-column-end: span 12;}
 }
 
 @media only screen and (max-width: 40rem) {
@@ -370,7 +357,6 @@ section {
 	.col-seven {grid-column-end: span 12;}
 	.col-eight {grid-column-end: span 12;}
 	
-	.grid .xs-col {grid-column-end: span 12;}
 	.xs-col-one {grid-column-end: span 1;}
 	.xs-col-two {grid-column-end: span 2;}
 	.xs-col-three {grid-column-end: span 3;}
@@ -382,6 +368,7 @@ section {
 	.xs-col-nine {grid-column-end: span 9;}
 	.xs-col-ten {grid-column-end: span 10;}
 	.xs-col-eleven {grid-column-end: span 11;}
+	.xs-col-twelve, .xs-col {grid-column-end: span 12;}
 }
 
 @media only screen and (max-width: 20rem) {
@@ -407,16 +394,16 @@ section {
 	.xs-col-eleven {grid-column-end: span 11;}
 }
 
-/* 1.3: Portfolio */
+/* 1.3: Portfolio & Masonry */
 
 .portfolio {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 20px;
+	grid-gap: calc(var(--spacing-size) * 1.5);
 }
 
-.portfolio > div {
-	margin: 0;
+.portfolio img {
+	width: 100%
 }
 
 .portfolio > div > * {
@@ -445,7 +432,7 @@ section {
 
 .masonry {
 	columns: 4;
-	column-gap: 20px;
+	column-gap: calc(var(--spacing-size) * 2);
 }
 
 .masonry > div {
@@ -530,7 +517,7 @@ section {
 
 .eleven-col {
 	grid-template-columns: repeat(11, 1fr);
-	columns: 1;
+	columns: 11;
 }
 
 .twelve-col {
@@ -542,13 +529,13 @@ section {
 
 @media only screen and (max-width: 60rem) {
 	.portfolio {
-		grid-gap: 10px;
+		grid-gap: var(--spacing-size);
 		grid-template-columns: repeat(3, 1fr);
 	}
 	
 	.masonry {
 		columns: 3;
-		column-gap: 10px;
+		column-gap: var(--spacing-size);
 	}
 	
 	.two-col {
@@ -625,11 +612,31 @@ section {
 		grid-template-columns: repeat(8, 1fr);
 		columns: 8;
 	}
+	
+	.sm-nine-col {
+		grid-template-columns: repeat(9, 1fr);
+		columns: 8;
+	}
+	
+	.sm-ten-col {
+		grid-template-columns: repeat(10, 1fr);
+		columns: 8;
+	}
+	
+	.sm-eleven-col {
+		grid-template-columns: repeat(11, 1fr);
+		columns: 8;
+	}
+	
+	.sm-twelve-col {
+		grid-template-columns: repeat(12, 1fr);
+		columns: 8;
+	}
 }
 
 @media only screen and (max-width: 40rem) {
 	.portfolio {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 	
 	.two-col {
@@ -701,6 +708,26 @@ section {
 		grid-template-columns: repeat(8, 1fr);
 		columns: 8;
 	}
+	
+	.xs-nine-col {
+		grid-template-columns: repeat(9, 1fr);
+		columns: 8;
+	}
+	
+	.xs-ten-col {
+		grid-template-columns: repeat(10, 1fr);
+		columns: 8;
+	}
+	
+	.xs-eleven-col {
+		grid-template-columns: repeat(11, 1fr);
+		columns: 8;
+	}
+	
+	.xs-twelve-col {
+		grid-template-columns: repeat(12, 1fr);
+		columns: 8;
+	}
 }
 
 /*	==============================================
@@ -726,6 +753,19 @@ section {
 
 .text-justified {
 	text-align: justify;
+}
+
+.breadcrumbs {
+	padding: var(--spacing-size) 0;
+	--body-font: var(--monospace-font);
+}
+
+b, .bold {
+	font-weight: var(--bold-weight);
+}
+
+.reading {
+	font-family: var(--monospace-font);
 }
 
 @media only screen and (max-width: 60rem) {
@@ -786,10 +826,6 @@ h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
 	line-height: 1;
 }
 
-b, .bold {
-	font-weight: var(--bold-weight);
-}
-
 h2.tagline {
 	font-family: var(--body-font);
 	font-weight: var(--body-weight);
@@ -822,7 +858,7 @@ p .dropcap {
 }
 
 a:hover {
-	opacity: 0.8;
+	opacity: 0.75;
 }
 
 .portfolio a {
@@ -1056,8 +1092,6 @@ button.rounded, a.button.rounded, input[type=submit].rounded {
 
 button.pill, a.button.pill, input[type=submit].pill {
 	border-radius: 1000px;
-	padding-left: var(--spacing-size);
-	padding-right: var(--spacing-size);
 }
 
 header button, header a.button {
@@ -1078,7 +1112,7 @@ pre {
 	background-color: c8c8c8;
 }
 
-/* This is such an ugly solution */
+/* Dark pre background for darker sections */
 pre.section-black, .section-black pre,
 pre.section-dark, .section-dark pre,
 pre.element-black, .element-black pre,
@@ -1131,7 +1165,7 @@ header ul > li {
 
 header.sticky {
 	border-bottom: var(--border-width) solid var(--body-color);
-	z-index: 99999!important;
+	z-index: 99999999!important;
 }
 
 /* 6.2: Sticky headers */
@@ -1228,28 +1262,15 @@ dd {
 	10: Forms
 	============================================== */
 
-form > * {
-	margin: calc(var(--spacing-size) * 4/5);
-}
-
 form * {
-	background: transparent;
+	margin: ccalc(var(--spacing-size) * 2/5) 0;
 }
 
-form label, form input {
+form label {
 	font-weight: var(--bold-weight);
 }
 
-form input, form textarea {
-	padding: calc(var(--spacing-size) * 2/5);
+form input[type=text] {
 	width: 100%;
-	border: calc(var(--border-width) * 2/3) solid var(--body-color); 
-}
-
-form input[type=email] {
-	font-family: var(--monospace-font);
-}
-
-form input[type=buton] {
-	width: min-content;
+	padding: calc(var(--body-size) * 1/6);
 }
