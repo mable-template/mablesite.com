@@ -1,0 +1,38 @@
+/* Autumn CSS Theme for Mable Template */
+
+@import url('autumn/built-titling.css');
+
+ :root {
+	--black-color: #000000;
+	--dark-color: #24242d;
+	--darkish-color: #282834;
+	--white-color: #ffffff;
+	--light-color: #f8f5e7;
+	--theme-color: #e46848;
+	
+	--title-font: "Built Titling", sans-serif;
+	--title-weight: 700;
+	--title-size: 52px;
+}
+
+button, a.button, input[type=submit] {
+	margin: calc(var(--spacing-size) * 2/5);
+	--item-scale: 3/2;
+	transition: transform .25s;
+}
+button:hover, a.button:hover, input[type=submit]:hover {
+	background-color: var(--body-color);
+	color: var(--element-background-color);
+	transform: scale(0.95);
+}
+button:hover *, a.button:hover *, input[type=submit]:hover * {
+	color: var(--element-background-color);
+}
+
+button.hollow:hover, a.button.hollow:hover, input[type=submit].hollow:hover {
+	background-color: transparent;
+	color: var(--body-color);
+}
+button.hollow:hover *, a.button.hollow:hover *, input[type=submit].hollow:hover {
+	color: var(--body-color);
+}

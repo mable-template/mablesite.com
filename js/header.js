@@ -16,6 +16,6 @@ const storeScroll = () => {
   document.documentElement.dataset.scroll = window.scrollY;
 }
 
-document.addEventListener('scroll', debounce(storeScroll), { passive: true });
+document.addEventListener('scroll', debounce(storeScroll), {passive: true});
 
 storeScroll();

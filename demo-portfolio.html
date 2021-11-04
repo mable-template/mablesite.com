@@ -1,0 +1,189 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Mable Portfolio Demo</title>
+		<meta name="description" content="This is where you put a little bit of information about you">
+		<meta name="keywords" content="Put, some, keywords, here">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
+		
+		<style>
+			:root {
+				--title-size: 42px;
+				--border-width-raw: 2px;
+			}
+		</style>
+	</head>
+	<body class="grid">
+		<!-- Side section -->
+		<section class="col-3 col-sm-12 section-theme sticky nonsticky-sm">
+			<div class="container">
+				<div class="row text-right sm-text-center">
+					<img src="images/demos/portfolio/headshot.jpg" style="width: 100%; max-width: 350px; border-radius: 100%" />
+					<h1>A Small Blurb About Me</h1>
+					<h2>My Name</h2>
+					<h2 class="tagline">A longer blurb about me. More of what my interests are and explinations for them. Should be about this long.</h2>
+					<h3>
+						<a><i class="fas fa-envelope"></i></a>
+						<a><i class="fab fa-twitter"></i></a>
+						<a><i class="fab fa-github"></i></a>
+						<a><i class="fab fa-gitlab"></i></a>
+					</h3>
+					<p><a class="button pill">Download my Resumé</a></p>
+					<ul class="vertical-header">
+						<li><a href="index.html">Go Home</a></li>
+						<li><a href="#about-me">About Me</a></li>
+						<li><a href="#portfolio">Portfolio</a></li>
+						<li><a href="#contact-form">Contact Form</a></li>
+						<li><input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field"></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Main section -->
+		<section class="col-9 col-sm-12" style="position:sticky;top:0;height:100%;">
+			<!-- About -->
+			<section class="section-light dark-enabled" id="about-me">
+				<div class="container-large">
+					<div class="row grid">
+						<div class="col-4 col-sm-12">
+							<img src="images/demos/portfolio/profile.jpg"/>
+						</div>
+						<div class="col-8 col-sm-12">
+							<h1>About me</h1>
+							<p>In this section you should put an in-depth explination of yourself. Include intrests, skills, opinions, and how they developed.</p>
+							<p>It should be long, but not too long as to be too much information or to be boring. It is best to write as much as possible and then remove unnecicary details and information.</p>
+							<p>Tell a small story about your hobbies, or an interesting fact about yourself. Something that would be interesting to someone just passing by.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Portfolio -->
+			<section class="section-dark" id="portfolio">
+				<div class="container-fluid">
+					<div class="row">
+						<h1>Portfolio</h1>
+					</div>
+					<div class="row grid cols-3 cols-sm-2">
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/1.jpg" />
+								<h4>Title</h4>
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/2.jpg" />
+								<h4>Another Title</h4>
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/3.jpg" />
+								<h4>Yet Another Title</h4>
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/4.jpg" />
+								<h4>You Get The Idea</h4>
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/5.jpg" />
+								<h4>Blah</h4>
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="images/demos/portfolio/works/6.jpg" />
+								<h4>Blah Blah</h4>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<!-- Contact Form -->
+			<section class="section-light dark-enabled" id="contact-form">
+				<div class="container">
+					<div class="row">
+						<h1>Send me a Message</h1>
+						<form action="#">
+							<label for="first_name">First Name</label>
+							<input type="text" name="first_name" placeholder="John" />
+							<label for="last_name">Last Name</label>
+							<input type="text" name="last_name" placeholder="Smith" />
+							<label for="email" class="required">E-Mail</label>
+							<input type="email" name="email" placeholder="john.smith@example.com" />
+							<hr />
+							<label for="comments">Message</label>
+							<textarea cols="46" rows="3" name="comments"></textarea>
+							<input class="btn btn-submit" type="submit" value="Submit" />
+						</form>  
+					</div>
+				</div>
+			</section>
+		
+			<!-- Footer -->
+			<footer class="section-dark">
+				<div class="container-large">
+					<div class="row grid">
+						<div class="col-8 col-sm-12 text-right sm-text-center">
+							<h1>Mable HTML Template</h1>
+								<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
+						</div>
+						<div class="col-4 col-sm-12 sm-text-center">
+							<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+							<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+						</div>
+					</div>
+				</div>
+			</footer>
+		</section>
+		
+		<!-- Scripts -->
+		<script src="js/header.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+	</body>
+</html>

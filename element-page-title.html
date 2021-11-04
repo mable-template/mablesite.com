@@ -1,0 +1,142 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Page Title Elements - Mable - a Multipourpouse HTML Template</title>
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="section-dark fixed top-section-transparent top-element-light">
+			<div class="container-large">
+				<ul>
+					<li><a href="index.html">Go Home</a></li>
+					<li>|</li>
+					<li><input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field"></li>
+				</ul>
+			</div>
+		</header>
+		
+		<!-- Full-Page -->
+		<section class="section-full" id="page-center-title" style="background:linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ),url('images/general/full.jpg');background-size:cover;background-position:center;">
+			<div class="container text-center large">
+				<div class="row">
+					<h1>Full-Page Center Title</h1>
+					<h2 class="tagline">Scroll down for more title styles.</h2>
+					<p><a href="#page-center-title" class="button">Learn More <i class="fa fa-arrow-right"></i></a> <a href="#page-center-title" class="button hollow">Buy Now <i class="fas fa-shopping-cart"></i></a></p>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="container text-center">
+					<div class="row">
+						<a href="#simple-centered"><i class="fas fa-arrow-down"></i></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Simple Centered -->
+		<section class="section-theme" id="simple-centered">
+			<div class="container text-center">
+				<div class="row">
+					<h1>Simple Centered Title</h1>
+					<h2 class="tagline">This is the subheadding</h2>
+					<p class="breadcrumbs"><a href="index.html">home</a> / element-page-title.html</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Information -->
+		<section class="section-light dark-enabled" id="information">
+			<div class="container">
+				<div class="row">
+					<p class="breadcrumbs"><a href="index.html">home</a> / element-page-title.html</p>
+					<h1>Information Rich Title</h1>
+					<h2 class="tagline">This is the subheadding</h2>
+					<p>This is some additional information about the webpage, the site, or the company/person the site is for.</p>
+					<p><a href="#information" class="button">Learn More <i class="fa fa-arrow-right"></i></a> <a href="#information" class="button hollow">Buy Now <i class="fas fa-shopping-cart"></i></a></p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Impact -->
+		<section class="section-huge large" id="impact" style="background:linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ),url('images/general/variable.jpg');background-size:cover;background-position:center;">
+			<div class="container huge">
+				<div class="row">
+					<h1>Impact Title</h1>
+					<h2 class="tagline">This is the subheadding</h2>
+					<a href="#impact" class="button hollow">Call to Action <i class="fa fa-arrow-right"></i></a>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Simple Justified -->
+		<section class="section-dark" id="simple-justified">
+			<div class="container">
+				<div class="row">
+					<p class="breadcrumbs"><a href="index.html">home</a> / element-page-title.html</p>
+					<h1>Simple Justified Title</h1>
+					<h2 class="tagline">This is the subheadding</h2>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+		<footer class="section-theme">
+			<div class="container-large">
+				<div class="row grid">
+					<div class="col-8 col-sm-12 text-right sm-text-center">
+						<h1>Mable HTML Template</h1>
+							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
+					</div>
+					<div class="col-4 col-sm-12 sm-text-center">
+						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- Scripts -->
+		<script src="js/header.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

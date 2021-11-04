@@ -2,31 +2,33 @@
 	<head>
 		<!-- Page Info -->
 		<title>Mable - a Multipourpouse HTML Template</title>
-		
-		<!-- CSS Sheets -->
-		<link href="css/style.css" type="text/css" rel="stylesheet">
-		
-		<!-- Packages -->
-		<link href="packages/font-awesome.css" type="text/css" rel="stylesheet">
-		
-		<!-- Themes -->
-		<link rel="stylesheet" type="text/css" href="custom-theme-here" id="custom-theme-sheet">
-		
-		<!-- Other Things -->
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
 	</head>
 	<body>
 		<!-- Header -->
-		<header class="section-dark sticky transparent">
+		<header class="section-dark fixed top-section-transparent top-element-light">
 			<div class="container-fluid">
 				<ul>
 					<li><a href="documentation">Documentation</a></li>
 					<li><a href="https://github.com/mable-template">GitHub <i class="fab fa-github"></i></a></li>
-						<li><a href="https://cdn.mablesite.com">CDN</a></li>
+					<li><a href="https://cdn.mablesite.com">CDN</a></li>
 					<li> | </li>
 					<li><a href="#features">Features</a></li>
 					<li><a href="#themes">Themes</a></li>
 					<li><a href="#demos">Demos</a></li>
+					<li>|</li>
+					<li><input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field"></li>
 				</ul>
 			</div>
 		</header>
@@ -50,47 +52,47 @@
 					<h1 class="text-center">Features</h1>
 				</div>
 				<div class="row grid fa-icon text-center">
-					<div class="col-two">
+					<div class="col-2">
 						<i class="fas fa-code"></i>
 						<p>Simple to build</p>
 					</div>
-					<div class="col-two">
+					<div class="col-2">
 						<i class="fa-solid fa-paint-roller"></i>
 						<p>Easy to install themes</p>
 					</div>
-					<div class="col-two">
+					<div class="col-2">
 						<i class="fa-solid fa-box"></i>
 						<p>Expansion Packages</p>
 					</div>
-					<div class="col-two">
+					<div class="col-2">
 						<i class="fas fa-border-none"></i>
 						<p>Grid Layout</p>
 					</div>
-					<div class="col-two">
+					<div class="col-2">
 						<i class="fa-solid fa-server"></i>
 						<p>Fully Self Hosted</p>
 					</div>
-					<div class="col-two">
-							<i class="fa-regular fa-square"></i>
-							<p>Simple Design</p>
+					<div class="col-2">
+						<i class="fa-regular fa-square"></i>
+						<p>Simple Design</p>
 					</div>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Themes -->
-		<section class="section-light" id="themes">
+		<section class="section-light dark-enabled" id="themes">
 			<div class="container">
 				<div class="row">
 					<h1>Themes</h1>
+					<p><a href="https://cdn.mablesite.com/themes" class="button hollow">View themes</a></p>
 					<p>Click on a theme below to apply it to this page (requires JScript)</p>
 					<p>
-						<a href="#!" class="button" id="theme-set-default" onclick="setThemeDefault()">Default</a>
+						<a href="#!" class="button hollow" id="theme-set-default" onclick="setThemeDefault()">Default</a>
+						<a href="#!" class="button" id="theme-set-zen-tokyo-zoo" onclick="setThemeAutumn()">Autumn</a>
 						<a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBenjistokman()">Benjistokman</a>
-						<a href="#!" class="button" id="theme-set-lines" onclick="setThemeLines()">Lines</a>
-						<a href="#!" class="button" id="theme-set-zen-tokyo-zoo" onclick="setThemeZenTokyoZoo()">Zen Tokyo Zoo</a>
+						<a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBrandon()">Brandon</a>
 				  	</p>
-					<p><a href="https://cdn.mablesite.com/themes" class="button hollow">View themes</a></p>
 				</div>
 			</div>
 		</section>
@@ -103,15 +105,15 @@
 				</div>
 			</div>
 			<div class="container-fluid">
-				<div class="row portfolio three-col">
+				<div class="row grid cols-3">
 					<div>
-						<a href="demos/landing">
+						<a href="demo-landing.html">
 							<img src="images/demos/landing.png">
 							<h2 class="tagline">Landing Page</h2>
 						</a>
 					</div>
 					<div>
-						<a href="demos/portfolio">
+						<a href="demo-portfolio.html">
 							<img src="images/demos/portfolio.png">
 							<h2 class="tagline">Portfolio</h2>
 						</a>
@@ -120,16 +122,40 @@
 			</div>
 		</section>
 		
+		<!-- Layouts -->
+		<section class="section-light dark-enabled" id="layouts">
+			<div class="container">
+				<div class="row">
+					<h1>Layouts</h1>
+					<ul class="vertical-header">
+						<li><a href="layout-striped.html">Striped</a></li>
+						<li><a href="layout-classic.html">Classic</a></li>
+						<li><a href="layout-sidebar.html">Sidebar</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Elements -->
+		<section class="section-dark" id="elements">
+			<div class="container">
+				<div class="row">
+					<h1>Elements</h1>
+				</div>
+			</div>
+		</section>
+		
 		<!-- Footer -->
 		<footer class="section-theme">
 			<div class="container-large">
-				<div class="row grid seamless">
-					<div class="col-eight text-right sm-col sm-text-center">
+				<div class="row grid">
+					<div class="col-8 col-sm-12 text-right sm-text-center">
 						<h1>Mable HTML Template</h1>
 							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
 					</div>
-					<div class="col-four sm-col sm-text-center">
+					<div class="col-4 col-sm-12 sm-text-center">
 						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
 					</div>
 				</div>
 			</div>
@@ -144,16 +170,45 @@
 				customTheme.href = "custom-theme-here";
 			}
 			
+			function setThemeAutumn() {
+				customTheme.href = "themes/autumn.css";
+			}
+			
 			function setThemeBenjistokman() {
 				customTheme.href = "themes/benjistokman.css";
 			}
 			
-			function setThemeZenTokyoZoo() {
-				customTheme.href = "themes/zen-tokyo-zoo.css";
+			function setThemeBrandon() {
+				customTheme.href = "themes/brandon.css";
 			}
-			
-			function setThemeLines() {
-				customTheme.href = "themes/lines.css";
+		</script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputFooter + ".css";
+					}
+				}
 			}
 		</script>
 	</body>

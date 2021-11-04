@@ -1,0 +1,12 @@
+/* staatliches-regular - latin */
+@font-face {
+  font-family: 'Staatliches';
+  font-style: normal;
+  font-weight: 400;
+  src: url('staatliches/staatliches-v6-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('staatliches/staatliches-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('staatliches/staatliches-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('staatliches/staatliches-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('staatliches/staatliches-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('staatliches/staatliches-v6-latin-regular.svg#Staatliches') format('svg'); /* Legacy iOS */

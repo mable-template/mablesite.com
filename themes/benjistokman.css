@@ -8,7 +8,6 @@
 	--title-font: "Odibee Sans", sans-serif;
 	--title-weight: 700;
 	--title-size: 64px;
-	--body-font: "Montserrat", sans-serif;
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
 }
@@ -24,6 +23,18 @@ button, a.button, input[type=submit] {
 
 header.sticky {
 	--border-width: 6px;
+}
+
+@media screen and (min-width: 40rem) {
+	header.sticky ~ section,
+	header.sticky ~ section * {
+		scroll-margin-top: calc(
+			calc(var(--body-size) * var(--body-scale) * var(--item-scale) * var(--style-scale)) +
+			calc(var(--spacing-size) * 1/3) +
+			6px +
+			48px
+		);
+	}
 }
 
 .button rect {
