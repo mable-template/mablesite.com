@@ -1,0 +1,305 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Cheatsheet - a Multipourpouse HTML Template</title>
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
+	</head>
+	<body>
+	
+		<!-- Title -->
+		<section class="section-theme" id="title">
+			<div class="container text-center">
+				<div class="row">
+					<h1>Mable Cheatsheet</h1>
+					<p class="breadcrumbs"><a href="index.html">home</a> / cheatsheet.html</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Themes -->
+		<section class="section-dark" id="themes">
+			<div class="container-large">
+				<div class="row">
+					<h1>Themes</h1>
+					<p>
+						<a class="button hollow" id="theme-set-default" onclick="customTheme.href = 'custom-theme-here'">Default</a>
+						<a class="button" id="theme-set-zen-tokyo-zoo" onclick="customTheme.href = 'themes/autumn.css'">Autumn</a>
+						<a class="button" id="theme-set-benjistokman" onclick="customTheme.href = 'themes/benjistokman.css'">Benjistokman</a>
+						<a class="button" id="theme-set-brandon" onclick="customTheme.href = 'themes/brandon.css'">Brandon</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/opendyslexic.css'">OpenDyslexic</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/wireframe.css'">Wireframe</a>
+				  	</p>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
+					
+					<h1>Colors</h1>
+					<p>
+						<a class="button hollow" onclick="document.getElementById('text').className = 'section-white'">White</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-light'">Light</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-black'">Black</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-dark'">Dark</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-theme'">Theme</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-theme-inverted'">Theme inverted</a>
+				  	</p>
+				  	<p>
+						<a class="button" onclick="document.getElementById('text').className = 'section-white dark-enabled'">White with Dark Enabled</a>
+						<a class="button" onclick="document.getElementById('text').className = 'section-light dark-enabled'">Light with Dark Enabled</a>
+					</p>
+					
+					<h1>Sizes</h1>
+					<p>
+						<a class="button" onclick="document.getElementById('text-container').className = 'container'">Normal Container</a>
+						<a class="button" onclick="document.getElementById('text-container').className = 'container-large'">Large Container</a>
+						<a class="button" onclick="document.getElementById('text-container').className = 'container-fluid'">Fluid Container</a>
+				  	</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Example Text Section -->
+		<section class="section-white" id="text">
+			<div class="container" id="text-container">
+				<!-- Headings -->
+				<div class="row">
+					<h1>Heading 1</h1>
+					<h2>Heading 2</h2>
+					<h3>Heading 3</h3>
+					<h4>Heading 4</h4>
+					<h5>Heading 5</h5>
+					<h6>Heading 6</h6>
+				</div>
+				
+				<!-- Text -->
+				<div class="row">
+					<h1>Text</h1>
+					<p><span class="dropcap">T</span>his is a paragraph with a dropcap. It should be used for the start of new sections of whatever text you want. Of course there's all the HTML stylings like <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">links</a>, <b>bold</b>, <i>italics</i>, <u>underline</u>, <s>strikethrough</s>, <del>deletion</del>, <mark>highlight</mark>, <sup>superscript</sup>, and <sub>subscript</sub>. </p>
+					<p>This is a second paragraph without a dropcap. It does not have a dropcap because it is not the first paragraph of a section.</p>
+					
+					<p>Below is an <code>hr</code> element</p>
+					<hr />
+					
+					<p>This is a paragraph with an abbreviation. Hover over <abbr title="Congratulations! You found it!">this</abbr> word.</p>
+					<p><cite>This is a citation</cite>.</p>
+					<p><dfn>This is a definition</dfn>.</p>
+					
+					<blockquote>This is a blockquote element. These are meant to hold quotes.</blockquote>
+				</div>
+				
+				<!-- Badges -->
+				<div class="row">
+					<h1>Badges</h1>
+					<h1>Title Text <badge>Badge!</badge></h1>
+					<h2>Title 2 Text <badge class="element-theme rounded">Badge!</badge></h2>
+					<h3>Title 3 Text <badge class="element-dark pill">Badge!</badge></h3>
+					<h4>Title 4 Text <badge class="pill hollow">Badge!</badge></h4>
+					<h5>Title 5 Text <badge class="element-theme hollow">Badge!</badge></h5>
+				</div>
+				
+				<!-- Lists -->
+				<div class="row">
+					<h1>Lists</h1>
+					<ol>
+						<li>This is an ordered list element</li>
+						<li>This is another ordered list element</li>
+						<li>This is a third ordered list element</li>
+						<li>This is a fourth ordered list element</li>
+					</ol>
+					
+					<ul>
+						<li>This is an unordered list element</li>
+						<li>This is another unordered list element</li>
+						<li>This is a third unordered list element</li>
+						<li>This is a fourth unordered list element</li>
+							<ol>
+								<li>This is a nested ordered list element</li>
+								<li>This is another nested ordered list element</li>
+						</ol>
+					</ul>
+					
+					<dl>
+						<dt>Definition List</dt>
+						<dd>A Definition List is a list that is used for defining words</dd>
+						<dt>Second term</dt>
+						<dd>Definition for second term</dd>
+					</dl>
+				</div>
+				
+				<!-- Buttons -->
+				<div class="row">
+					<h1>Buttons</h1>
+					<p>
+						<a class="button">Standard Button</a>
+						<a class="button hollow">Hollow Button</a>
+					</p>
+					<p>
+						<a class="button rounded">Rounded Button</a>
+						<a class="button rounded hollow">Rounded Hollow Button</a>
+					</p>
+					<p>
+						<a class="button pill">Pill Button</a>
+						<a class="button pill hollow">Pill Hollow Button</a>
+					</p>
+				</div>
+				
+				<!-- Images -->
+				<div class="row">
+					<h1>Image</h1>
+					<img src="images/general/full.jpg">
+					<figcaption>Caption for the above image</figcaption>
+				</div>
+				
+				<!-- Tables -->
+				<div class="row">
+					<h1>Tables</h1>
+					<table>
+						<tr>
+							<th>Column 1</th>
+							<th>Column 2</th>
+							<th>Column 3</th>
+						</tr>
+						<tr>
+							<td>Cell 1</td>
+							<td>Cell 2</td>
+							<td rowspan="2">Spans 2 rows</td>
+						</tr>
+						<tr>
+							<td colspan="2">Spans 2 columns</td>
+						</tr>
+					</table>
+				</div>
+				
+				<!-- Forms -->
+				<div class="row">
+					<h1>Forms</h1>
+					<form>
+						<fieldset class="col-12 grid section-light dark-enabled">
+							<label class="col-12">Name</label>
+							<input type="text" placeholder="First" class="col-6 col-sm-12" />
+							<input type="text" placeholder="Last" class="col-6 col-sm-12" />
+							<div class="col-6 col-sm-12">
+								<label>Email</label>
+								<input type="email" placeholder="Email"/>
+							</div>
+							<div class="col-6 col-sm-12">
+								<label>Password</label>
+								<input type="password" placeholder="Password"/>
+							</div>
+							<div class="col-12">
+								<label>Message</label>
+								<textarea></textarea>
+							</div>
+							<div class="col-12">
+								<input type="submit" value="Send" class="hollow pill" />
+							</div>
+						</fieldset>
+						</div>
+					</form>
+					<form class="grid">
+						<div class="col-12">
+							<input type="checkbox" />
+							<label>Press me!</label>
+						<div class="col-12">
+							<h6>Radio Buttons</h6>
+							<input type="radio" name="radiobuttons" checked="checked" />Checked
+							<input type="radio" name="radiobuttons"/>Not checked
+							<input type="radio" name="radiobuttons"/>Also not checked
+						</div>
+						<div class="col-12">
+							<h6>Drop Down</h6>
+							<select>
+								<option value="option1">Option 1</option>
+								<option value="option2">Option 2</option>
+								<option value="option3">Option 3</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<input type="checkbox" role="switch" />
+							<label>Toggle me!</label>
+						</div>
+						<div class="col-12">
+							<h6>Upload File</h6>
+							<input type="file" />
+							<input type="submit" value="Upload" />
+						</div>
+						<div class="col-12">
+							<label>Multi-select</label>
+							<select multiple="multiple" size="3">
+								<option value="option1">Option 1</option>
+								<option value="option2">Option 2</option>
+								<option value="option3">Option 3</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<label>Date Input</label>
+							<input type="date" />
+							</select>
+						</div>
+						<div class="col-12">
+							<label>Search Input</label>
+							<input type="search" placeholder="enter search" />
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+		<footer class="section-theme">
+			<div class="container-large">
+				<div class="row grid">
+					<div class="col-8 col-sm-12 text-right sm-text-center">
+						<h1>Mable HTML Template</h1>
+							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
+					</div>
+					<div class="col-4 col-sm-12 sm-text-center">
+						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- Scripts -->
+		<script src="js/header.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -14,3 +14,7 @@
 	--reading-font: "Montserrat", sans-serif;
 	--monospace-font: "Share Tech Mono", monospace;
 }
+
+button, a.button, input[type=submit] {
+	--item-scale: 1.25;
+}

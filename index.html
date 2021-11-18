@@ -17,12 +17,16 @@
 	</head>
 	<body>
 		<!-- Header -->
-		<header class="section-dark fixed top-section-transparent top-element-light">
+		<header class="section-theme fixed header top-section-transparent top-element-light">
 			<div class="container-fluid">
 				<ul>
-					<li><a href="documentation">Documentation</a></li>
-					<li><a href="https://github.com/mable-template">GitHub <i class="fab fa-github"></i></a></li>
-					<li><a href="https://cdn.mablesite.com">CDN</a></li>
+					<li class="dropdown">MABLE <i class="fas fa-angle-down"></i>
+						<ul>
+							<li><a href="documentation">Documentation</a></li>
+							<li><a href="https://github.com/mable-template">GitHub <i class="fab fa-github"></i></a></li>
+							<li><a href="https://cdn.mablesite.com">CDN</a></li>
+						</ul>
+					</li>
 					<li> | </li>
 					<li><a href="#features">Features</a></li>
 					<li><a href="#themes">Themes</a></li>
@@ -52,27 +56,27 @@
 					<h1 class="text-center">Features</h1>
 				</div>
 				<div class="row grid fa-icon text-center">
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fas fa-code"></i>
 						<p>Simple to build</p>
 					</div>
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fa-solid fa-paint-roller"></i>
 						<p>Easy to install themes</p>
 					</div>
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fa-solid fa-box"></i>
 						<p>Expansion Packages</p>
 					</div>
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fas fa-border-none"></i>
 						<p>Grid Layout</p>
 					</div>
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fa-solid fa-server"></i>
 						<p>Fully Self Hosted</p>
 					</div>
-					<div class="col-2">
+					<div class="col-2 col-sm-4">
 						<i class="fa-regular fa-square"></i>
 						<p>Simple Design</p>
 					</div>
@@ -88,10 +92,12 @@
 					<p><a href="https://cdn.mablesite.com/themes" class="button hollow">View themes</a></p>
 					<p>Click on a theme below to apply it to this page (requires JScript)</p>
 					<p>
-						<a href="#!" class="button hollow" id="theme-set-default" onclick="setThemeDefault()">Default</a>
-						<a href="#!" class="button" id="theme-set-zen-tokyo-zoo" onclick="setThemeAutumn()">Autumn</a>
-						<a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBenjistokman()">Benjistokman</a>
-						<a href="#!" class="button" id="theme-set-benjistokman" onclick="setThemeBrandon()">Brandon</a>
+						<a class="button hollow" id="theme-set-default" onclick="customTheme.href = 'custom-theme-here'">Default</a>
+						<a class="button" id="theme-set-zen-tokyo-zoo" onclick="customTheme.href = 'themes/autumn.css'">Autumn</a>
+						<a class="button" id="theme-set-benjistokman" onclick="customTheme.href = 'themes/benjistokman.css'">Benjistokman</a>
+						<a class="button" id="theme-set-brandon" onclick="customTheme.href = 'themes/brandon.css'">Brandon</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/opendyslexic.css'">OpenDyslexic</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/wireframe.css'">Wireframe</a>
 				  	</p>
 				</div>
 			</div>
@@ -105,7 +111,13 @@
 				</div>
 			</div>
 			<div class="container-fluid">
-				<div class="row grid cols-3">
+				<div class="row grid cols-3 cols-sm-1">
+					<div>
+						<a href="cheatsheet.html">
+							<img src="images/demos/cheatsheet.png">
+							<h2 class="tagline">Cheatsheet</h2>
+						</a>
+					</div>
 					<div>
 						<a href="demo-landing.html">
 							<img src="images/demos/landing.png">
@@ -141,6 +153,11 @@
 			<div class="container">
 				<div class="row">
 					<h1>Elements</h1>
+					<ul class="vertical-header">
+						<li><a href="element-call-to-action.html">Call To Action</a></li>
+						<li><a href="element-hero.html">Hero</a></li>
+						<li><a href="element-page-title.html">Page Title</a></li>
+					</ul>
 				</div>
 			</div>
 		</section>
@@ -163,25 +180,6 @@
 		
 		<!-- Scripts -->
 		<script src="js/header.js"></script>
-		<script>
-			var customTheme = document.getElementById("custom-theme-sheet");
-			
-			function setThemeDefault() {
-				customTheme.href = "custom-theme-here";
-			}
-			
-			function setThemeAutumn() {
-				customTheme.href = "themes/autumn.css";
-			}
-			
-			function setThemeBenjistokman() {
-				customTheme.href = "themes/benjistokman.css";
-			}
-			
-			function setThemeBrandon() {
-				customTheme.href = "themes/brandon.css";
-			}
-		</script>
 		<script>
 			var customTheme = document.getElementById("custom-theme-sheet");
 					

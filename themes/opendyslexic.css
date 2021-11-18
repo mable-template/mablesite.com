@@ -1,0 +1,25 @@
+/* OpenDyslexic CSS Theme for Mable Template */
+
+@import url('opendyslexic/opendyslexic.css');
+@import url('opendyslexic/opendyslexic-mono.css');
+
+ :root {
+	--theme-color: #ffe8d6;
+	--match-with-theme-color: var(--dark-color);
+	
+	--title-font: "OpenDyslexic", "Noto Sans", sans-serif;
+	--title-size: 54px;
+	
+	--body-font: "OpenDyslexic", "Noto Sans", sans-serif;
+	--reading-font: "OpenDyslexic", serif;
+	--monospace-font: "OpenDyslexic Mono", monospace;
+}
+
+button, a.button, input[type=submit], button, a.button, input[type=submit] {
+	font-family: var(--body-font);
+}
+
+* {
+	transition-duration: 0.15s;
+	transition: 0.15s;
+}
