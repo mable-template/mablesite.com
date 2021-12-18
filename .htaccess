@@ -1,0 +1,11 @@
+Options +Indexes
+
+<IfModule mod_autoindex.c>
+	IndexHeadInsert "<meta name='viewport' content='width=device-width, initial-scale=1.0'><link type='text/css' rel='stylesheet' href='/css/style.css'><link type='text/css' rel='stylesheet' href='/themes/sample-theme' id='custom-theme-sheet'>"
+	
+	IndexStyleSheet /theme/main.css
+	AddCharset UTF-8 .html
+	
+	HeaderName /apache/header.html
+	ReadmeName /theme/footer.html
+</IfModule>
