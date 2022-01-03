@@ -1,0 +1,13 @@
+/* share-tech-regular - latin */
+@font-face {
+  font-family: 'Share Tech';
+  font-style: normal;
+  font-weight: 400;
+  src: url('share-tech/share-tech-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('share-tech/share-tech-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('share-tech/share-tech-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('share-tech/share-tech-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('share-tech/share-tech-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('share-tech/share-tech-v12-latin-regular.svg#ShareTech') format('svg'); /* Legacy iOS */
+}
