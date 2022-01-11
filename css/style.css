@@ -1271,7 +1271,7 @@ b, .bold {
 
 /* 2.2: Headings */
 
-h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
+h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *, .tagline, .tagline * {
 	--font-size: calc(
 		var(--title-size) *
 		var(--body-scale) *
@@ -1284,7 +1284,7 @@ h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
 	line-height: 1.15;
 }
 
-h2.tagline {
+.tagline {
 	--font-family: var(--body-font);
 	--font-weight: var(--body-weight);
 }
@@ -1295,7 +1295,7 @@ h3 {--item-scale: 7/9}
 h4 {--item-scale: 6/9}
 h5 {--item-scale: 5/9}
 h6 {--item-scale: 4/9}
-h2.tagline {--item-scale: 4/9}
+.tagline {--item-scale: 4/9}
 
 /* 2.2: Body Fonts */
 
@@ -1312,12 +1312,12 @@ h2.tagline {--item-scale: 4/9}
 }
 
 .dropcap {
-	--font-family: var(--monospace-font);
+	--font-family: var(--title-font);
 	--font-weight: var(--title-weight);
-	--item-scale: 4;
-	line-height: calc(var(--body-size) * var(--body-scale) * 3 * var(--style-scale));
+	--item-scale: 3.4;
+	line-height: calc(var(--body-size) * var(--body-scale) * 2 * var(--style-scale));
 	float: left;
-	padding-top: calc(var(--body-size) * var(--body-scale) * 1/2 * var(--style-scale));
+	padding-top: calc(var(--body-size) * var(--body-scale) * var(--style-scale));
 	padding-right: calc(var(--body-size) * var(--body-scale) * 1/2 * var(--style-scale));
 	padding-left: calc(var(--body-size) * var(--body-scale) * 1/3 * var(--style-scale));
 	text-transform: uppercase;
@@ -1429,6 +1429,11 @@ body {
 	body {
 		background-color: var(--middle-color-2);
 	}
+}
+
+.h1-prominent h1 {
+	color: var(--theme-color);
+	text-decoration: underline;
 }
 
 /* 3.2: Section Colors */
@@ -2936,7 +2941,9 @@ code, pre, .code {
 pre {
 	padding: calc(var(--body-size) * 1/2);
 	overflow-x: auto;
-	background-color: c8c8c8;
+	background-color: #c4c4c4;
+	border: none;
+	border-radius: 1.5px;
 }
 
 /* Dark pre background for darker sections */
@@ -2948,7 +2955,7 @@ html:is([data-scroll='0']) .top-section-black pre, html:is([data-scroll='0']) pr
 html:is([data-scroll='0']) .top-section-dark pre, html:is([data-scroll='0']) pre.top-section-dark ,
 html:is([data-scroll='0']) .top-element-black pre, html:is([data-scroll='0']) pre.top-element-black ,
 html:is([data-scroll='0']) .top-element-dark pre, html:is([data-scroll='0']) pre.top-element-dark {
-	background-color: 303030
+		background-color: var(--middle-color-1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2960,7 +2967,7 @@ html:is([data-scroll='0']) .top-element-dark pre, html:is([data-scroll='0']) pre
 	html:is([data-scroll='0']) .dark-enabled.top-section-light pre, html:is([data-scroll='0']) .dark-enabled pre.top-section-light ,
 	html:is([data-scroll='0']) .dark-enabled.top-element-white pre, html:is([data-scroll='0']) .dark-enabled pre.top-element-white ,
 	html:is([data-scroll='0']) .dark-enabled.top-element-light pre, html:is([data-scroll='0']) .dark-enabled pre.top-element-light {
-		background-color: 383838
+		background-color: var(--middle-color-2);
 	}
 }
 
@@ -3094,6 +3101,16 @@ header.no-border {
 	html:is([data-scroll='0']) header.fixed.top-section-transparent, html:is([data-scroll='0']) header.sticky.top-section-transparent {
 		border-bottom: 0 solid transparent;
 	}
+	
+	header.fixed ~ *,
+	header.sticky ~ * {
+		scroll-margin-top: calc(
+			calc(var(--body-size) * var(--body-scale) * var(--item-scale) * var(--style-scale)) +
+			calc(var(--spacing-size) * 1/3) +
+			var(--border-width) +
+			48px
+		);
+	}
 }
 
 /*	==============================================
@@ -3119,7 +3136,7 @@ footer h3 {--item-scale: 5/9}
 footer h4 {--item-scale: 4/9}
 footer h5 {--item-scale: 3/9}
 footer h6 {--item-scale: 3/9}
-footer h2.tagline {--item-scale: 3/9}
+footer .tagline {--item-scale: 3/9}
 
 /*	==============================================
 	8: Table
