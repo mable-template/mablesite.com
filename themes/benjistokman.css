@@ -77,7 +77,6 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/circles.svg');
 }
 
-
 .benjistokman-background-one.section-dark {
 	background-image:url('benjistokman/stripes-diagonal-dark.svg');
 }
@@ -88,6 +87,18 @@ button, a.button, input[type=submit] {
 
 .benjistokman-background-three.section-dark {
 	background-image:url('benjistokman/circles-dark.svg');
+}
+
+.benjistokman-background-one.section-theme {
+	background-image:url('benjistokman/stripes-diagonal-theme.svg');
+}
+
+.benjistokman-background-two.section-theme {
+	background-image:url('benjistokman/dots-theme.svg');
+}
+
+.benjistokman-background-three.section-theme {
+	background-image:url('benjistokman/circles-theme.svg');
 }
 
 @media (prefers-color-scheme: light) {
