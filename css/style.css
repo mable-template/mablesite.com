@@ -1585,12 +1585,20 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--body-color: var(--theme-color);
 	}
 	
+	.section-white.full-dark-enabled, .section-light.full-dark-enabled, .section-theme-inverted.full-dark-enabled {
+		background-color: var(--dark-color);
+		--element-background-color: var(--dark-color);
+		--body-color: var(--light-color);
+		--highlight-color: var(--theme-color);
+		--blockquote-color: var(--theme-color);
+	}
+	
 	html:is([data-scroll='0']) .top-section-white.dark-enabled {
 		background-color: var(--dark-color);
 		--element-background-color: var(--dark-color);
 		--body-color: var(--white-color);
 	}
-
+	
 	html:is([data-scroll='0']) .top-section-light.dark-enabled {
 		background-color: var(--middle-color-1);
 		--element-background-color: var(--middle-color-1);
@@ -1602,6 +1610,14 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--element-background-color: var(--match-with-theme-color-inverted);
 		--body-color: var(--theme-color);
 	--highlight-color: var(--theme-color);
+	}
+	
+	html:is([data-scroll='0']) .top-section-white.full-dark-enabled, html:is([data-scroll='0']) .top-section-light.full-dark-enabled, html:is([data-scroll='0']) .top-section-theme-inverted.full-dark-enabled {
+		background-color: var(--dark-color);
+		--element-background-color: var(--dark-color);
+		--body-color: var(--light-color);
+		--highlight-color: var(--theme-color);
+		--blockquote-color: var(--theme-color);
 	}
 }
 
