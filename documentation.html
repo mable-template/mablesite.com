@@ -1,0 +1,203 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Mable Documentation</title>
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
+	</head>
+	<body>
+		
+		<!-- Title Section -->
+		<section class="section-theme" id="title-section">
+			<div class="container">
+				<div class="row">
+					<h1>Mable Documentation</h1>
+					<h2 class="tagline">In progress</h2>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
+					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, (I will do this at some point).</p>
+					<p>This documentation also assumes you understand some basic HTML, as well as refering to external resources. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage).</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Outline -->
+		<section class="section-thin section-dark" id="outline">
+			<div class="container">
+				<div class="row">
+					<h1>Outline</h1>
+					<ol>
+						<li><a href="#general-document-setup">General Document Setup</a></li>
+						<li><a href="#layout">Layout</a></li>
+						<ol>
+							<li><a href="#layout--dynamic-screen-sizes">Dynamic Screen Sizes</a></li>
+							<li><a href="#layout--sections">Sections</a></li>
+							<li><a href="#layout--grids">Grids</a></li>
+						</ol>
+					</ol>
+				</div>
+			</div>
+		</section>
+		
+		<!-- General Document Setup -->
+		<section class="section-light dark-enabled" id="general-document-setup">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">1.0</h1>
+					<h1>General Document Setup</h1>
+					<p>A typical Mable HTML document will look like:</p>
+					<pre class="language-html">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;!-- Page Info --&gt;
+		&lt;title&gt;This is a sample Mable HTML Header&lt;/title&gt;
+		&lt;meta name="description" content="Page Description"&gt;
+		&lt;meta name="keywords" content="Page, Tags"&gt;
+		&lt;meta property="og:image" content="https://full-url"&gt;
+		&lt;link href="images/brand/favicon.png" rel="shortcut icon"&gt;
+		&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+		&lt;!-- CSS Sheets --&gt;
+		&lt;link type="text/css" rel="stylesheet" href="css/style.css"&gt;
+			
+		&lt;!-- Themes --&gt;
+		&lt;link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet"&gt;
+
+		&lt;!-- Packages --&gt;
+		&lt;link type="text/css" rel="stylesheet" href="packages/sample-package.css"&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		// Sections
+	&lt;/body&gt;
+&lt;/html&gt;</pre>
+				<p>Simply put all of that into a .html document, change the <code>href</code> fields if the document is in any subfolder(s), and change the data to your liking. A lot of the stuff in the <code>&lt;head&gt;</code> section isn't neccicary, and is just good practice to have. Remove anything you don't need.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Layout -->
+		<section class="section-thin section-dark" id="layout">
+			<div class="container" id="layout--text-container">
+				<div class="row">
+					<h1 class="section-number">2.0</h1>
+					<h1>Layout</h1>
+					<p>This section is about the large blocks that make up Mable webpages.
+					
+					<h2 class="section-number" id="layout--dynamic-screen-sizes">2.1</h2>
+					<h1>Dynamic Screen Sizes</h1>
+					<p>In order to help compensate for the wide range of screen sizes, Mable has implemented compatibility for Bootstrap-standard dynamic screen size selectors:</p>
+					<ul>
+						<li><code>xs</code>: width ≤ 576px</li>
+						<li><code>sm</code>: width ≤ 768px</li>
+						<li><code>md</code>: width ≤ 992px</li>
+						<li><code>lg</code>: width ≥ 992px</li>
+						<li><code>xl</code>: width ≥ 1200px</li>
+					</ul>
+					<p>Whenever you see any one of those five in a class name, the other four will work.</p>
+					
+					<h2 class="section-number" id="layout--sections">2.2</h2>
+					<h1>Sections</h1>
+					<p>Generally, the page is comprised of sections, one after the other, which looks like a series of horizontal stripes. They are typically coded like this:</p>
+					<pre class="language-html">
+&lt;!-- Section Name --&gt;
+&lt;section&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row"&gt;
+			// Regular HTML content goes here
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;</pre>
+					<p>Containers are used to dictate the width of the section's content. The three classes to use are <code>container</code> for regular text, <code>container-wide</code> for a wider area, and <code>container-flud</code> for an area with no maximum width.</p>
+					<p>Container slectors are also compatible with dynamic 
+					<p>Test with the following buttons:</p>
+					<p>
+						<a class="button" onclick="document.getElementById('layout--text-container').className = 'container'">Normal Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-large'">Large Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-fluid'">Fluid Container</a>
+					</p>
+					<p>A <code>row</code> is not strictly speaking neccicary, but is useful for separating different sections of content. A small bit of margin is added between rows. It is also very useful for grids, and it makes adding new rows easier after the section is initially made.</p>
+					
+					<h2 class="section-number" id="layout--grids">2.3</h2>
+					<h1>Grids</h1>
+					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, create a parent element with the <code>grid</code> class. It is typical to use a row for the parent element, but you can techically use anything.</p>
+					<pre class="language-html">
+&lt;section&gt;
+	&lt;div class="container"&gt;
+		&lt;div class="row grid"&gt;
+			// Child elements
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;</pre>
+					<p>Child elements are then allowed to have a specified width (in columns) from 1 to 12.</p>
+					<pre class="language-html">
+&lt;div class="row grid"&gt;
+	&lt;div class="col-6"&gt;
+	&lt;/div&gt;
+	&lt;div class="col-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="col-2"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+					<p>These child elements can also have their width dynamically resized based off the screen width.
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+		<footer class="section-thin section-theme">
+			<div class="container-large">
+				<div class="row grid">
+					<div class="col-6 col-sm-12 text-right sm-text-center">
+						<h1>Mable HTML Template</h1>
+							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
+					</div>
+					<div class="col-6 col-sm-12 sm-text-center">
+						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
+						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- Scripts -->
+		<script src="js/header.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
