@@ -77,6 +77,11 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/circles.svg');
 }
 
+.benjistokman-background-four {
+	background-image:url('benjistokman/grid.svg');
+}
+
+
 .benjistokman-background-one.section-dark {
 	background-image:url('benjistokman/stripes-diagonal-dark.svg');
 }
@@ -89,6 +94,10 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/circles-dark.svg');
 }
 
+.benjistokman-background-four.section-dark {
+	background-image:url('benjistokman/grid-dark.svg');
+}
+
 .benjistokman-background-one.section-theme {
 	background-image:url('benjistokman/stripes-diagonal-theme.svg');
 }
@@ -99,6 +108,10 @@ button, a.button, input[type=submit] {
 
 .benjistokman-background-three.section-theme {
 	background-image:url('benjistokman/circles-theme.svg');
+}
+
+.benjistokman-background-four.section-theme {
+	background-image:url('benjistokman/grid-theme.svg');
 }
 
 @media (prefers-color-scheme: light) {
@@ -120,6 +133,10 @@ button, a.button, input[type=submit] {
 		background-image:url('benjistokman/circles-darkish.svg');
 	}
 	
+	.benjistokman-background-four.dark-enabled {
+		background-image:url('benjistokman/grid-darkish.svg');
+	}
+	
 	.benjistokman-background-one.full-dark-enabled {
 		background-image:url('benjistokman/stripes-diagonal-dark.svg');
 	}
@@ -130,5 +147,9 @@ button, a.button, input[type=submit] {
 	
 	.benjistokman-background-three.full-dark-enabled {
 		background-image:url('benjistokman/circles-dark.svg');
+	}
+	
+	.benjistokman-background-four.full-dark-enabled {
+		background-image:url('benjistokman/grid-dark.svg');
 	}
 }
