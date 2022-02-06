@@ -34,11 +34,11 @@
 					<h1>Themes</h1>
 					<p>
 						<a class="button hollow" id="theme-set-default" onclick="customTheme.href = 'custom-theme-here'">Default</a>
-						<a class="button" id="theme-set-zen-tokyo-zoo" onclick="customTheme.href = 'themes/autumn.css'">Autumn</a>
-						<a class="button" id="theme-set-benjistokman" onclick="customTheme.href = 'themes/benjistokman.css'">Benjistokman</a>
-						<a class="button" id="theme-set-brandon" onclick="customTheme.href = 'themes/brandon.css'">Brandon</a>
-						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/opendyslexic.css'">OpenDyslexic</a>
-						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'themes/wireframe.css'">Wireframe</a>
+						<a class="button" id="theme-set-zen-tokyo-zoo" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/autumn.css'">Autumn</a>
+						<a class="button" id="theme-set-benjistokman" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/benjistokman.css'">Benjistokman</a>
+						<a class="button" id="theme-set-brandon" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/brandon.css'">Brandon</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/opendyslexic.css'">OpenDyslexic</a>
+						<a class="button" id="theme-set-wireframe" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/wireframe.css'">Wireframe</a>
 				  	</p>
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
 					
@@ -105,8 +105,9 @@
 					<h1>Title Text <badge>Badge!</badge></h1>
 					<h2>Title 2 Text <badge class="element-theme rounded">Badge!</badge></h2>
 					<h3>Title 3 Text <badge class="element-dark pill">Badge!</badge></h3>
-					<h4>Title 4 Text <badge class="pill hollow">Badge!</badge></h4>
-					<h5>Title 5 Text <badge class="element-theme hollow">Badge!</badge></h5>
+					<h4>Title 4 Text <badge class="element-theme hollow">Badge!</badge></h4>
+					<h5>Title 5 Text <badge class="rounded hollow">Badge!</badge></h5>
+					<h6>Title 6 Text <badge class="element-theme pill hollow">Badge!</badge></h6>
 				</div>
 				
 				<!-- Lists -->
@@ -211,12 +212,12 @@
 					<form class="grid">
 						<div class="col-12">
 							<input type="checkbox" />
-							<label>Press me!</label>
+							<label>Check me!</label>
 						<div class="col-12">
 							<h6>Radio Buttons</h6>
-							<input type="radio" name="radiobuttons" checked="checked" />Checked
-							<input type="radio" name="radiobuttons"/>Not checked
-							<input type="radio" name="radiobuttons"/>Also not checked
+							<input type="radio" name="radiobuttons" checked="checked" />Selected
+							<input type="radio" name="radiobuttons"/>Not selected
+							<input type="radio" name="radiobuttons"/>Also not selected
 						</div>
 						<div class="col-12">
 							<h6>Drop Down</h6>
@@ -225,10 +226,6 @@
 								<option value="option2">Option 2</option>
 								<option value="option3">Option 3</option>
 							</select>
-						</div>
-						<div class="col-12">
-							<input type="checkbox" role="switch" />
-							<label>Toggle me!</label>
 						</div>
 						<div class="col-12">
 							<h6>Upload File</h6>
@@ -287,7 +284,7 @@
 						customTheme.href = customThemeInputHeader;
 					}
 					else {
-						customTheme.href = "themes/" + customThemeInputHeader + ".css";
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputHeader + ".css";
 					}
 				}
 			}
@@ -300,7 +297,7 @@
 						customTheme.href = customThemeInputFooter;
 					}
 					else {
-						customTheme.href = "themes/" + customThemeInputFooter + ".css";
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputFooter + ".css";
 					}
 				}
 			}

@@ -1,44 +1,43 @@
 /*
 Mable Main CSS File
-Copyright © Ben stokman
+Copyright © 2022 Ben stokman
 MIT License
 ben.stokman@protonmail.com
 */
 
 /*
-	=================================================
-	Table of Contents
-	=================================================
+=================================================
+Table of Contents
+=================================================
 
-	0: Root Variables & Reset
-		0.1: Font Import
-		0.2: Reset
-		0.3: Root Variables
-		0.4 Global Settings
-	1: Layout
-		1.1: Sections & Containers
-			1.1.1: Small Screens
-		1.2: Grid
-			1.2.1: Small Screens
-	2: Fonts & Text
-		2.1: Alignment
-		2.2: Headings
-		2.3: Body Fonts
-		2.4: Small Screens
-	3: Colors
-		3.1: Universal Stylings
-		3.2 Element Colors
-			3.2.1: Dark Theme
-		3.3: Section Colors
-			3.2.1: Small Screens
-	4: Buttons
-	5: Code
-	6: Header
-		6.1: Header Colors
-	7: Footer
-	8: Table
-	9: Lists
-	10: Forms
+0: Root Variables & Reset
+	0.1: Font Import
+	0.2: Reset
+	0.3: Root Variables
+1: Layout
+	1.1: Sections & Containers
+		1.1.1: Small Screens
+	1.2: Grid
+		1.2.1: Small Screens
+2: Fonts & Text
+	2.1: Alignment
+	2.2: Headings
+	2.3: Body Fonts
+	2.4: Small Screens
+3: Colors
+	3.1: Universal Stylings
+	3.2 Element Colors
+		3.2.1: Dark Theme
+	3.3: Section Colors
+		3.2.1: Small Screens
+4: Buttons
+5: Code
+6: Header
+	6.1: Header Colors
+7: Footer
+8: Table
+9: Lists
+10: Forms
 */
 
 /*	==============================================
@@ -53,10 +52,30 @@ ben.stokman@protonmail.com
 @import url("../fonts/noto-sans-mono.css");
 
 /* 0.2: Reset */
-
-body, html {
+html, body, div, span, applet, object, iframe, figure, figcaption, footer, header, section, audio, video {
 	margin: 0;
 	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 * {
@@ -65,8 +84,8 @@ body, html {
 	scroll-behavior: smooth;
 }
 
-iframe {
-	border: 0;
+img {
+	max-width: 100%;
 }
 
 /* 0.3: Root Variables */
@@ -108,6 +127,8 @@ iframe {
 	--reading-weight: 400;
 	--monospace-font: "Noto Sans Mono", monospace;
 	--monospace-weight: 400;
+	--ui-font: var(--body-font); /* Used for buttons and headers and such */
+	--ui-weight: var(--bold-weight); /* Used for buttons and headers and such */
 	
 	--text-align: left;
 	
@@ -120,7 +141,8 @@ iframe {
 	
 	--body-scale: 1; /* Used for sizing different text selectors. */
 	--title-scale: 1; /* Used for sizing different title selectors. */
-	--item-scale: 1; /* Used for different screen sizes. */
+	--item-scale: 1; /* Used for different element sizes */
+	--child-scale: 1; /* Used for different child element sizes */
 	--style-scale: 1; /* Used for .huge, .large, and .small classes */
 	--section-padding-scale: 1; /* Used for section padding on different screen sizes */
 	--section-scale: 1; /* Used for header and footer */
@@ -131,10 +153,6 @@ iframe {
 
 /* 0.4: Global Values */
 
-img {
-	max-width: 100%;
-}
-
 /*	==============================================
 	1: Layout
 	============================================== */
@@ -144,14 +162,6 @@ img {
 section {
 	padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
 	overflow: hidden;
-}
-
-section.fixed-sidebar {
-	height: 100%;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	overflow-x: hidden;
 }
 
 .section-edgeless {
@@ -190,43 +200,30 @@ section.fixed-sidebar {
 	margin: calc(var(--spacing-size) * 2) auto;
 }
 
-@media (min-width: 848px)  {
+@media (min-width: 824px)  {
 	.container {
 		max-width: 800px;
 		margin-left: auto;
 	}
 }
 
-@media (min-width: 1248px) {
+@media (min-width: 1224px) {
 	.container-large {
 		max-width: 1200px;
 		margin-left: auto
 	}
 }
 
-body > [class^="container"] {
-	border-left: var(--border-width) solid var(--body-color);
-	border-right: var(--border-width) solid var(--body-color);
+.row {
+	margin: calc(var(--spacing-size) * 2) 0;
 }
-
-.full-width {
-	width: 100%;
-	max-width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;
-}
-body > .full-width {
-	border: 0px solid transparent;
-	border-right: 0px solid transparent;
-}
-
 .row > *, .grid > * > *, a > * {
 	margin: var(--spacing-size) 0;
 }
-.row > *:first-child, .grid > * > *:first-child, a > *:first-child {
+.row:first-child, .row > *:first-child, .grid > * > *:first-child, a > *:first-child {
 	margin-top: 0;
 }
-.row > *:last-child, .grid > * > *:last-child, a > *:first-child {
+.row:first-child, .row > *:last-child, .grid > * > *:last-child, a > *:first-child {
 	margin-bottom: 0;
 }
 
@@ -237,14 +234,6 @@ body > .full-width {
 /* 1.1.1: Small Screens */
 
 @media (max-width: 992px) {
-	section.fixed-sidebar-md {
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		overflow-x: hidden;
-	}
-	
 	.section-edgeless-md {
 		padding: 0;
 	}
@@ -257,28 +246,9 @@ body > .full-width {
 	.section-huge-md {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
-	
-	.full-width-md {
-		width: 100%;
-		max-width: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	body > .full-width-md {
-		border: 0px solid transparent;
-		border-right: 0px solid transparent;
-	}
 }
 
 @media (max-width: 768px) {
-	section.fixed-sidebar-sm {
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		overflow-x: hidden;
-	}
-	
 	.section-edgeless-sm {
 		padding: 0;
 	}
@@ -291,28 +261,9 @@ body > .full-width {
 	.section-huge-sm {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
-	
-	.full-width-sm {
-		width: 100%;
-		max-width: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	body > .full-width-sm {
-		border: 0px solid transparent;
-		border-right: 0px solid transparent;
-	}
 }
 
 @media (max-width: 576px) {
-	section.fixed-sidebar-xs {
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		overflow-x: hidden;
-	}
-	
 	.section-edgeless-xs {
 		padding: 0;
 	}
@@ -325,28 +276,9 @@ body > .full-width {
 	.section-huge-xs {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
-	
-	.full-width-xs {
-		width: 100%;
-		max-width: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	body > .full-width-xs {
-		border: 0px solid transparent;
-		border-right: 0px solid transparent;
-	}
 }
 
-@media (min-width: 992px) {
-	section.fixed-sidebar-lg {
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		overflow-x: hidden;
-	}
-	
+@media (min-width: 992px) {]
 	.section-edgeless-lg {
 		padding: 0;
 	}
@@ -359,28 +291,9 @@ body > .full-width {
 	.section-huge-lg {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
-	
-	.full-width-lg {
-		width: 100%;
-		max-width: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	body > .full-width-lg {
-		border: 0px solid transparent;
-		border-right: 0px solid transparent;
-	}
 }
 
 @media (min-width: 1200px) {
-	section.fixed-sidebar-xl {
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		overflow-x: hidden;
-	}
-	
 	.section-edgeless-xl {
 		padding: 0;
 	}
@@ -392,17 +305,6 @@ body > .full-width {
 	}
 	.section-huge-xl {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
-	}
-	
-	.full-width-xl {
-		width: 100%;
-		max-width: 100%;
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	body > .full-width-xl {
-		border: 0px solid transparent;
-		border-right: 0px solid transparent;
 	}
 }
 
@@ -419,7 +321,7 @@ body > .full-width {
 	--grid-gap: var(--spacing-size);
 }
 
-.grid.seamless, body.grid {
+.grid.seamless {
 	--grid-gap: 0;
 }
 
@@ -430,31 +332,6 @@ body > .full-width {
 
 .grid.automatic-collumns > * {
 	width: auto;
-}
-
-body.grid > [class^="col-"] section,
-body.grid > [class^="col-"] header,
-body.grid > [class^="col-"] footer {
-	margin: 0;
-}
-
-body.grid > [class^="col-"].sticky {
-	position: sticky;
-	top:0;
-	height:100vh;
-	min-height:100%;
-	overflow: hidden;
-}
-	
-body.grid > [class^="col-"].nonsticky {
-	position: static;
-	height: 100%;
-	overflow: default;
-}
-
-body.grid > [class^="col-"] {
-	margin: 0;
-	padding: 0;
 }
 
 [class^="cols"] > * {
@@ -556,19 +433,6 @@ body.grid > [class^="col-"] {
 /* 1.2.1: Small Screens */
 
 @media (max-width: 992px) {
-	body.grid > [class^="col-"].sticky-md {
-		position: sticky;
-		top:0;
-		height:100vh;
-		overflow: hidden;
-	}
-	
-	body.grid > [class^="col-"].nonsticky-md {
-		position: static;
-		height: 100%;
-		overflow: default;
-	}
-	
 	.col-md {
 		grid-column-end: span 1;
 		margin: 0;
@@ -668,19 +532,6 @@ body.grid > [class^="col-"] {
 }
 
 @media (max-width: 768px) {
-	body.grid > [class^="col-"].sticky-sm {
-		position: sticky;
-		top:0;
-		height:100vh;
-		overflow: hidden;
-	}
-	
-	body.grid > [class^="col-"].nonsticky-sm {
-		position: static;
-		height: 100%;
-		overflow: default;
-	}
-	
 	.col-sm {
 		grid-column-end: span 1;
 		margin: 0;
@@ -780,19 +631,6 @@ body.grid > [class^="col-"] {
 }
 
 @media (max-width: 576px) {
-	body.grid > [class^="col-"].sticky-xs {
-		position: sticky;
-		top:0;
-		height:100vh;
-		overflow: hidden;
-	}
-	
-	body.grid > [class^="col-"].nonsticky-xs {
-		position: static;
-		height: 100%;
-		overflow: default;
-	}
-	
 	.col-xs {
 		grid-column-end: span 1;
 		margin: 0;
@@ -892,19 +730,6 @@ body.grid > [class^="col-"] {
 }
 
 @media (min-width: 992px) {
-	body.grid > [class^="col-"].sticky-lg {
-		position: sticky;
-		top:0;
-		height:100vh;
-		overflow: hidden;
-	}
-	
-	body.grid > [class^="col-"].nonsticky-lg {
-		position: static;
-		height: 100%;
-		overflow: default;
-	}
-	
 	.col-lg {
 		grid-column-end: span 1;
 		margin: 0;
@@ -1004,19 +829,6 @@ body.grid > [class^="col-"] {
 }
 
 @media (min-width: 1200px) {
-	body.grid > [class^="col-"].sticky-xl {
-		position: sticky;
-		top:0;
-		height:100vh;
-		overflow: hidden;
-	}
-	
-	body.grid > [class^="col-"].nonsticky-xl {
-		position: static;
-		height: 100%;
-		overflow: default;
-	}
-	
 	.col-xl {
 		grid-column-end: span 1;
 		margin: 0;
@@ -1122,9 +934,7 @@ body.grid > [class^="col-"] {
 :root {
 	--text-align: left;
 	--font-family: var(--body-font);
-	--complement-font: var(--title-font);
 	--font-weight: var(--body-weight);
-	--complement-weight: var(--title-weight);
 }
 
 * {
@@ -1132,6 +942,7 @@ body.grid > [class^="col-"] {
 		var(--body-size) *
 		var(--body-scale) *
 		var(--item-scale) *
+		var(--child-scale) *
 		var(--style-scale) *
 		var(--section-scale)
 	);
@@ -1254,9 +1065,6 @@ b, .bold {
 .huge {
 	--style-scale: 6/4
 }
-.supersized {
-	--style-scale: 7/4
-}
 
 /* 2.2: Headings */
 
@@ -1265,6 +1073,7 @@ h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *, .tagline, .tagline *
 		var(--title-size) *
 		var(--body-scale) *
 		var(--item-scale) *
+		var(--child-scale) *
 		var(--style-scale) *
 		var(--section-scale)
 	);
@@ -1304,9 +1113,9 @@ h6 {--item-scale: 4/9}
 	--font-family: var(--title-font);
 	--font-weight: var(--title-weight);
 	--item-scale: 3.4;
-	line-height: calc(var(--body-size) * var(--body-scale) * 2 * var(--style-scale));
+	line-height: calc(var(--body-size) * var(--body-scale) * 3 * var(--style-scale));
 	float: left;
-	padding-top: calc(var(--body-size) * var(--body-scale) * var(--style-scale));
+	padding-top: 0;
 	padding-right: calc(var(--body-size) * var(--body-scale) * 1/2 * var(--style-scale));
 	padding-left: calc(var(--body-size) * var(--body-scale) * 1/3 * var(--style-scale));
 	text-transform: uppercase;
@@ -1320,40 +1129,12 @@ abbr {
 	text-decoration: underline;
 }
 
-b, strong {
-	--font-weight: var(--bold-weight);
-}
-
-hr {
-	max-width: 100%;
-	border-top: var(--border-width) solid var(--body-color);
-}
-
-sup, sub {
-	--item-scale: 3/4;
-}
-
-blockquote {
-	border-left: var(--border-width) solid var(--blockquote-color);
-	padding: var(--spacing-size);
-}
-
-mark, .highlight {
-	background-color: var(--highlight-color);
-}
-
-figcaption {
-	--item-scale: 2/3;
-	--text-align: center;
-	margin: 0px !important;
-}
-
 badge {
-	--font-family: var(--complement-font);
-	--font-weight: var(--complement-weight);
-	padding: calc(var(--spacing-size) / 2);
-	line-height: 1;
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	padding: calc(var(--spacing-size) / 4) calc(var(--spacing-size) / 3);
 	vertical-align: middle;
+	--child-scale: 1/2;
 	
 	color: var(--element-background-color);
 	background-color: var(--body-color);
@@ -1362,6 +1143,8 @@ badge {
 	text-align: center;
 	text-decoration: none;
 }
+
+
 
 badge.hollow {
 	color: var(--body-color);
@@ -1374,14 +1157,35 @@ badge.rounded {
 
 badge.pill {
 	border-radius: 9999px;
+	padding: calc(var(--spacing-size) / 4) calc(var(--spacing-size) / 2);
 }
 
-.fa-larger [class^="fa"] {
-	--item-scale: 1.5;
+blockquote {
+	border-left: var(--border-width) solid var(--blockquote-color);
+	padding: var(--spacing-size);
 }
 
-.fa-icon [class^="fa"] {
-	--item-scale: 4;
+
+b, strong {
+	--font-weight: var(--bold-weight);
+}
+
+hr {
+	max-width: 100%;
+	border-top: var(--border-width) solid var(--body-color);
+}
+mark, .highlight {
+	background-color: var(--highlight-color);
+}
+
+figcaption {
+	--item-scale: 2/3;
+	--text-align: center;
+	margin: 0px !important;
+}
+
+sup, sub {
+	--item-scale: 3/4;
 }
 
 .section-number {
@@ -2883,11 +2687,12 @@ html:is([data-scroll='0']) .top-element-theme-inverted {
 	============================================== */
 
 button, a.button, input[type=submit] {
-	--font-family: var(--complement-font);
-	--font-weight: var(--complement-weight);
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
 	padding: calc(var(--spacing-size) * 3/5) var(--spacing-size);
 	line-height: 1;
 	margin: calc(var(--spacing-size) * 1/5);
+	--child-scale: 3/4;
 	
 	color: var(--element-background-color);
 	background-color: var(--body-color);
@@ -2964,6 +2769,8 @@ code, .code {
 
 
 pre {
+	--font-family: var(--monospace-font);
+	--font-weight: var(--monospace-weight);
 	padding: calc(var(--body-size) * 1/2);
 	overflow-x: auto;
 	background-color: #c4c4c4;
@@ -3001,8 +2808,8 @@ html:is([data-scroll='0']) .top-element-dark pre, html:is([data-scroll='0']) pre
 	============================================== */
 
 header {
-	--font-weight: var(--bold-weight);
- 	--font-family: var(--body-font);
+ 	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
 	--section-scale: 3/4;
 	width: 100%;
 	padding-top: calc(var(--spacing-size) * var(--section-scale) * 2);
@@ -3079,7 +2886,7 @@ header ul li ul li {
 }
 
 .vertical-header {
-	padding: 100px;
+	padding: var(--spacing-size);
 	--section-scale: 1;
 	border-bottom: 0px solid;
 }
@@ -3175,12 +2982,14 @@ table {
 th, td {
 	padding: calc(var(--spacing-size) * 4/5) calc(var(--spacing-size) * 3/5);
 	border: calc(var(--border-width) * 1/2) solid var(--body-color);
+	
 }
 
 th {
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
 	color: var(--element-background-color);
 	background-color: var(--body-color);
-	--font-weight: var(--bold-weight);
 }
 
 table.index {
@@ -3199,11 +3008,10 @@ li {
 dt {
 	--font-weight: var(--bold-weight);
 	text-decoration: underline;
-	padding: calc(var(--spacing-size) * 1/3) 0;
+	padding: calc(var(--spacing-size) * 2/3) 0;
 }
 
 dd {
-	margin-bottom: calc(var(--spacing-size) * 1/2);
 }
 
 /*	==============================================
@@ -3226,7 +3034,8 @@ fieldset {
 }
 
 form label {
-	--font-weight: var(--bold-weight);
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
 	margin-right: calc(var(--spacing-size) * 1/2);
 }
 
@@ -3252,6 +3061,10 @@ input[type="search"] {
 input[type="text"], input[type="email"], input[type="password"] {
 	display: block;
 	opacity: 0.75;
+}
+
+.grid > * > input[type="text"], .grid > * > input[type="email"], .grid > * > input[type="password"] {
+	width: 100%;
 }
 
 input:focus {
