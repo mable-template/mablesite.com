@@ -159,7 +159,7 @@ img {
 
 /* 1.1: Sections & Containers */
 
-section {
+section, .section-regular {
 	padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
 	overflow: hidden;
 }
@@ -234,6 +234,9 @@ section {
 /* 1.1.1: Small Screens */
 
 @media (max-width: 992px) {
+	.section-regular-md {
+		padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
+	}
 	.section-edgeless-md {
 		padding: 0;
 	}
@@ -246,9 +249,24 @@ section {
 	.section-huge-md {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
+	
+	.section-full-md {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.section-full-md > * {
+		margin: auto;
+	}
 }
 
 @media (max-width: 768px) {
+	.section-regular-sm {
+		padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
+	}
 	.section-edgeless-sm {
 		padding: 0;
 	}
@@ -261,9 +279,24 @@ section {
 	.section-huge-sm {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
+	
+	.section-full-sm {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.section-full-sm > * {
+		margin: auto;
+	}
 }
 
 @media (max-width: 576px) {
+	.section-regular-xs {
+		padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
+	}
 	.section-edgeless-xs {
 		padding: 0;
 	}
@@ -276,9 +309,24 @@ section {
 	.section-huge-xs {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
+	
+	.section-full-xs {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.section-full-xs > * {
+		margin: auto;
+	}
 }
 
-@media (min-width: 992px) {]
+@media (min-width: 992px) {
+	.section-regular-lg {
+		padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
+	}
 	.section-edgeless-lg {
 		padding: 0;
 	}
@@ -291,9 +339,24 @@ section {
 	.section-huge-lg {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
 	}
+	
+	.section-full-lg {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.section-full-lg > * {
+		margin: auto;
+	}
 }
 
 @media (min-width: 1200px) {
+	.section-regular-xl {
+		padding: calc(var(--spacing-size) * 5 * var(--section-padding-scale)) 0;
+	}
 	.section-edgeless-xl {
 		padding: 0;
 	}
@@ -305,6 +368,18 @@ section {
 	}
 	.section-huge-xl {
 		padding: calc(var(--spacing-size) * 12 * var(--section-padding-scale)) 0;
+	}
+	
+	.section-full-xl {
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+	.section-full-xl > * {
+		margin: auto;
 	}
 }
 
