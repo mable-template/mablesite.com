@@ -22,8 +22,11 @@
 			<div class="container">
 				<div class="row">
 					<h1>Mable Documentation</h1>
+					<p class="breadcrumbs"><a href="index.html">home</a> / documentation.html</p>
 					<h2 class="tagline">In progress</h2>
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
+				</div>
+				<div class="row">
 					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, (I will do this at some point).</p>
 					<p>This documentation also assumes you understand some basic HTML, as well as refering to external resources. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage).</p>
 				</div>
@@ -40,22 +43,27 @@
 						<li><a href="#layout">Layout</a></li>
 						<ol>
 							<li><a href="#layout--dynamic-screen-sizes">Dynamic Screen Sizes</a></li>
-							<li><a href="#layout--sections">Sections</a></li>
+							<li><a href="#layout--sections-containers-rows">Sections, Containers, and Rows</a></li>
 							<li><a href="#layout--grids">Grids</a></li>
 						</ol>
+						<li><a href="#fonts-and-text">Fonts and Text</a></li>
+						<li><a href="#colors">Colors</a></li>
+						<li><a href="#buttons">Buttons</a></li>
+						<li><a href="#code">Code</a></li>
+						<li><a href="#headers">Headers</a></li>
 					</ol>
 				</div>
 			</div>
 		</section>
 		
 		<!-- General Document Setup -->
-		<section class="section-light dark-enabled" id="general-document-setup">
+		<section class="section-thin-xs section-light dark-enabled" id="general-document-setup">
 			<div class="container">
 				<div class="row">
 					<h1 class="section-number">1.0</h1>
 					<h1>General Document Setup</h1>
-					<p>A typical Mable HTML document will look like:</p>
-					<pre class="language-html">
+					<p>A typical Mable HTML document will look like this:</p>
+					<pre>
 &lt;html&gt;
 	&lt;head&gt;
 		&lt;!-- Page Info --&gt;
@@ -79,21 +87,23 @@
 		// Sections
 	&lt;/body&gt;
 &lt;/html&gt;</pre>
-				<p>Simply put all of that into a .html document, change the <code>href</code> fields if the document is in any subfolder(s), and change the data to your liking. A lot of the stuff in the <code>&lt;head&gt;</code> section isn't neccicary, and is just good practice to have. Remove anything you don't need.</p>
+				<p>Simply put all of that into a .html document, change the <code>href</code> fields if the document is in any subfolder(s), and change the other data fields to your liking. A lot of the stuff in the <code>&lt;head&gt;</code> section isn't neccicary, and is just good practice to have. Remove anything you don't need or want.</p>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Layout -->
-		<section class="section-thin section-dark" id="layout">
+		<section class="section-thin-xs section-dark" id="layout">
 			<div class="container" id="layout--text-container">
 				<div class="row">
 					<h1 class="section-number">2.0</h1>
 					<h1>Layout</h1>
-					<p>This section is about the large blocks that make up Mable webpages.
-					
-					<h2 class="section-number" id="layout--dynamic-screen-sizes">2.1</h2>
-					<h1>Dynamic Screen Sizes</h1>
+					<p>This section is about the larger blocks that make up Mable webpages.
+				</div>
+				
+				<div class="row" id="layout--dynamic-screen-sizes">
+					<h2 class="section-number">2.1</h2>
+					<h2>Dynamic Screen Sizes</h2>
 					<p>In order to help compensate for the wide range of screen sizes, Mable has implemented compatibility for Bootstrap-standard dynamic screen size selectors:</p>
 					<ul>
 						<li><code>xs</code>: width ≤ 576px</li>
@@ -102,34 +112,49 @@
 						<li><code>lg</code>: width ≥ 992px</li>
 						<li><code>xl</code>: width ≥ 1200px</li>
 					</ul>
-					<p>Whenever you see any one of those five in a class name, the other four will work.</p>
-					
-					<h2 class="section-number" id="layout--sections">2.2</h2>
-					<h1>Sections</h1>
+					<p>Whenever you see any one of those five in a class name, the other four will work (in its place).</p>
+				</div>
+				
+				<div class="row" id="layout--sections-containers-rows">
+					<h2 class="section-number">2.2</h2>
+					<h2>Sections, Containers, and Rows</h2>
 					<p>Generally, the page is comprised of sections, one after the other, which looks like a series of horizontal stripes. They are typically coded like this:</p>
-					<pre class="language-html">
+					<pre>
 &lt;!-- Section Name --&gt;
-&lt;section&gt;
+&lt;section id="section-name"&gt;
 	&lt;div class="container"&gt;
 		&lt;div class="row"&gt;
 			// Regular HTML content goes here
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/section&gt;</pre>
-					<p>Containers are used to dictate the width of the section's content. The three classes to use are <code>container</code> for regular text, <code>container-wide</code> for a wider area, and <code>container-flud</code> for an area with no maximum width.</p>
-					<p>Container slectors are also compatible with dynamic 
-					<p>Test with the following buttons:</p>
+					<p>Sections will also have padding applied to them, this can be adjusted with the following classes:</p>
+					<ul>
+						<li><code>.section-edgeless</code>: No padding</li>
+						<li><code>.section-thin</code>: Small padding</li>
+						<li><code>.section-regular</code>: Default behavior</li>
+						<li><code>.section-large</code>: Almost double padding</li>
+						<li><code>.section-huge</code>: Over double padding</li>
+						<li><code>.section-full</code>: 100% of the browser window's height</li>
+					</ul>
+					<p>These are also compatible with dynamic screen size selectors. Examples are <code>.section-thin-xs</code> and <code>.section-full-xl</code>.</p>
+					<hr />
+					<p>Containers are used to dictate/limit the width of the section's content. The three classes to use are <code>.container</code> for regular text, <code>.container-wide</code> for a wider area, and <code>.container-flud</code> for an area with no maximum width. All of them will maintain a standard amount of margin on their sides.</p>
+					<p>You can try it out with the following buttons:</p>
 					<p>
-						<a class="button" onclick="document.getElementById('layout--text-container').className = 'container'">Normal Container</a>
-						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-large'">Large Container</a>
-						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-fluid'">Fluid Container</a>
+						<a class="button" onclick="document.getElementById('layout--text-container').className = 'container';document.getElementById('layout--sections-containers-rows--button-one').className = 'button';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow'" id="layout--sections-containers-rows--button-one">Normal Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-large';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow'" id="layout--sections-containers-rows--button-two">Large Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-fluid';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button'" id="layout--sections-containers-rows--button-three">Fluid Container</a>
 					</p>
-					<p>A <code>row</code> is not strictly speaking neccicary, but is useful for separating different sections of content. A small bit of margin is added between rows. It is also very useful for grids, and it makes adding new rows easier after the section is initially made.</p>
-					
-					<h2 class="section-number" id="layout--grids">2.3</h2>
-					<h1>Grids</h1>
-					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, create a parent element with the <code>grid</code> class. It is typical to use a row for the parent element, but you can techically use anything.</p>
-					<pre class="language-html">
+					<hr />
+					<p>A <code>.row</code> is used to space individual elements apart. Each element inside a row will be spaced apart, and each row will be spaced apart three times as much</p>
+				</div>
+				
+				<div class="row" id="layout--grids">
+					<h2 class="section-number">2.3</h2>
+					<h2>Grids</h2>
+					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, create a parent element with the <code>.grid</code> class. It is typical to use a <code>.row</code> for the parent element, but you can technically use anything.</p>
+					<pre>
 &lt;section&gt;
 	&lt;div class="container"&gt;
 		&lt;div class="row grid"&gt;
@@ -137,17 +162,192 @@
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/section&gt;</pre>
-					<p>Child elements are then allowed to have a specified width (in columns) from 1 to 12.</p>
-					<pre class="language-html">
+					<p>Grids normally have a certain amount of spacing between each child element, but you can change that with the following classes:</P>
+					<ul>
+						<li><code>.grid.compact</code>: Half spacing</li>
+						<li><code>.grid.seamless</code>: No spacing</li>
+					</ul>
+					<p>Grid items are then allowed to have a specified width (in columns) from 1 to 12.</p>
+					<pre>
 &lt;div class="row grid"&gt;
 	&lt;div class="col-6"&gt;
+		&lt;!-- Content --&gt;
 	&lt;/div&gt;
 	&lt;div class="col-3"&gt;
+		&lt;!-- Content --&gt;
 	&lt;/div&gt;
 	&lt;div class="col-2"&gt;
+		&lt;!-- Content --&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</pre>
-					<p>These child elements can also have their width dynamically resized based off the screen width.
+					<p>Child elements of these grid items (where <code>&lt;!-- Content --&gt;</code> is in the above code) will also have spacing applied between their peers the same way as rows.</p>
+					<p>These are also compatible with dynamic screen size selectors:</p>
+					<pre>
+&lt;div class="row grid"&gt;
+	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+					<p>You can also change the number of columns in a grid anywhere from 1 to the default 12:</p>
+					<pre>
+&lt;div class="row grid cols-3"&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+					<p>This is intended to be used for a portfolio or a list of blog posts or something where each element would have the same width, but nonetheless you can still specify the column-width for each child element.</p>
+					<p>This is also compatible with dynamic screen size selectors:</p>
+					<pre>
+&lt;div class="row grid cols-3 cols-sm-2 cols-xs-1"&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;!-- Content --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Fonts and Text -->
+		<section class="section-thin-xs section-light dark-enabled" id="fonts-and-text">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">3.0</h1>
+					<h1>Fonts and Text</h1>
+					<p>There really isn't much to this section. Once inside a row or a grid child element, you can put basically any item and it will just work, but Mable offers a bit of extra customization and functionality.</p>
+					<p>There are four classes to customize the text alignment: <code>.text-left</code>, <code>.text-center</code>, <code>.text-right</code>, and <code>.text-justified</code>. These will apply to any and child elements automatically, not just what the class is applied to. These are also compatible with dynamic screen size selectors: <code>.text-xs-center</code>, etc.</p>
+					<p>There are also classes to change the scale of everything:</p>
+					<ul>
+						<li><code>.tiny</code>: 2/4ths scale</li>
+						<li><code>.small</code>: 3/4ths scale</li>
+						<li><code>.large</code>: 5/4ths scale</li>
+						<li><code>.huge</code>: 6/4ths scale</li>
+					</ul>
+					<p>These are <b>NOT</b> compatible with dynamic screen size selectors as Mable will automatically resize page content based off screen size. These two bits of functionality will <b>NOT</b> interfere with each other.</p>
+					<hr />
+					<p>The <badge>&lt;badge&gt;</badge> element can used to better differentiate labels or tags or something. These have some extra customization using the following classes:</p>
+					<ul>
+						<li><badge class="rounded">rounded</badge>: Rounds the corners a little bit</li>
+						<li><badge class="pill">pill</badge>: Rounds the corners as much as possible</li>
+						<li><badge class="hollow">hollow</badge>: Transparent background with an outline</li>
+					</ul>
+					<p>The <code>breadcrumbs</code> class is used for displaying the page path. It basically just switches the font to monospace.</p>
+					<p><span class="dropcap">A</span> dropcap can be added by adding the <code>.dropcap</code>class to a <code>&lt;span&gt;</code> element. It is recommended to only include one or a few characters. This will make the text inside the <code>&lt;span&gt;</code> bigger, and have a height of multiple lines.</p>
+					<p>The <code>.reading</code> class will activate the use of the reading font, usually serif. It is reccomended to apply this to things such as blog posts. This does not affect the title font. The <code>.monospace</code> class will similarly use the monospace font.</p>
+					<p>The <code>.section-number</code> class is useful for marking the number of a given section in a document, or a chapter number, or something. I use them in this document above the header for each section.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Decorative Section -->
+		<section class="section-theme" style="height:calc(var(--border-width) * 4); padding:0px;" id="decoration">
+		</section>
+		
+		<!-- Colors -->
+		<section class="section-thin-xs section-dark" id="colors">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">4.0</h1>
+					<h1>Colors</h1>
+					<div class="section-light dark-enabled row">
+						<p>You can click on any of the class names that are in a list to apply it to this section.</p>
+						<a class="button" onclick="document.getElementById('colors').className = 'section-dark'">Reset Button</a>
+					</div>
+					<p>The code behind what manages the colors in Mable is kinda complicated, but using them is really easy. Everything automatically inherits the behavior it should have, so all you have to do to is add the functionality you want where you want it:</p>
+					<ul>
+						<li><a onclick="document.getElementById('colors').className = ''">No section color</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-transparent'"><code>.section-transparent</code>: Transparent background, black text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-white'"><code>.section-white</code>: White background, black text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-light'"><code>.section-light</code>: Light background, dark text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-black'"><code>.section-black</code>: Black background, white text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-dark'"><code>.section-dark</code>: Dark background, light text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-theme'"><code>.section-theme</code>: Theme colored, background light text</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'section-theme-inverted'"><code>.section-theme-inverted</code>: light background, theme colored text</a></li>
+					</ul>
+					<p>There's also settings for the color of the element. These behave as the inverse of the <code>.section</code> classes. For example <code>.element-white</code> will exhibit the same behavior as <code>.section-dark</code> but without the background color. These will override any section colorings.</p>
+					<ul>
+						<li><a onclick="document.getElementById('colors').className = ''">No element color</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-white'"><code>.element-white</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-light'"><code>.element-light</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-dark'"><code>.element-dark</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-black'"><code>.element-black</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-theme'"><code>.element-theme</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'element-theme-inverted'"><code>.element-theme-inverted</code></a></li>
+					</ul>
+					<p>Both are compatible with dynamic screen size selectors: <code>.section-theme-sm</code>, <code>.element-dark-lg</code>, etc.</p>
+					<p>You can also specify for either to only apply when the browser is scrolled to the top, you will need to import the <code>js/top.js</code> JavaScript file. <code>.top-section-transparent</code>, <code>.top-element-theme-sm</code>, etc.</p>
+					
+					<p>There's also compatibility for dark mode. <code>.dark-enabled</code> will result in light text, and a background a bit lighter than <code>.section-dark</code> when the browser is in dark mode. <code>.full-dark-enabled</code> will result in the same behavior as <code>.section-dark</code>.</p>
+					<ul>
+						<li><a onclick="document.getElementById('colors').className = ''">No dark mode setting</a></li>
+						<li><a onclick="document.getElementById('colors').className = 'dark-enabled'"><code>.dark-enabled</code></a></li>
+						<li><a onclick="document.getElementById('colors').className = 'full-dark-enabled'"><code>.full-dark-enabled</code></a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Decorative Section -->
+		<section class="section-theme" style="height:calc(var(--border-width) * 4); padding:0px;" id="decoration">
+		</section>
+		
+		<!-- Buttons -->
+		<section class="section-thin-xs section-light dark-enabled" id="buttons">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">5.0</h1>
+					<h1>Buttons</h1>
+					<p>Buttons are very simple. They can take three forms:</p>
+					<pre>&lt;a class="button">Text&lt;/a&gt;
+&lt;button&gt;Text&lt;/button&gt;
+&lt;input type="submit" value="Text"&gt;</pre>
+					<p>Your typical button will look like this:</p>
+					<button>Text</button>
+					<p>You can also make it hollow by adding the <code>.hollow</code> class:</p>
+					<button class="hollow">Text</button>
+					<p>And change its shape using the <code>.rounded</code> and <code>.pill</code> classes:</p>
+					<button class="rounded">Rounded Button</button>
+					<button class="pill">Pill Button</button>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Buttons -->
+		<section class="section-thin-xs section-dark" id="code">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">6.0</h1>
+					<h1>Code</h1>
+					<p>Mable offeres a few choices for displaying code blocks.</p>
+					<p>Using the <code>&lt;pre&gt;</code> element will apply a washed out background to the code, and make the font monospace. Use the <code>&lt;code&gt;</code> element or the <code>.code</code> class for inline uses.</p>
+					<p>You can also use <code>.monospace</code> to use the monospace font.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Headers -->
+		<section class="section-thin-xs section-light dark-enabled" id="headers">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">7.0</h1>
+					<h1>Headers</h1>
 				</div>
 			</div>
 		</section>
