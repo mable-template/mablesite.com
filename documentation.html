@@ -24,10 +24,12 @@
 					<h1>Mable Documentation</h1>
 					<p class="breadcrumbs"><a href="index.html">home</a> / documentation.html</p>
 					<h2 class="tagline">In progress</h2>
+				</div>
+				<div class="row">
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
 				</div>
 				<div class="row">
-					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, (I will do this at some point).</p>
+					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, visit <a href="theme-documentation.html">this page</a>.</p>
 					<p>This documentation also assumes you understand some basic HTML, as well as refering to external resources. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage).</p>
 				</div>
 			</div>
@@ -153,7 +155,7 @@
 				<div class="row" id="layout--grids">
 					<h2 class="section-number">2.3</h2>
 					<h2>Grids</h2>
-					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, create a parent element with the <code>.grid</code> class. It is typical to use a <code>.row</code> for the parent element, but you can technically use anything.</p>
+					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, simply make a parent <code>&lt;div&gt;</code> with the <code>.grid</code> class. It is recommended to use the <code>.row</code> structure as the <code>.grid</code> container so you can easily mix grids in with regular text within a container, but any tag that displays as a block will work.</p>
 					<pre>
 &lt;section&gt;
 	&lt;div class="container"&gt;
@@ -221,6 +223,34 @@
 		&lt;!-- Content --&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</pre>
+					
+					<h3>Examples</h3>
+					
+					<p class="code-font">.grid</p>
+					<div class="row grid compact section-light dark-enabled" style="padding:var(--spacing-size);">
+						<div class="col-12 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-12</p></div>
+						<div class="col-6 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-6</p></div>
+						<div class="col-6 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-6</p></div>
+						<div class="col-8 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-8</p></div>
+						<div class="col-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-4</p></div>
+						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
+						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
+						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
+						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
+						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-12 col-sm-6 col-xs-4</p></div>
+						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-12 col-sm-6 col-xs-4</p></div>
+						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-12 col-sm-6 col-xs-4</p></div>
+					</div>
+					
+					<p class="code-font">.grid.cols-3</p>
+					<div class="row grid cols-3 compact section-light dark-enabled" style="padding:var(--spacing-size);">
+						<div class="col-2 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-2</p></div>
+						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
+						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -266,39 +296,39 @@
 				<div class="row">
 					<h1 class="section-number">4.0</h1>
 					<h1>Colors</h1>
-					<div class="section-light dark-enabled row">
-						<p>You can click on any of the class names that are in a list to apply it to this section.</p>
-						<a class="button" onclick="document.getElementById('colors').className = 'section-dark'">Reset Button</a>
+					<div class="section-light dark-enabled row" style="padding:var(--spacing-size);">
+						<p>You can click on any of the class names that <b>are in a list</b> to apply it to this section.</p>
+						<a class="button" onclick="resetColorsClasses()">Reset Button</a>
 					</div>
 					<p>The code behind what manages the colors in Mable is kinda complicated, but using them is really easy. Everything automatically inherits the behavior it should have, so all you have to do to is add the functionality you want where you want it:</p>
 					<ul>
-						<li><a onclick="document.getElementById('colors').className = ''">No section color</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-transparent'"><code>.section-transparent</code>: Transparent background, black text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-white'"><code>.section-white</code>: White background, black text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-light'"><code>.section-light</code>: Light background, dark text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-black'"><code>.section-black</code>: Black background, white text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-dark'"><code>.section-dark</code>: Dark background, light text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-theme'"><code>.section-theme</code>: Theme colored, background light text</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'section-theme-inverted'"><code>.section-theme-inverted</code>: light background, theme colored text</a></li>
+						<li><a onclick="setColorsSection('sectionNull')">No section color</a></li>
+						<li><a onclick="setColorsSection('section-transparent')"><code>.section-transparent</code>: Transparent background, black text</a></li>
+						<li><a onclick="setColorsSection('section-white')"><code>.section-white</code>: White background, black text</a></li>
+						<li><a onclick="setColorsSection('section-light')"><code>.section-light</code>: Light background, dark text</a></li>
+						<li><a onclick="setColorsSection('section-black')"><code>.section-black</code>: Black background, white text</a></li>
+						<li><a onclick="setColorsSection('section-dark')"><code>.section-dark</code>: Dark background, light text</a></li>
+						<li><a onclick="setColorsSection('section-theme')"><code>.section-theme</code>: Theme colored, background light text</a></li>
+						<li><a onclick="setColorsSection('section-theme-iverted')"><code>.section-theme-inverted</code>: light background, theme colored text</a></li>
 					</ul>
 					<p>There's also settings for the color of the element. These behave as the inverse of the <code>.section</code> classes. For example <code>.element-white</code> will exhibit the same behavior as <code>.section-dark</code> but without the background color. These will override any section colorings.</p>
 					<ul>
-						<li><a onclick="document.getElementById('colors').className = ''">No element color</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-white'"><code>.element-white</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-light'"><code>.element-light</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-dark'"><code>.element-dark</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-black'"><code>.element-black</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-theme'"><code>.element-theme</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'element-theme-inverted'"><code>.element-theme-inverted</code></a></li>
+						<li><a onclick="setColorsElement('elementNull')">No element color</a></li>
+						<li><a onclick="setColorsElement('element-white')"><code>.element-white</code></a></li>
+						<li><a onclick="setColorsElement('element-light')"><code>.element-light</code></a></li>
+						<li><a onclick="setColorsElement('element-dark')"><code>.element-dark</code></a></li>
+						<li><a onclick="setColorsElement('element-black')"><code>.element-black</code></a></li>
+						<li><a onclick="setColorsElement('element-theme')"><code>.element-theme</code></a></li>
+						<li><a onclick="setColorsElement('element-theme-inverted')"><code>.element-theme-inverted</code></a></li>
 					</ul>
 					<p>Both are compatible with dynamic screen size selectors: <code>.section-theme-sm</code>, <code>.element-dark-lg</code>, etc.</p>
 					<p>You can also specify for either to only apply when the browser is scrolled to the top, you will need to import the <code>js/top.js</code> JavaScript file. <code>.top-section-transparent</code>, <code>.top-element-theme-sm</code>, etc.</p>
 					
 					<p>There's also compatibility for dark mode. <code>.dark-enabled</code> will result in light text, and a background a bit lighter than <code>.section-dark</code> when the browser is in dark mode. <code>.full-dark-enabled</code> will result in the same behavior as <code>.section-dark</code>.</p>
 					<ul>
-						<li><a onclick="document.getElementById('colors').className = ''">No dark mode setting</a></li>
-						<li><a onclick="document.getElementById('colors').className = 'dark-enabled'"><code>.dark-enabled</code></a></li>
-						<li><a onclick="document.getElementById('colors').className = 'full-dark-enabled'"><code>.full-dark-enabled</code></a></li>
+						<li><a onclick="setColorsDarkEnabled('nullDarkEnabled')">No dark mode setting</a></li>
+						<li><a onclick="setColorsDarkEnabled('dark-enabled')"><code>.dark-enabled</code></a></li>
+						<li><a onclick="setColorsDarkEnabled('full-dark-enabled')"><code>.full-dark-enabled</code></a></li>
 					</ul>
 				</div>
 			</div>
@@ -336,8 +366,8 @@
 					<h1 class="section-number">6.0</h1>
 					<h1>Code</h1>
 					<p>Mable offeres a few choices for displaying code blocks.</p>
-					<p>Using the <code>&lt;pre&gt;</code> element will apply a washed out background to the code, and make the font monospace. Use the <code>&lt;code&gt;</code> element or the <code>.code</code> class for inline uses.</p>
-					<p>You can also use <code>.monospace</code> to use the monospace font.</p>
+					<p>Using the <code>&lt;pre&gt;</code> tag will apply a washed out background to the code, and make the font monospace. Use the <code>&lt;code&gt;</code> tag or the <code>.code</code> class for inline uses.</p>
+					<p>You can also use <code>.monospace</code> and <code>.code-font</code> classes to use the monospace font.</p>
 				</div>
 			</div>
 		</section>
@@ -369,9 +399,14 @@
 		</footer>
 		
 		<!-- Scripts -->
-		<script src="js/header.js"></script>
 		<script>
 			var customTheme = document.getElementById("custom-theme-sheet");
+			
+			var colorSection = document.getElementById('colors')
+			
+			var colorsSectionName = "section-dark";
+			var colorsElementName;
+			var colorsDarkEnabled;
 					
 			function checkHeaderTheme(e){
 				let customThemeInputHeader = document.getElementById("header-theme-field").value;
@@ -397,6 +432,44 @@
 						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputFooter + ".css";
 					}
 				}
+			}
+			
+			function resetColorsClasses() {
+				setColorsClassesFull("section-dark", "elementNull", "noDarkEnabled")
+			}
+			
+			function setColorsClassesFull(sectionName, elementName, darkEnabled) {
+				colorsSectionName = sectionName;
+				colorsElementName = elementName;
+				colorsDarkEnabled = darkEnabled;
+				
+				setColorsClasses();
+			}
+			
+			function setColorsSection(sectionName) {
+				colorsSectionName = sectionName;
+				
+				setColorsClasses();
+			}
+			
+			function setColorsElement(elementName) {
+				colorsElementName = elementName;
+				
+				setColorsClasses();
+			}
+			
+			function setColorsDarkEnabled(darkEnabled) {
+				colorsDarkEnabled = darkEnabled;
+				
+				setColorsClasses();
+			}
+			
+			function setColorsClasses() {
+				// Reset
+				colorSection.className = "";
+				
+				// Add classes
+				colorSection.classList.add("section-thin-xs", colorsSectionName, colorsDarkEnabled, colorsElementName);
 			}
 		</script>
 	</body>
