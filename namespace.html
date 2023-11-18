@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Mable Namespace Documentation</title>
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="css/style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+
+		<!-- Packages -->
+		<link type="text/css" rel="stylesheet" href="packages/font-awesome.css">
+	</head>
+	<body>
+		
+		<!-- Title Section -->
+		<section class="section-light dark-enabled" id="namespace">
+			<div class="container">
+				<div class="row">
+					<h1>Mable Namespace Documentation</h1>
+					<p class="breadcrumbs"><a href="index.html">home</a> / namespace.html</p>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<p>In order to support forwards and backwards compatibility on all themes, Mable uses namespacing in order to ensure that no CSS classes will collide.</p>
+					<p>This only applies to the pattern <code>?*-?*</code>, meaning that a namespace must only use classes with a - after its name, such as <code>element-white</code>. Mable uses other class selectors that are single words.</p>
+					<p>Here is the list of namespaces Mable currently uses:</p>
+					<ul>
+						<li><code>section</code></li>
+						<li><code>element</code></li>
+						<li><code>container</code></li>
+						<li><code>col</code></li>
+						<li><code>cols</code></li>
+						<li><code>text</code></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+		<footer class="section-theme">
+			<div class="container-large">
+				<div class="row">
+					<h1>Mable HTML Template</h1>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- Scripts -->
+		<script src="js/header.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

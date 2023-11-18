@@ -30,7 +30,7 @@
 				</div>
 				<div class="row">
 					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, visit <a href="theme-documentation.html">this page</a>.</p>
-					<p>This documentation also assumes you understand some basic HTML, as well as refering to external resources. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage).</p>
+					<p>This documentation assumes you understand some basic HTML. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage at that).</p>
 				</div>
 			</div>
 		</section>
@@ -48,11 +48,12 @@
 							<li><a href="#layout--sections-containers-rows">Sections, Containers, and Rows</a></li>
 							<li><a href="#layout--grids">Grids</a></li>
 						</ol>
-						<li><a href="#fonts-and-text">Fonts and Text</a></li>
+						<li><a href="#content-and-text">Content and Text</a></li>
 						<li><a href="#colors">Colors</a></li>
 						<li><a href="#buttons">Buttons</a></li>
 						<li><a href="#code">Code</a></li>
 						<li><a href="#headers">Headers</a></li>
+						<li><a href="#footers">Footers</a></li>
 					</ol>
 				</div>
 			</div>
@@ -89,7 +90,7 @@
 		// Sections
 	&lt;/body&gt;
 &lt;/html&gt;</pre>
-				<p>Simply put all of that into a .html document, change the <code>href</code> fields if the document is in any subfolder(s), and change the other data fields to your liking. A lot of the stuff in the <code>&lt;head&gt;</code> section isn't neccicary, and is just good practice to have. Remove anything you don't need or want.</p>
+				<p>Simply put all of that into a .html document, change the <code>href</code> fields if the document is in any subfolder(s), and change the other data fields to your liking. A lot of the stuff in the <code>&lt;head&gt;</code> section isn't necessary, and is just good practice to have. Remove anything you don't need or want.</p>
 				</div>
 			</div>
 		</section>
@@ -141,21 +142,22 @@
 					</ul>
 					<p>These are also compatible with dynamic screen size selectors. Examples are <code>.section-thin-xs</code> and <code>.section-full-xl</code>.</p>
 					<hr />
-					<p>Containers are used to dictate/limit the width of the section's content. The three classes to use are <code>.container</code> for regular text, <code>.container-wide</code> for a wider area, and <code>.container-flud</code> for an area with no maximum width. All of them will maintain a standard amount of margin on their sides.</p>
+					<p>Containers are used to dictate/limit the width of the section's content. The three classes to use are <code>.container</code> for regular text, <code>.container-medium</code> and <code>.container-wide</code> for a wider area, and <code>.container-fluid</code> for an area with no maximum width. All of them will maintain a standard amount of margin on their sides.</p>
 					<p>You can try it out with the following buttons:</p>
 					<p>
-						<a class="button" onclick="document.getElementById('layout--text-container').className = 'container';document.getElementById('layout--sections-containers-rows--button-one').className = 'button';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow'" id="layout--sections-containers-rows--button-one">Normal Container</a>
-						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-large';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow'" id="layout--sections-containers-rows--button-two">Large Container</a>
-						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-fluid';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button'" id="layout--sections-containers-rows--button-three">Fluid Container</a>
+						<a class="button"        onclick="document.getElementById('layout--text-container').className = 'container';document.getElementById('layout--sections-containers-rows--button-one').className = 'button';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-four').className = 'button hollow'" id="layout--sections-containers-rows--button-one">Normal Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-medium';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-four').className = 'button hollow'" id="layout--sections-containers-rows--button-two">Medium Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-large';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button';document.getElementById('layout--sections-containers-rows--button-four').className = 'button hollow'" id="layout--sections-containers-rows--button-three">Large Container</a>
+						<a class="button hollow" onclick="document.getElementById('layout--text-container').className = 'container-fluid';document.getElementById('layout--sections-containers-rows--button-one').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-two').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-three').className = 'button hollow';document.getElementById('layout--sections-containers-rows--button-four').className = 'button'" id="layout--sections-containers-rows--button-four">Fluid Container</a>
 					</p>
 					<hr />
-					<p>A <code>.row</code> is used to space individual elements apart. Each element inside a row will be spaced apart, and each row will be spaced apart three times as much</p>
+					<p>A <code>.row</code> is used to space individual elements apart. Each element inside a row will be spaced apart, and each row will be spaced apart three times as much (by default.)</p>
 				</div>
 				
 				<div class="row" id="layout--grids">
 					<h2 class="section-number">2.3</h2>
 					<h2>Grids</h2>
-					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, simply make a parent <code>&lt;div&gt;</code> with the <code>.grid</code> class. It is recommended to use the <code>.row</code> structure as the <code>.grid</code> container so you can easily mix grids in with regular text within a container, but any tag that displays as a block will work.</p>
+					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, simply make a parent <code>&lt;div&gt;</code> with the <code>.grid</code> class. It is recommended to use the <code>.row</code> structure as the grid container so you can easily mix grids in with regular text within a container, but any tag that displays as a block will work fine.</p>
 					<pre>
 &lt;section&gt;
 	&lt;div class="container"&gt;
@@ -245,32 +247,33 @@
 					<p class="code-font">.grid.cols-3</p>
 					<div class="row grid cols-3 compact section-light dark-enabled" style="padding:var(--spacing-size);">
 						<div class="col-2 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-2</p></div>
-						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+						<div class="section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">no class</p></div>
 						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col-3</p></div>
-						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
-						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
-						<div class="col section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">col, col-1</p></div>
+						<div class="section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">no class</p></div>
+						<div class="section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">no class</p></div>
+						<div class="section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="code-font">no class</p></div>
 					</div>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Fonts and Text -->
-		<section class="section-thin-xs section-light dark-enabled" id="fonts-and-text">
+		<section class="section-thin-xs section-light dark-enabled" id="content-and-text fonts-and-text">
 			<div class="container">
 				<div class="row">
 					<h1 class="section-number">3.0</h1>
-					<h1>Fonts and Text</h1>
-					<p>There really isn't much to this section. Once inside a row or a grid child element, you can put basically any item and it will just work, but Mable offers a bit of extra customization and functionality.</p>
-					<p>There are four classes to customize the text alignment: <code>.text-left</code>, <code>.text-center</code>, <code>.text-right</code>, and <code>.text-justified</code>. These will apply to any and child elements automatically, not just what the class is applied to. These are also compatible with dynamic screen size selectors: <code>.text-xs-center</code>, etc.</p>
+					<h1>Content and Text</h1>
+					<p>There really isn't much to this section. Once inside a row or a grid child element, you can put basically any item and it should just work. Mable offers a bit of extra customization and functionality.</p>
+					<p>There are four classes to customize the text alignment: <code>.text-left</code>, <code>.text-center</code>, <code>.text-right</code>, and <code>.text-justified</code>. These will apply to any and child elements automatically, not just what the class is applied to. These are also compatible with dynamic screen size selectors: <code>.text-center-xs</code>, etc.</p>
 					<p>There are also classes to change the scale of everything:</p>
 					<ul>
 						<li><code>.tiny</code>: 2/4ths scale</li>
 						<li><code>.small</code>: 3/4ths scale</li>
+						<li><code>.normal</code>: 4/4ths scale</li>
 						<li><code>.large</code>: 5/4ths scale</li>
 						<li><code>.huge</code>: 6/4ths scale</li>
 					</ul>
-					<p>These are <b>NOT</b> compatible with dynamic screen size selectors as Mable will automatically resize page content based off screen size. These two bits of functionality will <b>NOT</b> interfere with each other.</p>
+					<p>These are <b>NOT</b> compatible with dynamic screen size selectors. Mable will automatically resize page content based off screen size anyway. Nor will these classes interfere with that functionality.</p>
 					<hr />
 					<p>The <badge>&lt;badge&gt;</badge> element can used to better differentiate labels or tags or something. These have some extra customization using the following classes:</p>
 					<ul>
@@ -278,10 +281,12 @@
 						<li><badge class="pill">pill</badge>: Rounds the corners as much as possible</li>
 						<li><badge class="hollow">hollow</badge>: Transparent background with an outline</li>
 					</ul>
-					<p>The <code>breadcrumbs</code> class is used for displaying the page path. It basically just switches the font to monospace.</p>
-					<p><span class="dropcap">A</span> dropcap can be added by adding the <code>.dropcap</code>class to a <code>&lt;span&gt;</code> element. It is recommended to only include one or a few characters. This will make the text inside the <code>&lt;span&gt;</code> bigger, and have a height of multiple lines.</p>
-					<p>The <code>.reading</code> class will activate the use of the reading font, usually serif. It is reccomended to apply this to things such as blog posts. This does not affect the title font. The <code>.monospace</code> class will similarly use the monospace font.</p>
-					<p>The <code>.section-number</code> class is useful for marking the number of a given section in a document, or a chapter number, or something. I use them in this document above the header for each section.</p>
+					<p>The <code>breadcrumbs</code> class is used for displaying the page path. It basically just switches the font to monospace. This is in Mable because the creator uses it a lot.</p>
+					<p><span class="dropcap">A</span> dropcap can be added by adding the <code>.dropcap</code> class to a <code>&lt;span&gt;</code> element. It is recommended to only include one or a few characters. This will make the text inside the <code>&lt;span&gt;</code> bigger, and have a height of multiple lines.</p>
+					<p>The <code>.reading</code> class will activate the use of the reading font, usually serif. It is recommended to apply this to longer sections of text. This does not affect the title font.</p>
+					<h2 class="tagline">The <code>.tagline</code> class can be used to make a smaller heading.</h2>
+					<p>The <code>.monospace</code> class will similarly use the monospace font.</p>
+					<p>The <code>.section-number</code> class is useful for marking the number of a given section in a document, or a chapter number, or something. I use them in this document above the header for each section. It should be applied to a header tag.</p>
 				</div>
 			</div>
 		</section>
@@ -308,7 +313,7 @@
 						<li><a onclick="setColorsSection('section-light')"><code>.section-light</code>: Light background, dark text</a></li>
 						<li><a onclick="setColorsSection('section-black')"><code>.section-black</code>: Black background, white text</a></li>
 						<li><a onclick="setColorsSection('section-dark')"><code>.section-dark</code>: Dark background, light text</a></li>
-						<li><a onclick="setColorsSection('section-theme')"><code>.section-theme</code>: Theme colored, background light text</a></li>
+						<li><a onclick="setColorsSection('section-theme')"><code>.section-theme</code>: Theme colored background, light text</a></li>
 						<li><a onclick="setColorsSection('section-theme-iverted')"><code>.section-theme-inverted</code>: light background, theme colored text</a></li>
 					</ul>
 					<p>There's also settings for the color of the element. These behave as the inverse of the <code>.section</code> classes. For example <code>.element-white</code> will exhibit the same behavior as <code>.section-dark</code> but without the background color. These will override any section colorings.</p>
@@ -324,12 +329,15 @@
 					<p>Both are compatible with dynamic screen size selectors: <code>.section-theme-sm</code>, <code>.element-dark-lg</code>, etc.</p>
 					<p>You can also specify for either to only apply when the browser is scrolled to the top, you will need to import the <code>js/top.js</code> JavaScript file. <code>.top-section-transparent</code>, <code>.top-element-theme-sm</code>, etc.</p>
 					
-					<p>There's also compatibility for dark mode. <code>.dark-enabled</code> will result in light text, and a background a bit lighter than <code>.section-dark</code> when the browser is in dark mode. <code>.full-dark-enabled</code> will result in the same behavior as <code>.section-dark</code>.</p>
+					<p>There's also compatibility for automatic dark mode. <code>.dark-enabled</code> will result in light text, and a background a bit lighter than <code>.section-dark</code> when the browser is in dark mode. <code>.full-dark-enabled</code> will result in the same behavior as <code>.section-dark</code>. You can also set dark mode, such as with JavaScript, with a variable in the <code>&lt;html&gt;</code> tag named <code>dark-mode</code>. Set it to <code>1</code> to enable dark mode.</p>
 					<ul>
 						<li><a onclick="setColorsDarkEnabled('nullDarkEnabled')">No dark mode setting</a></li>
 						<li><a onclick="setColorsDarkEnabled('dark-enabled')"><code>.dark-enabled</code></a></li>
 						<li><a onclick="setColorsDarkEnabled('full-dark-enabled')"><code>.full-dark-enabled</code></a></li>
+						<li><a onclick="document.documentElement.dataset.darkmode = 1">Force dark mode</a></li>
+						<li><a onclick="document.documentElement.dataset.darkmode = 0">Turn off forced dark mode</a></li>
 					</ul>
+					<p>If you read through the source code you might notice that the way this is implemented duplicates rules because <code>@media</code> and <code>html:is</code> selectors cannot be put together</p>
 				</div>
 			</div>
 		</section>
@@ -378,21 +386,54 @@
 				<div class="row">
 					<h1 class="section-number">7.0</h1>
 					<h1>Headers</h1>
+					<p>Headers are super simple. They work like normal sections, with a few special selectors.<p>
+					<pre>&lt;header class="section-dark" id="navigation"&gt;
+	&lt;div class="container-large"&gt;
+		&lt;nav&gt;&lt;ul&gt;
+			&lt;li&gt;&lt;a href=""&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Item 2&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;&lt;/nav&gt;
+	&lt;/div&gt;
+&lt;/header&gt;</pre>
+					<p>By default, headers will do nothing but display the <code>&lt;ul&gt</code> items side by side. To change its physical behavior you will need to add one of several classes.</p>'
+					<p><code>.fixed</code> will remove the header from the page and make it stay at the top of the page permanently.</p>
+					<p><code>.sticly</code> will <b>not</b> remove the header from the page, but will make it stay at the top of the page when it is scrolled past.</p>
+					<p>Both those behaviors only apply to medium or larger width screens.<p>
+					<p>You can also add a dropdown menu for a header item:</p>
+					<pre>&lt;header class="section-dark" id="navigation"&gt;
+	&lt;div class="container-large"&gt;
+		&lt;nav&gt;&lt;ul&gt;
+			&lt;li class="dropdown"&gt;Dropdown
+				&lt;ul&gt;
+					&lt;li&gt;&lt;a href=""&gt;Dropdown-acessible item&lt;/a&gt;&lt;/li&gt;
+					&lt;li&gt;&lt;a href=""&gt;Dropdown-acessible item&lt;/a&gt;&lt;/li&gt;
+				&lt;/ul&gt;
+			&lt;/li&gt;
+			&lt;li&gt;&lt;a href=""&gt;Item 2e&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;&lt;/nav&gt;
+	&lt;/div&gt;
+&lt;/header&gt;</pre>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footers -->
+		<section class="section-thin-xs section-dark" id="footers">
+			<div class="container">
+				<div class="row">
+					<h1 class="section-number">8.0</h1>
+					<h1>Footers</h1>
+					<p>Footers don't do anything except make the items inside it slightly smaller. Use the <code>&lt;footer&gt;</code> tag in place of a <code>&lt;section&gt;</code> to use this behavior.</p>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Footer -->
-		<footer class="section-thin section-theme">
+		<footer class="section-theme">
 			<div class="container-large">
-				<div class="row grid">
-					<div class="col-6 col-sm-12 text-right sm-text-center">
-						<h1>Mable HTML Template</h1>
-							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
-					</div>
-					<div class="col-6 col-sm-12 sm-text-center">
-						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
-						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+				<div class="row">
+					<h1>Mable HTML Template</h1>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
 					</div>
 				</div>
 			</div>

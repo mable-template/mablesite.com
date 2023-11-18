@@ -18,40 +18,216 @@
 	<body>
 		
 		<!-- Title Section -->
-		<section class="section-theme" id="title-section">
+		<section class="section-theme section-thin" id="title-section">
 			<div class="container">
 				<div class="row">
 					<h1>Mable Theme Documentation</h1>
 					<p class="breadcrumbs"><a href="index.html">home</a> / theme-documentation.html</p>
-					<h2 class="tagline">In progress</h2>
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
 				</div>
 			</div>
 		</section>
 		
-		
-		
-		<!-- General Document Setup -->
-		<section class="section-thin-xs section-light dark-enabled" id="general-document-setup">
+		<!-- Layout -->
+		<section class="section-thin-xs section-light dark-enabled" id="layout">
 			<div class="container">
 				<div class="row">
-					<h1>List of Variables</h1>
-					<pre>
+					<h2>General Layout</h2>
+					<p>Mable themes should stick to a strict layout guideline, and should follow other guidelines to make debugging easier.</p>
+					<p>Themes are placed in the <code>themes/</code> directory. They have both a file and a folder, <code>themename.css</code> and <code>themename/</code>. Themes may also have an optional <code>themename-classes.txt</code> to explain what special functionality the theme may have.</p>
+					<p>Here's a layout of a sample theme:</p>
+					<pre>.
+├── themename
+│   ├── somepattern.svg
+│   ├── fontname
+│   │   ├── fontname-700italic.woff
+│   │   ├── fontname-700.woff
+│   │   ├── fontname-italic.woff
+│   │   └── fontname-regular.woff
+│   └── fontname.css
+├── themename-classes.txt
+└── themename.css</pre>
+					<p>You should always follow these rules:</p>
+					<ul>
+						<li>Keep anything your theme needs inside a folder or file which name starts with your theme name.</li>
+						<li>For any theme specific functionality, the name of your classes should always start with your theme name in order to remain backwards and forwards compatible. See the <a href="namespace.html">namespace</a> page for more details.</li>
+						<li>Do not require any external resources that your theme does not import directly or indirectly in <code>themename.css</code> to avoid making it less usable.</p>
+					</ul>
+					<p>I highly recommend looking through <a href="https://cdn.mablesite.com/themes/benjistokman.css">my own theme</a> to understand more about the layout. If you have experience in CSS this will make sense very quickly.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Variables -->
+		<section class="section-thin-xs section-dark" id="variables">
+			<div class="container">
+				<div class="row">
+					<h2>Variables</h2>
+					<p>Most of Mable themeing is just switching up variables. You can and should change other selectors, but Mable has been designed so that just a few variables determine what a site looks like.</p>
+					<p>This section doesn't tell you what to do, just what you might want to do. This section also does not includes variables that you should not change.</p>
+				</div>
+				<div class="row">
+					<h3 id="colors">Colors</h3>
+					
+					<h4 class="tiny"><code>--theme-color</code></h4>
+					<p>This should be a vibrant accent color that is used sparringly. What color is used for classes like <code>.section-theme</code>.</p>
+					<p>Default: <code>#32a365</code></p>
+					
+					<h4 class="tiny"><code>--black-color</code></h4>
+					<p>What color is used for classes like <code>.section-black</code>.</p>
+					<p>Default: <code>#000000</code></p>
+					
+					<h4 class="tiny"><code>--dark-color</code></h4>
+					<p>This should be very dark but not black. What color is used for classes like <code>.section-dark</code>.</p>
+					<p>Default: <code>#202020</code></p>
+					
+					<h4 class="tiny"><code>--middle-color-1</code> through <code>--middle-color-8</code></h4>
+					<p>This should form be a gradient between <code>--dark-color</code> and <code>--light-color</code>. This is used for things such as auto-dark mode.</p>
+					
+					<h4 class="tiny"><code>--light-color</code></h4>
+					<p>This should be very light but not white. What color is used for classes like <code>.section-light</code>.</p>
+					<p>Default: <code>#f5f5f5</code></p>
+					
+					<h4 class="tiny"><code>--white-color</code></h4>
+					<p>What color is used for classes like <code>.section-white</code>.</p>
+					<p>Default: <code>#ffffff</code></p>
+					
+					<h4 class="tiny"><code>--match-with-theme-color</code></h4>
+					<p>Mable will use this value to assign a foreground or background color to things like <code>.section-theme</code>.</p>
+					<p>Default: <code>var(--light-color)</code></p>
+					
+					<h4 class="tiny"><code>--match-with-theme-color-dark</code></h4>
+					<p>Mable will use this value to assign a foreground or background color to things like <code>.section-theme</code> but when in dark mode.</p>
+					<p>Default: <code>var(--match-with-theme-color)</code></p>
+					
+					<h4 class="tiny"><code>--match-with-light</code></h4>
+					<p>Mable will use this value to assign a foreground or background color to things like <code>.section-light</code>.</p>
+					<p>Default: <code>var(--dark-color)</code></p>
+					
+					<h4 class="tiny"><code>--match-with-dark</code></h4>
+					<p>Mable will use this value to assign a foreground or background color to things like <code>.section-dark</code>.</p>
+					<p>Default: <code>var(--light-color)</code>
+				</div>
+				
+				<div class="row">
+					<h3 id="fonts-and-text">Fonts & Text</h3>
+					
+					<h4 class="tiny"><code>--title-font</code></h4>
+					<p>The font used for titles.</p>
+					<p>Default: <code>"Noto Sans Mono", sans-serif</code></p>
+					
+					<h4 class="tiny"><code>--title-weight</code></h4>
+					<p>The font weight of titles.</p>
+					<p>Default: <code>700</code></p>
+					
+					<h4 class="tiny"><code>--title-size</code></h4>
+					<p>The size of the <b>biggest</b> title.</p>
+					<p>Default: <code>56</code></p>
+					
+					<h4 class="tiny"><code>--body-font</code></h4>
+					<p>The font used for everything by default.</p>
+					<p>Default: <code>"Montserrat", "Noto Sans", sans-serif</code></p>
+					
+					<h4 class="tiny"><code>--body-weight</code></h4>
+					<p>The font weight of everything.</p>
+					<p>Default: <code>400</code></p>
+					
+					<h4 class="tiny"><code>--body-size</code></h4>
+					<p>The text size of everything.</p>
+					<p>Default: <code>20</code></p>
+					
+					<h4 class="tiny"><code>--bold-weight</code></h4>
+					<p>The font weight of bold text, such as <code>&lt;b&gt;</code>.</p>
+					<p>Default: <code>700</code></p>
+					
+					<h4 class="tiny"><code>--reading-font</code></h4>
+					<p>The font used for the <code>.reading</code> class.</p>
+					<p>Default: <code>"Noto Serif", serif</code></p>
+					
+					<h4 class="tiny"><code>--reading-weight</code></h4>
+					<p>The font weight used for the <code>.reading</code> class.</p>
+					<p>Default: <code>400</code></p>
+					
+					<h4 class="tiny"><code>--reading-size</code></h4>
+					<p>The font size used for the <code>.reading</code> class.</p>
+					<p>Default: <code>var(--body-size)</code></p>
+					
+					<h4 class="tiny"><code>--monospace-font</code></h4>
+					<p>The monospace font.</p>
+					<p>Default: <code>"Noto Sans Mono", monospace</code></p>
+					
+					<h4 class="tiny"><code>--monospace-weight</code></h4>
+					<p>The monospace font weight.</p>
+					<p>Default: <code>400</code></p>
+					
+					<h4 class="tiny"><code>--ui-font</code></h4>
+					<p>The font used for buttons, headers, table headers, and more.</p>
+					<p>Default: <code>var(--body-font)</code></p>
+					
+					<h4 class="tiny"><code>--ui-weight</code></h4>
+					<p>The text weight when the ui font is used.</p>
+					<p>Default: <code>var(--bold-weight)</code></p>
+					
+					<h4 class="tiny"><code>--text-align</code></h4>
+					<p>Default text align. Useful for RTL webpages.</p>
+					<p>Default: <code>left</code></p>
+				</div>
+				
+				<div class="row">
+					<h3 id="other">Other</h3>
+					
+					<h4 class="tiny"><code>--border-width-raw</code></h4>
+					<p>The default border width. Used in buttons, tables, etc.</p>
+					<p>Default: <code>2px</code></p>
+					
+					<h4 class="tiny"><code>--border-radius-raw</code></h4>
+					<p>Default border radius. Used for things like rounded buttons.</p>
+					<p>Default: <code>6px</code></p>
+					
+					<h4 class="tiny"><code>--spacing-size-multiple</code></h4>
+					<p>THow many times spacing is from <code>--body-size</code>. Used for spacing between <code>.row</code>s and more.</p>
+					<p>Default: <code>56</code></p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Other Selectors -->
+		<section class="section-thin-xs section-light dark-enabled" id="other">
+			<div class="container">
+				<div class="row">
+					<h2>Other Selectors</h2>
+					<p>A theme is just a CSS file, but shouldn't change any functionality of the page, just how it looks. For certain things you may have to manually specify a selector instead of a variable. Here are some that may interest you:</p>
+					
+					<h3 class="tiny">Buttons</h3>
+					<code>button, a.button, input[type=submit]</code>
+					
+					<h3 class="tiny">Inline Code Blocks</h3>
+					<code>code, .code,</code>
+					
+					<h3 class="tiny">All Code Things</h3>
+					<code>code, .code, .code-font, pre</code>
+					
+					<h3 class="tiny">Header List Items (Default Layout)</h3>
+					<code>header ul > li</code>
+					
+					<h3 class="tiny">Header Dropdown</h3>
+					<code>header ul > li > ul</code>
+					
+					<h3 class="tiny">Grid items</h3>
+					<code>.grid *</code>
+					
+					<h3 class="tiny">Portfolio items</h3>
+					<code>.grid.portfolio *</code>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Footer -->
-		<footer class="section-thin section-theme">
+		<footer class="section-theme">
 			<div class="container-large">
-				<div class="row grid">
-					<div class="col-6 col-sm-12 text-right sm-text-center">
-						<h1>Mable HTML Template</h1>
-							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
-					</div>
-					<div class="col-6 col-sm-12 sm-text-center">
-						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
-						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+				<div class="row">
+					<h1>Mable HTML Template</h1>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
 					</div>
 				</div>
 			</div>

@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<!-- Header -->
-		<header class="fixed section-dark top-transparent-background element-light">
+		<header class="fixed section-dark top-section-transparent element-light">
 			<div class="container-fluid">
 				<ul>
 					<li class="dropdown">MABLE <i class="fas fa-angle-down"></i>
@@ -43,53 +43,53 @@
 				<div class="row">
 					<h1>Mable HTML Template</h1>
 					<h2 class="tagline">An open source HTML template for easily creating beautiful webpages</h2>
-					<p>Still in beta™</p>
-					<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button">Download <i class="fa fa-download"></i></a><a href="documentation.html" class="button hollow">Documentation</a></p>
+					<p><a href="documentation.html" class="button pill">Documentation</a><a href="theme-documentation.html" class="button pill hollow">Theme Documentation</a></p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Title Section -->
+		<section class="section-thin section-theme" id="cta">
+			<div class="container">
+				<div class="row">
+					<h2 class="tagline huge">Version 1.0 has released!</h2>
+					<a href="https://github.com/mable-template/mable/releases" class="button hollow">Download</a>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Features -->
-		<section class="section-theme" id="features">
+		<section class="section-dark section-thin" id="features">
 			<div class="container">
 				<div class="row">
 					<h1 class="text-center">Features</h1>
 				</div>
-				<div class="row grid fa-icon text-center">
-					<div class="col-2 col-sm-4">
+				<div class="row grid cols-4 cols-sm-2 fa-icon text-center">
+					<div class="">
 						<i class="fas fa-code"></i>
 						<p>Simple to build</p>
 					</div>
-					<div class="col-2 col-sm-4">
+					<div class="">
 						<i class="fa-solid fa-paint-roller"></i>
-						<p>Easy to install themes</p>
+						<p>Instant easy themes</p>
 					</div>
-					<div class="col-2 col-sm-4">
-						<i class="fa-solid fa-box"></i>
-						<p>Expansion Packages</p>
-					</div>
-					<div class="col-2 col-sm-4">
+					<div class="">
 						<i class="fas fa-border-none"></i>
-						<p>Grid Layout</p>
+						<p>Built-in grid layout</p>
 					</div>
-					<div class="col-2 col-sm-4">
+					<div class="">
 						<i class="fa-solid fa-server"></i>
 						<p>Fully Self Hosted</p>
-					</div>
-					<div class="col-2 col-sm-4">
-						<i class="fa-regular fa-square"></i>
-						<p>Simple Design</p>
 					</div>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Themes -->
-		<section class="section-light dark-enabled" id="themes">
+		<section class="section-thin-xs section-light dark-enabled" id="themes">
 			<div class="container">
 				<div class="row">
 					<h1>Themes</h1>
-					<p><a href="https://cdn.mablesite.com/themes" class="button hollow">View themes</a></p>
 					<p>Click on a theme below to apply it to this page (requires JScript)</p>
 					<p>
 						<a class="button hollow" id="theme-set-default" onclick="customTheme.href = 'custom-theme-here'">Default</a>
@@ -104,14 +104,14 @@
 		</section>
 		
 		<!-- Demos -->
-		<section class="section-dark" id="demos">
+		<section class="section-thin-xs section-dark" id="demos">
 			<div class="container-large">
 				<div class="row">
 					<h1>Demos</h1>
 				</div>
 			</div>
 			<div class="container-fluid">
-				<div class="row grid cols-3 cols-sm-1">
+				<div class="row grid cols-2 cols-sm-1">
 					<div>
 						<a href="cheatsheet.html">
 							<img src="images/demos/cheatsheet.png">
@@ -124,32 +124,25 @@
 							<h2 class="tagline">Landing Page</h2>
 						</a>
 					</div>
-					<div>
-						<a href="demo-portfolio.html">
-							<img src="images/demos/portfolio.png">
-							<h2 class="tagline">Portfolio</h2>
-						</a>
-					</div>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Layouts -->
-		<section class="section-light dark-enabled" id="layouts">
+		<section class="section-thin-xs section-light dark-enabled" id="layouts">
 			<div class="container">
 				<div class="row">
 					<h1>Layouts</h1>
 					<ul class="vertical-header">
 						<li><a href="layout-striped.html">Striped</a></li>
 						<li><a href="layout-classic.html">Classic</a></li>
-						<li><a href="layout-sidebar.html">Sidebar</a></li>
 					</ul>
 				</div>
 			</div>
 		</section>
 		
 		<!-- Elements -->
-		<section class="section-dark" id="elements">
+		<section class="section-thin-xs section-dark" id="elements">
 			<div class="container">
 				<div class="row">
 					<h1>Elements</h1>
@@ -165,14 +158,9 @@
 		<!-- Footer -->
 		<footer class="section-theme">
 			<div class="container-large">
-				<div class="row grid">
-					<div class="col-8 col-sm-12 text-right sm-text-center">
-						<h1>Mable HTML Template</h1>
-							<p>Distributed under an <a href="license.txt">MIT License</a>.</p>
-					</div>
-					<div class="col-4 col-sm-12 sm-text-center">
-						<p><a href="https://github.com/mable-template/main-webpage/archive/refs/heads/main.zip" class="button hollow">Download <i class="fa fa-download"></i></a></p>
-						<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+				<div class="row">
+					<h1>Mable HTML Template</h1>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
 					</div>
 				</div>
 			</div>
