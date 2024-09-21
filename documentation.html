@@ -29,8 +29,7 @@
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
 				</div>
 				<div class="row">
-					<p>This is the documentation for how to create Mable websites. If you're looking to create a Mable theme, visit <a href="theme-documentation.html">this page</a>.</p>
-					<p>This documentation assumes you understand some basic HTML. If you don't know anything about HTML or CSS you should look up a guide on it before you try to use Mable (or make any static webpage at that).</p>
+					<p><a href="file:///home/bcs/Documents/Development/Mable/mablesite.com/theme-documentation.html" class="button pill">Theme documentation</a> <a href="namespace.html" class="button pill">Namespace documentation</a></p>
 				</div>
 			</div>
 		</section>
@@ -102,6 +101,10 @@
 					<h1 class="section-number">2.0</h1>
 					<h1>Layout</h1>
 					<p>This section is about the larger blocks that make up Mable webpages.
+				</div>
+				
+				<div class="row">
+					<p>If you want to limit the width of your webpage, simply add a container class to the <code>body</code> tag. If you do this, sections will be limited to a width of 1200 pixels, unless your theme changes this width.</p>
 				</div>
 				
 				<div class="row" id="layout--dynamic-screen-sizes">
@@ -327,7 +330,7 @@
 						<li><a onclick="setColorsElement('element-theme-inverted')"><code>.element-theme-inverted</code></a></li>
 					</ul>
 					<p>Both are compatible with dynamic screen size selectors: <code>.section-theme-sm</code>, <code>.element-dark-lg</code>, etc.</p>
-					<p>You can also specify for either to only apply when the browser is scrolled to the top, you will need to import the <code>js/top.js</code> JavaScript file. <code>.top-section-transparent</code>, <code>.top-element-theme-sm</code>, etc.</p>
+					<p>You can also specify for either to only apply when the browser is scrolled to the top, you will need to import the <code>js/top.js</code> JavaScript file. <code>.section-transparent-top</code>, <code>.element-theme-top-sm</code>, etc.</p>
 					
 					<p>There's also compatibility for automatic dark mode. <code>.dark-enabled</code> will result in light text, and a background a bit lighter than <code>.section-dark</code> when the browser is in dark mode. <code>.full-dark-enabled</code> will result in the same behavior as <code>.section-dark</code>. You can also set dark mode, such as with JavaScript, with a variable in the <code>&lt;html&gt;</code> tag named <code>dark-mode</code>. Set it to <code>1</code> to enable dark mode.</p>
 					<ul>
