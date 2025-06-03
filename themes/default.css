@@ -1,0 +1,34 @@
+/*
+Default Mable theme 
+Author: Ben Stokman <ben.stokman@protonmail.com>
+Version 1.0-mable2.0.0
+*/
+
+@import url('default/roboto.css');
+@import url('default/roboto-mono.css');
+@import url('default/flow.css');
+
+:root {
+	--theme-color: #000000;
+	--title-font: "Roboto", sans-serif;
+	--title-weight: 900;
+	--title-size: 64px;
+	--body-font: "Roboto", sans-serif;
+	--reading-font: "Roboto Mono", serif;
+	--reading-size: 24px;
+	--monospace-font: "Roboto Mono", monospace;
+	
+	--match-with-light: var(--theme-color);
+	--match-with-dark: var(--theme-color);
+	--highlight-match-with-light: var(--theme-color);
+	--highlight-match-with-dark: var(--theme-color);
+	
+	--border-width-raw: 3px;
+}
+
+.default-flow {
+	--title-font: "Flow Block", sans-serif;
+	--body-font: "Flow Rounded", sans-serif;
+	--ui-font: "Flow Rounded", sans-serif;
+	--reading-font: "Flow Circular", serif;
+}

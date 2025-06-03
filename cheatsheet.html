@@ -10,7 +10,7 @@
 		<link type="text/css" rel="stylesheet" href="css/style.css">
 			
 		<!-- Themes -->
-		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+		<link type="text/css" rel="stylesheet" href="themes/default.css" id="custom-theme-sheet">
 	</head>
 	<body>
 	
@@ -19,7 +19,7 @@
 			<div class="container text-center">
 				<div class="row">
 					<h1>Mable Cheatsheet</h1>
-					<p class="breadcrumbs"><a href="index.html">home</a> / cheatsheet.html</p>
+					<p class="text-breadcrumbs"><a href="index.html">home</a> / cheatsheet.html</p>
 				</div>
 			</div>
 		</section>
@@ -30,7 +30,7 @@
 				<div class="row">
 					<h1>Themes</h1>
 					<p>
-						<a class="button hollow" id="theme-set-default" onclick="customTheme.href = 'custom-theme-here'">Default</a>
+						<a class="button button-hollow" id="theme-set-default" onclick="customTheme.href = 'themes/default.css'">Default</a>
 						<a class="button" id="theme-set-zen-tokyo-zoo" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/autumn.css'">Autumn</a>
 						<a class="button" id="theme-set-benjistokman" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/benjistokman.css'">Benjistokman</a>
 						<a class="button" id="theme-set-brandon" onclick="customTheme.href = 'https://cdn.mablesite.com/themes/brandon.css'">Brandon</a>
@@ -41,7 +41,7 @@
 					
 					<h1>Colors</h1>
 					<p>
-						<a class="button hollow" onclick="document.getElementById('text').className = 'section-white'">White</a>
+						<a class="button button-hollow" onclick="document.getElementById('text').className = 'section-white'">White</a>
 						<a class="button" onclick="document.getElementById('text').className = 'section-light'">Light</a>
 						<a class="button" onclick="document.getElementById('text').className = 'section-black'">Black</a>
 						<a class="button" onclick="document.getElementById('text').className = 'section-dark'">Dark</a>
@@ -83,7 +83,7 @@
 				<!-- Text -->
 				<div class="row">
 					<h1>Text</h1>
-					<p><span class="dropcap">T</span>his is a paragraph with a dropcap. It should be used for the start of new sections of whatever text you want. Of course there's all the HTML stylings like <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">links</a>, <b>bold</b>, <i>italics</i>, <u>underline</u>, <s>strikethrough</s>, <del>deletion</del>, <mark>highlight</mark>, <sup>superscript</sup>, and <sub>subscript</sub>. </p>
+					<p><span class="text-dropcap">T</span>his is a paragraph with a dropcap. It should be used for the start of new sections of whatever text you want. Of course there's all the HTML stylings like <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">links</a>, <b>bold</b>, <i>italics</i>, <u>underline</u>, <s>strikethrough</s>, <del>deletion</del>, <mark>highlight</mark>, <sup>superscript</sup>, and <sub>subscript</sub>. </p>
 					<p>This is a second paragraph without a dropcap. It does not have a dropcap because it is not the first paragraph of a section.</p>
 					
 					<p>Below is an <code>hr</code> element</p>
@@ -100,11 +100,11 @@
 				<div class="row">
 					<h1>Badges</h1>
 					<h1>Title Text <badge>Badge!</badge></h1>
-					<h2>Title 2 Text <badge class="element-theme rounded">Badge!</badge></h2>
-					<h3>Title 3 Text <badge class="element-dark pill">Badge!</badge></h3>
-					<h4>Title 4 Text <badge class="element-theme hollow">Badge!</badge></h4>
-					<h5>Title 5 Text <badge class="rounded hollow">Badge!</badge></h5>
-					<h6>Title 6 Text <badge class="element-theme pill hollow">Badge!</badge></h6>
+					<h2>Title 2 Text <badge class="element-theme button-rounded">Badge!</badge></h2>
+					<h3>Title 3 Text <badge class="element-dark button-pill">Badge!</badge></h3>
+					<h4>Title 4 Text <badge class="element-theme button-hollow">Badge!</badge></h4>
+					<h5>Title 5 Text <badge class="button-rounded button-hollow">Badge!</badge></h5>
+					<h6>Title 6 Text <badge class="element-theme button-pill button-hollow">Badge!</badge></h6>
 				</div>
 				
 				<!-- Lists -->
@@ -141,15 +141,15 @@
 					<h1>Buttons</h1>
 					<p>
 						<a class="button">Standard Button</a>
-						<a class="button hollow">Hollow Button</a>
+						<a class="button button-hollow">Hollow Button</a>
 					</p>
 					<p>
-						<a class="button rounded">Rounded Button</a>
-						<a class="button rounded hollow">Rounded Hollow Button</a>
+						<a class="button button-rounded">Rounded Button</a>
+						<a class="button button-rounded button-hollow">Rounded Hollow Button</a>
 					</p>
 					<p>
-						<a class="button pill">Pill Button</a>
-						<a class="button pill hollow">Pill Hollow Button</a>
+						<a class="button button-pill">Pill Button</a>
+						<a class="button button-pill button-hollow">Pill Hollow Button</a>
 					</p>
 				</div>
 				
@@ -201,7 +201,7 @@
 								<textarea></textarea>
 							</div>
 							<div class="col-12">
-								<input type="submit" value="Send" class="hollow pill" />
+								<input type="submit" value="Send" class="button-hollow button-pill" />
 							</div>
 						</fieldset>
 						</div>
