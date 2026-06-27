@@ -1,0 +1,1015 @@
+/*
+Mable Main SCSS File
+Copyright © 2021-2026 Ben stokman <ben.stokman@protonmail.com>
+MIT License
+
+sassc ./style.scss -t compressed | css-beautify -t -n --type css
+
+================================================================================
+Table of Contents
+================================================================================
+
+0: Reset
+1: Layout
+	1.1: Sections
+	1.2: Containers
+	1.3: Grid
+2: Fonts & Text
+	2.1: Size & Position
+	2.2: Headings
+	2.3: Other Text Items
+3: Colors
+	3.1: Universal Stylings
+	3.2 Element Colors
+		3.2.1: Dark Theme
+	3.3: Section Colors
+		3.2.1: Small Screens
+4: Buttons
+4: Badges
+6: Header & Footer
+7: Table
+8: Forms
+9: Print
+*/
+
+/* =============================================================================
+   0: Reset
+   > Defaults for native HTML items
+============================================================================= */
+
+// Get rid of extra spacing on all block objects
+html, body, div, span, applet, object, iframe, figure, figcaption, footer,
+header, section, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
+section {
+	display: block;
+}
+
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+// Transision durations on everything
+* {
+	transition-duration: 0.25s;
+	transition: 0.25s;
+	scroll-behavior: smooth;
+}
+
+// Images should align to their container's width
+img {max-width: 100% !important;}
+
+/* =============================================================================
+   1: Layout
+   > Containers, placement, grid, etc.
+============================================================================= */
+
+/* Define a map between responsive size names and their widths and if they
+   should use the min-width or max-width property
+   @NOTE the order in which these are defined is important. e.g. -sm MUST take
+		 priority over -md. */
+$responsive-sizes: (
+	"md": (1000px, "max"),
+	"sm": (760px,  "max"),
+	"xs": (540px,  "max"),
+	"lg": (1200px, "min"),
+	"xl": (1440px, "min")
+);
+
+// Variables used for layout & sizing
+:root {
+	--border-width-raw: 3px;
+	--border-width: calc(var(--border-width-raw) * var(--body-scale));
+	--border-radius-raw: 6px;
+	--border-radius: calc(var(--border-radius-raw) * var(--body-scale));
+	
+	/* Backend sizing variables */
+	--body-scale: 1;            /* Used for sizing different text selectors. */
+	--title-scale: 1;           /* Used for sizing different title selectors. */
+	--item-scale: 1;            /* Used for different element sizes, such as making image captions smaller than normal text. */
+	--child-scale: 1;           /* Used for different child element sizes */
+	--style-scale: 1;           /* Used for .huge, .large, and .small classes */
+	--section-scale: 1;         /* Used for header and footer */
+	
+	--spacing-size-multiple: 3/4; /* How many times spacing is from --body-size */
+	--spacing-size: calc(var(--spacing-size-multiple) * var(--body-size));
+}
+
+/* Rows separate content inside themselves, and separate between their siblings */
+.row {
+	margin: calc(4*var(--spacing-size)) 0;
+	
+	&:first-child {margin-top: 0;}
+	&:last-child {margin-bottom: 0;}
+	
+	& > * {
+		margin: calc(2*var(--spacing-size)) 0;
+		
+		&:first-child {margin-top: 0;}
+		&:last-child {margin-bottom: 0;}
+	}
+}
+
+/* 1.1: Sections
+   ============= */
+
+section {
+	padding: calc(var(--spacing-size) * 5) 0;
+	overflow: hidden;
+	
+	& > * {margin: calc(3 * var(--spacing-size)) 0;}
+	& > *:first-child {margin-top: 0;}
+	& > *:last-child {margin-bottom: 0;}
+}
+
+/* A map between section size names and their padding size multiple */
+$classes-section-sizes: (
+	"edgeless": 0,
+	"tiny":     2,
+	"thin":     3,
+	"regular":  5,
+	"large":    8,
+	"huge":     13
+);
+
+/* Mixin for section-full as it deviates from the pattern */
+@mixin section-full {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	position: relative;
+	& > * {margin: auto;}
+}
+
+/* Mixin for generating section- size classes
+   @NOTE requires $generate-suffix be set */
+@mixin generate-section-size {
+	@each $size-name, $size-mult in $classes-section-sizes {
+		.section-#{$size-name}#{$generate-suffix} {
+			padding: calc(var(--spacing-size) * #{$size-mult}) 0;
+		}
+	}
+	.section-full#{$generate-suffix} {@include section-full;}
+}
+
+// Generate section- size classes
+$generate-suffix: "";
+@include generate-section-size
+
+// Generate responsive section classes for different sizes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-section-size;
+	}
+}
+
+/* 1.2: Containers
+   =============== */
+
+/* Containers are used to center content and limit its width */
+.container, [class^="container-"] {
+	width: calc(100% - 4*var(--spacing-size));
+	margin-left: auto !important;
+	margin-right: auto !important;
+	
+	& > * {margin: calc(2 * var(--spacing-size)) 0;}
+	& > *:first-child {margin-top: 0;}
+	& > *:last-child {margin-bottom: 0;}
+}
+
+/* A map between container width names and their maximum widths*/
+$classes-container-widths: (
+ "": 800px,
+ "-medium": 1000px,
+ "-large":  1200px,
+ "-huge":   1440px,
+ "-fluid":  100%
+);
+
+/* Mixin for generating container- classes
+   @NOTE requires $generate-suffix be set */
+@mixin generate-containers {
+	// Generate container classes for different sizes
+	@each $size, $size-px in $classes-container-widths {
+		.container#{$size}#{$generate-suffix} {
+			max-width: #{$size-px};
+		}
+	}
+};
+
+// Generate container sizes
+$generate-suffix: "";
+@include generate-containers;
+
+// Generate responsive container classes for different sizes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-containers;
+	}
+}
+
+/* 1.3: Grid
+   ========= */
+
+/* Grids are used to arrange items side by side, wrapping after a specific
+   number of colums */
+.grid {
+	display: grid;
+	align-items: flex-start;
+	justify-items: stretch;
+	grid-template-columns: repeat(12, 1fr);
+	--grid-gap: calc(var(--spacing-size) * 2);
+	grid-gap: var(--grid-gap);
+	
+	// Make every item inside a grid one item wide by default
+	& > * {
+		grid-column-end: span 1;
+		margin: 0;
+	}
+}
+
+/* Define this giant map that represents all properties a .grid may have */
+$classes-grid-layout: (
+	"flow": (
+		"rows":    (grid-auto-flow: row),
+		"columns": (grid-auto-flow: column)
+	),
+
+	"density": (
+		"compact":  (--grid-gap: var(--spacing-size)),
+		"seamless": (--grid-gap: 0)
+	),
+
+	"align": (
+		"start":   (align-items: flex-start),
+		"middle":  (align-items: center),
+		"end":     (align-items: flex-end),
+		"stretch": (align-items: stretch),
+		"between": (align-items: space‑between),
+		"around":  (align-items: space‑around),
+		"evenly":  (align-items: space‑evenly)
+	),
+
+	"justify": (
+		"start":   (justify-items: flex-start),
+		"middle":  (justify-items: center),
+		"end":     (justify-items: flex-end),
+		"stretch": (justify-items: stretch),
+		"between": (justify-items: space‑between),
+		"around":  (justify-items: space‑around),
+		"evenly":  (justify-items: space‑evenly)
+	)
+);
+
+/* Mixin for generating grid- classes
+   @NOTE requires $generate-suffix be set */
+@mixin generate-grid-utils {
+	@each $group, $items in $classes-grid-layout {
+		@each $key, $rules in $items {
+			// Choose Mable class name beased on the property's group
+			$class:
+				if($group == flow,    ".grid-flow-#{$key}",
+				if($group == density, ".grid-#{$key}",
+				if($group == align,   ".grid-align-#{$key}",
+				if($group == justify, ".grid-justify-#{$key}",
+				null))));
+			
+			// If the class string was built, output it with the rules
+			@if $class {
+				#{$class}#{$generate-suffix} {
+					@each $prop, $value in $rules {
+						#{$prop}: $value;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Generate grid setting classes
+$generate-suffix: "";
+@include generate-grid-utils;
+
+// Generate responsive grid setting classes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-grid-utils;
+	}
+}
+
+/* Maximum number of columns or rows in a grid (of that direction) */
+$grid-max-crs: 12;
+
+/* Mixin for generating col-, row-, cols-, and rows- classes
+   @NOTE requires $generate-suffix be set
+   @NOTE duplicate class selectors are included for backwards compatibility with
+		 Mable 1.* selectors with the responsive names in the middle instead of
+		 the end. */
+@mixin generate-rc {
+	@for $cr-count from 1 through $grid-max-crs {
+		.grid {
+			& > .col#{$generate-suffix}-#{$cr-count} {grid-column-end: span $cr-count}
+			& > .col-#{$cr-count}#{$generate-suffix} {grid-column-end: span $cr-count}
+			& > .row#{$generate-suffix}-#{$cr-count} {grid-row-end:    span $cr-count}
+			& > .row-#{$cr-count}#{$generate-suffix} {grid-row-end:    span $cr-count}
+		}
+		
+		.grid {
+			&.cols#{$generate-suffix}-#{$cr-count} {grid-template-columns: repeat($cr-count, 1fr);}
+			&.cols-#{$cr-count}#{$generate-suffix} {grid-template-columns: repeat($cr-count, 1fr);}
+			&.rows#{$generate-suffix}-#{$cr-count} {grid-template-rows:    repeat($cr-count, 1fr);}
+			&.rows-#{$cr-count}#{$generate-suffix} {grid-template-rows:    repeat($cr-count, 1fr);}
+		}
+	}
+}
+	
+// Create col-, row-, cols- and rows- classes
+$generate-suffix: "";
+@include generate-rc;
+
+// Create responsive col-, row-, cols- and rows- classes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-rc;
+	}
+}
+
+/* =============================================================================
+   2: Fonts & Text
+   > Size, color, style, direction, all of it.
+============================================================================= */
+
+/* Variables used for fonts */
+:root {
+	--title-font: sans-serif;
+	--title-weight: 700;
+	--title-size: 56px;
+	
+	--body-font: sans-serif;
+	--body-weight: 400;
+	--body-size: 20px;
+	
+	--bold-weight: 700;
+	
+	--reading-font: serif;
+	--reading-weight: 400;
+	--reading-size: var(--body-size);
+	
+	--monospace-font: monospace;
+	--monospace-weight: 400;
+	
+	--ui-font: var(--body-font);
+	--ui-weight: var(--bold-weight);
+	
+	--text-align: left;
+	
+	/* Backend text variables */
+	--font-size-raw: var(--body-size);
+	--font-family: var(--body-font);
+	--font-weight: var(--body-weight);
+}
+
+// Adjust text size down for smaller screens
+@media (max-width: 768px) {
+	:root {--title-scale: 7/8;}
+}
+@media (max-width: 576px) {
+	:root {
+		--title-scale: 3/4;
+		--body-scale: 9/10;
+	}
+}
+
+/* Define default text size for everything */
+* {
+	--font-size: calc(
+		var(--font-size-raw) *
+		var(--body-scale) *
+		var(--item-scale) *
+		var(--child-scale) *
+		var(--style-scale) *
+		var(--section-scale)
+	);
+	
+	text-align: var(--text-align);
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+	text-transform: var(--text-transform);
+	font-weight: var(--font-weight);
+	overflow-wrap: break-word;
+}
+
+body {line-height: 1.2;}
+b, strong {--font-weight: var(--bold-weight);}
+
+/* 2.1: Size & Position
+   ==================== */
+
+/* A map for text- size classes*/
+$classes-text-size: (
+	"tiny":   0.5,
+	"small":  0.75,
+	"normal": 1.00,
+	"large":  1.25,
+	"huge":   1.50
+);
+
+/* A map for text- alignment classes */
+$classes-text-align: (
+	"left":      left,
+	"center":    center,
+	"right":     right,
+	"justified": justify
+);
+
+/* Mixin for generating text- classes
+   @NOTE requires $generate-suffix be set */
+@mixin generate-text {
+	@each $size, $size-multiple in $classes-text-size {
+		.text-#{$size}#{$generate-suffix} {
+			--style-scale: #{$size-multiple};
+		}
+	}
+	
+	@each $align, $align-value in $classes-text-align {
+		.text-#{$align}#{$generate-suffix} {
+			--text-align: #{$align-value};
+		}
+	}
+}
+
+// Generate text- classes
+$generate-suffix: "";
+@include generate-text;
+
+// Generate responsive text- classes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-text;
+	}
+}
+
+/* 2.2: Headings
+   ============= */
+
+h1, h2, h3, h4, h5, h6 {
+	--body-scale: var(--title-scale);
+	--font-size-raw: var(--title-size);
+	--font-family: var(--title-font);
+	--font-weight: var(--title-weight);
+	line-height: 1.0;
+}
+
+h1 {--item-scale: 9/8}
+h2 {--item-scale: 8/8}
+h3 {--item-scale: 7/8}
+h4 {--item-scale: 6/8}
+h5 {--item-scale: 5/8}
+h6 {--item-scale: 4/8}
+
+/* 2.3: Other Text Items
+   ===================== */
+
+a:hover {opacity: 0.8;}
+
+abbr {--text-decoration: underline;}
+
+blockquote {
+	border-left: var(--border-width) solid var(--body-color);
+	padding: calc(var(--spacing-size) / 4) var(--spacing-size);
+	margin: var(--spacing-size);
+}
+
+.text-breadcrumbs {
+	--font-family: var(--monospace-font);
+	--font-weight: var(--monospace-weight);
+}
+
+.text-dropcap {
+	--font-family: var(--title-font);
+	--font-weight: var(--title-weight);
+	--font-size: var(--title-size);
+	float: left;
+	margin-right: calc(var(--body-size) * 2/3);
+	padding-left: calc(var(--body-size) * 1/3);
+}
+
+hr {
+	width: 25%;
+	min-width: 50px;
+	margin: var(--spacing-size) auto !important;
+	border: calc(var(--border-width) * 1/2) solid var(--body-color);
+}
+
+mark, .text-highlight {
+	background-color: var(--highlight-color);
+}
+
+figcaption {
+	--item-scale: 3/4;
+	--text-align: center;
+	margin: 8px 0px !important;
+}
+
+.text-reading {
+	--font-family: var(--reading-font);
+	--body-size: var(--reading-size);
+	--body-weight: var(--reading-weight);
+	--text-align: justify;
+}
+
+sup, sub {--item-scale: 3/4;}
+
+code, .text-code, .text-code-font {
+	--font-family: var(--monospace-font);
+	--font-weight: var(--monospace-weight);
+	--item-scale: 0.85;
+	padding: calc(var(--spacing-size) / 8) calc(var(--spacing-size) / 4);
+	border-radius: 1.5px;
+}
+
+code, .text-code {background-color: var(--complementary-shade);}
+
+pre {
+	--font-family: var(--monospace-font);
+	--font-weight: var(--monospace-weight);
+	padding: calc(var(--body-size) * 1/2);
+	overflow-x: auto;
+	background-color: var(--complementary-shade);
+	border: none;
+	border-radius: 1.5px;
+}
+
+/* =============================================================================
+   3: Colors
+   > Matches background & foreground item colors
+============================================================================= */
+
+/* Color variables */
+:root {
+	/* Color */
+	
+	--theme-color: #32a365;
+	
+	--black-color: #000000;
+	--white-color: #ffffff;
+	
+	--dark-color: #202020;
+	--middle-color-1: #383838;
+	--middle-color-2: #505050;
+	--middle-color-3: #707070;
+	--middle-color-4: #888888;
+	--middle-color-5: #a0a0a0;
+	--middle-color-6: #c8c8c8;
+	--middle-color-7: #e0e0e0;
+	--middle-color-8: #e8e8e8;
+	--light-color: #f5f5f5;
+	
+	--match-with-theme-color: var(--light-color);
+	--match-with-theme-color-dark: var(--match-with-theme-color);
+	--match-with-light: var(--dark-color);
+	--match-with-dark: var(--light-color);
+	
+	--highlight-match-with-light: var(--middle-color-5);
+	--highlight-match-with-dark: var(--middle-color-3);
+}
+
+
+* {color: var(--body-color);}
+
+// Make everything dark mode by default
+body {
+	background-color: var(--black-color);
+	--element-background-color: var(--black-color);
+	--body-color: var(--white-color);
+	--highlight-color: var(--highlight-match-with-dark);
+	--complementary-shade: var(--dark-color);
+}
+
+/* Map with data about
+   Tuples are in order of:
+   1. Background
+   2. Foreground
+   3. Highlight
+   4. Accent
+   5. Corresponding element- selector name */
+$classes-colors-data: (
+	"transparent": (
+		transparent, var(--black-color),
+		var(--highlight-match-with-light), var(--middle-color-7), "NULL"
+		),
+	"black": (
+		var(--black-color), var(--white-color),
+		var(--highlight-match-with-dark), var(--dark-color), "white"
+		),
+	"dark": (
+		var(--dark-color), var(--light-color),
+		var(--highlight-match-with-dark), var(--middle-color-1), "light"
+	),
+	"white": (
+		var(--white-color), var(--black-color),
+		var(--highlight-match-with-light), var(--middle-color-7), "black"
+	),
+	"light": (
+		var(--light-color), var(--dark-color),
+		var(--highlight-match-with-light), var(--middle-color-7), "dark"
+	),
+	"theme": (
+		var(--theme-color), var(--match-with-theme-color),
+		var(--middle-color-2), var(--middle-color-2), "theme-inverted"
+	),
+	"theme-inverted": (
+		var(--match-with-theme-color), var(--theme-color),
+		var(--middle-color-6), var(--middle-color-7), "theme"
+	),
+);
+
+/* Mixin for generating section- color and element- classes
+   @NOTE requires $generate-suffix be set */
+@mixin generate-colors {
+	// Generate section- classes before elemenet- classes so the latter has priority
+	@each $color, $color-data in $classes-colors-data {
+		$color-bg: nth($color-data, 1);
+		$color-fg: nth($color-data, 2);
+		$color-hl: nth($color-data, 3);
+		$color-ac: nth($color-data, 4);
+		$element: nth($color-data, 5);
+		
+		// Generate .section-color classes
+		.section-#{$color}#{$generate-suffix} {
+			background-color: #{$color-bg};
+			--element-background-color: #{$color-bg};
+			--body-color: #{$color-fg};
+			--highlight-color: #{$color-hl};
+			--accent-color: #{$color-ac};
+			--complementary-shade: #{$color-ac};
+		}
+	}
+	
+	// Generate element-color classes
+	// @NOTE the .element- class generated here is the only one that is moot
+	//       when applied to a section with the previously generated
+	//       seciton- class.
+	@each $color, $color-data in $classes-colors-data {
+		$color-bg: nth($color-data, 1);
+		$color-fg: nth($color-data, 2);
+		$color-hl: nth($color-data, 3);
+		$color-ac: nth($color-data, 4);
+		$element: nth($color-data, 5);
+		
+		@if $element != "NULL" {
+			.element-#{$element}#{$generate-suffix} {
+				--element-background-color: #{$color-bg};
+				--body-color: #{$color-fg};
+				--highlight-color: #{$color-hl};
+				--accent-color: #{$color-ac};
+			}
+		}
+	}
+}
+
+// Generate section- color and element- classes
+$generate-suffix: "";
+@include generate-colors;
+
+// Generate responsive section- color and element- classes
+@each $responsive-name, $responsive-data in $responsive-sizes {
+	$responsive-px: nth($responsive-data, 1);
+	$responsive-property : nth($responsive-data, 2);
+	$generate-suffix: "-"+$responsive-name;
+	
+	@media (#{$responsive-property}-width: $responsive-px) {
+		@include generate-colors;
+	}
+}
+
+// Generate section- and element- classes for darkmode
+$generate-suffix: "-darkmode";
+@media (prefers-color-scheme: dark) {
+	// Generate section- color and element- classes
+	@include generate-colors;
+}
+
+	// Generate responsive section- color and element- classes
+	@each $responsive-name, $responsive-data in $responsive-sizes {
+		$responsive-px: nth($responsive-data, 1);
+		$responsive-property : nth($responsive-data, 2);
+		$generate-suffix: "-darkmode-"+$responsive-name;
+		
+		@media (#{$responsive-property}-width: $responsive-px) {
+			@include generate-colors;
+		}
+	}
+
+/* =============================================================================
+   4: Buttons
+   > Clicky links that look cool
+============================================================================= */
+
+// All types of buttons
+button, a.button, input[type=submit].a.button {
+	
+	// UI item
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	line-height: 1;
+	
+	// Add some spacing and reduce font size
+	padding: calc(var(--spacing-size) * 3/5) var(--spacing-size);
+	margin: calc(var(--spacing-size) * 1/5);
+	--child-scale: 0.75;
+	
+	// Colors
+	// @NOTE these variables are local to a single button, they abstract away
+	//       colors from any parent item with a section-, or element- class.
+	--button--color: var(--element-background-color);
+	--button-background-color: var(--body-color);
+	color: var(--button--color);
+	background-color: var(--button-background-color);
+	
+	border: var(--border-width) solid var(--body-color);
+	
+	// Other styling
+	--text-align: center;
+	text-decoration: none;
+	--text-transform: uppercase;
+	display: inline-block;
+	cursor: pointer;
+	opacity: 1;
+	
+	// Enforce background color on all foreground elements
+	& * {color: var(--element-background-color);}
+	
+	// Hover effects on a non-hollow button
+	&:hover:not(.button-hollow) {
+		--button-background-color: transparent;
+		--button--color: var(--body-color);
+		
+		// Enforce foreground color on foreground elements (again)
+		& * {color: var(--body-color);}
+	}
+	
+	&.button-hollow:not(:hover) {
+		--button-background-color: transparent;
+		--button--color: var(--body-color);
+	}
+	
+	// Round and Pill effects
+	&.button-rounded {border-radius: var(--border-radius)}
+	&.button-rounder {border-radius: calc(var(--border-radius)*2)}
+	&.button-pull {border-radius: 9999px}
+	
+}
+
+/* =============================================================================
+   5: Badges
+   > Inline text items that stand out
+============================================================================= */
+
+// All types of badges
+badge, span.badge {
+	
+	// UI item
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	line-height: 1;
+	
+	padding: calc(var(--spacing-size) * 0.3) calc(var(--spacing-size)*0.6);
+	margin: calc(var(--spacing-size) * 0.25);
+	--child-scale: 0.50;
+	text-transform: uppercase;
+	
+	// Colors
+	color: var(--element-background-color);
+	background-color: var(--body-color);
+	border: var(--border-width) solid var(--body-color);
+	
+	&.badge-hollow {
+		color: var(--body-color);
+		background-color: transparent;
+	}
+	
+	// Other styling
+	--text-align: center;
+	--text-decoration: uppercase;
+	display: inline-block;
+	opacity: 1;
+	
+	// Round and Pill effects
+	&.badge-rounded {border-radius: var(--border-radius)}
+	&.badge-rounder {border-radius: calc(var(--border-radius)*2)}
+	&.badge-pill {border-radius: 9999px}
+	
+}
+
+/* =============================================================================
+   6: Header & Footer
+   > Less visually impacting sections
+============================================================================= */
+
+header {
+	// UI item
+ 	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	--section-scale: 0.80;
+	padding: calc(var(--spacing-size)*2) 0;
+	width:100%;
+	
+	& > * {margin: calc(3 * var(--spacing-size)) 0;}
+	& > *:first-child {margin-top: 0;}
+	& > *:last-child {margin-bottom: 0;}
+	
+	// Scroll if the header is off the screen
+	overflow-x: scroll;
+	display:inline-block;
+	
+	&.header-fixed {position: fixed;}
+	&.header-sticky {position: sticky;}
+	
+	&.header-fixed, &.header-sticky {
+		top: 0;
+		z-index: 99 !important;
+		border-bottom: var(--body-color) solid var(--border-width);
+	}
+	
+	ul, ol {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		
+		&>li {
+			padding-right: var(--spacing-size);
+			
+			display: inline-block;
+			--text-transform: uppercase;
+			&.header-dropdown:hover {
+				cursor: pointer;
+			}
+			
+			& a {text-decoration: none}
+		}
+	}
+}
+
+
+footer {
+	width: 100%;
+	padding: calc(var(--spacing-size) * 2) 0;
+	--section-scale: 0.75;
+}
+
+/* =============================================================================
+   7: Table
+   > Adjustments to make tables stand out
+============================================================================= */
+
+table {
+	border-spacing: 0;
+	width: 100%
+}
+
+th, td {
+	padding: calc(var(--spacing-size) * 4/5) calc(var(--spacing-size) * 3/5);
+	border: calc(var(--border-width) * 1/2) solid var(--body-color);
+	
+}
+
+th {
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	color: var(--element-background-color);
+	background-color: var(--body-color);
+}
+
+/* =============================================================================
+   8: Forms
+   > Adjustments to make forms look consistent
+============================================================================= */
+
+form * {
+	margin: calc(var(--spacing-size) * 2/5) 0;
+	background-color: transparent;
+	border-style: none;
+}
+
+form label {
+	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	margin-right: calc(var(--spacing-size) * 1/2);
+}
+
+input {
+	padding: calc(var(--spacing-size) * 1/4) 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 2px solid var(--body-color);
+	opacity: 1;
+	max-width: 100%;
+	margin: 0;
+}
+
+input[type="file"] {
+	border: none;
+}
+
+input[type="search"] {
+	opacity: 0.75;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	display: block;
+	opacity: 0.75;
+}
+
+.grid > * > input[type="text"], .grid > * > input[type="email"], .grid > * > input[type="password"] {
+	width: 100%;
+}
+
+input:focus {
+	opacity: 1;
+}
+
+input[type=radio] {
+	margin: calc(var(--spacing-size) * 1/2);
+}
+
+input[type=submit] {
+	display: block;
+}
+
+select {
+	border: var(--border-width) solid var(--body-color);
+	padding: calc(var(--spacing-size) * 1/2);
+}
+
+select[multiple=multiple] {
+	display: block;
+	min-width: 25%;
+}
+
+textarea {
+	padding: calc(var(--spacing-size) * 1/4);
+	border: calc(var(--border-width) * 2/3) solid var(--body-color);
+	width: 100%;
+	margin-bottom: 0;
+	transition-duration: 0s;
+	transition: 0.25s;
+}
+
+
+/* =============================================================================
+   9: Print
+   > Adjustments to make content take up less space during printing
+============================================================================= */
+
+
+@media print {
+	:root {
+		--title-scale: 3/4;
+		--body-scale: 7/10;
+	}
+	section {
+		padding-top: var(--spacing-size) !important;
+		padding-bottom: var(--spacing-size) !important;
+		background-color: var(--white-color) !important;
+		--element-background-color: var(--white-color) !important;
+		--body-color: var(--black-color) !important;
+		--highlight-color: var(--highlight-match-with-light) !important;
+		--accent-color: var(--match-with-light) !important;
+		--complementary-shade: var(--middle-color-7) !important;
+	}
+}
