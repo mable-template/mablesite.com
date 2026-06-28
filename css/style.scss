@@ -25,8 +25,8 @@ Table of Contents
 	3.3: Section Colors
 		3.2.1: Small Screens
 4: Buttons
-4: Badges
-6: Header & Footer
+5: Badges
+6: Header, Nav, & Footer
 7: Table
 8: Forms
 9: Print
@@ -78,11 +78,11 @@ img {max-width: 100% !important;}
    @NOTE the order in which these are defined is important. e.g. -sm MUST take
 		 priority over -md. */
 $responsive-sizes: (
-	"md": (1000px, "max"),
-	"sm": (760px,  "max"),
-	"xs": (540px,  "max"),
-	"lg": (1200px, "min"),
-	"xl": (1440px, "min")
+	"md": (992px,  "max"),
+	"sm": (768px,  "max"),
+	"xs": (576px,  "max"),
+	"lg": (992px,  "min"),
+	"xl": (1200px, "min")
 );
 
 // Variables used for layout & sizing
@@ -95,28 +95,11 @@ $responsive-sizes: (
 	/* Backend sizing variables */
 	--body-scale: 1;            /* Used for sizing different text selectors. */
 	--title-scale: 1;           /* Used for sizing different title selectors. */
-	--item-scale: 1;            /* Used for different element sizes, such as making image captions smaller than normal text. */
-	--child-scale: 1;           /* Used for different child element sizes */
+	--item-scale: 1;            /* Used for scaling various items relative to its surrounding text */
 	--style-scale: 1;           /* Used for .huge, .large, and .small classes */
-	--section-scale: 1;         /* Used for header and footer */
 	
 	--spacing-size-multiple: 3/4; /* How many times spacing is from --body-size */
 	--spacing-size: calc(var(--spacing-size-multiple) * var(--body-size));
-}
-
-/* Rows separate content inside themselves, and separate between their siblings */
-.row {
-	margin: calc(4*var(--spacing-size)) 0;
-	
-	&:first-child {margin-top: 0;}
-	&:last-child {margin-bottom: 0;}
-	
-	& > * {
-		margin: calc(2*var(--spacing-size)) 0;
-		
-		&:first-child {margin-top: 0;}
-		&:last-child {margin-bottom: 0;}
-	}
 }
 
 /* 1.1: Sections
@@ -135,10 +118,10 @@ section {
 $classes-section-sizes: (
 	"edgeless": 0,
 	"tiny":     2,
-	"thin":     3,
-	"regular":  5,
-	"large":    8,
-	"huge":     13
+	"thin":     4,
+	"regular":  6,
+	"large":    10,
+	"huge":     15
 );
 
 /* Mixin for section-full as it deviates from the pattern */
@@ -187,12 +170,13 @@ $generate-suffix: "";
 	margin-left: auto !important;
 	margin-right: auto !important;
 	
-	& > * {margin: calc(2 * var(--spacing-size)) 0;}
+	/* Containers also add separation between items inside itself */
+	& > * {margin: calc(4 * var(--spacing-size)) 0;}
 	& > *:first-child {margin-top: 0;}
 	& > *:last-child {margin-bottom: 0;}
 }
 
-/* A map between container width names and their maximum widths*/
+/* A map between container width names and their maximum widths */
 $classes-container-widths: (
  "": 800px,
  "-medium": 1000px,
@@ -227,6 +211,21 @@ $generate-suffix: "";
 	}
 }
 
+/* Rows separate content inside themselves, and separate between their siblings */
+.row {
+	margin: calc(4*var(--spacing-size)) 0;
+	
+	&:first-child {margin-top: 0;}
+	&:last-child {margin-bottom: 0;}
+	
+	& > * {
+		margin:var(--spacing-size) 0;
+		
+		&:first-child {margin-top: 0;}
+		&:last-child {margin-bottom: 0;}
+	}
+}
+
 /* 1.3: Grid
    ========= */
 
@@ -255,6 +254,7 @@ $classes-grid-layout: (
 	),
 
 	"density": (
+		"spacious": (--grid-gap: calc(var(--spacing-size)*4)),
 		"compact":  (--grid-gap: var(--spacing-size)),
 		"seamless": (--grid-gap: 0)
 	),
@@ -370,7 +370,7 @@ $generate-suffix: "";
 :root {
 	--title-font: sans-serif;
 	--title-weight: 700;
-	--title-size: 56px;
+	--title-size: 48px;
 	
 	--body-font: sans-serif;
 	--body-weight: 400;
@@ -413,9 +413,7 @@ $generate-suffix: "";
 		var(--font-size-raw) *
 		var(--body-scale) *
 		var(--item-scale) *
-		var(--child-scale) *
-		var(--style-scale) *
-		var(--section-scale)
+		var(--style-scale)
 	);
 	
 	text-align: var(--text-align);
@@ -426,8 +424,30 @@ $generate-suffix: "";
 	overflow-wrap: break-word;
 }
 
-body {line-height: 1.2;}
+body {line-height: 1.25;}
 b, strong {--font-weight: var(--bold-weight);}
+
+mark, .text-highlight {
+	background-color: var(--highlight-color);
+}
+
+.text-reading {
+	--font-family: var(--reading-font);
+	--body-size: var(--reading-size);
+	--body-weight: var(--reading-weight);
+	--text-align: justify;
+}
+
+
+code, .text-code, .text-code-font {
+	--font-family: var(--monospace-font);
+	--font-weight: var(--monospace-weight);
+	--item-scale: 0.85;
+	padding: calc(var(--spacing-size) / 8) calc(var(--spacing-size) / 4);
+	border-radius: 1.5px;
+}
+
+code, .text-code {background-color: var(--complementary-shade);}
 
 /* 2.1: Size & Position
    ==================== */
@@ -488,15 +508,15 @@ h1, h2, h3, h4, h5, h6 {
 	--font-size-raw: var(--title-size);
 	--font-family: var(--title-font);
 	--font-weight: var(--title-weight);
-	line-height: 1.0;
+	line-height: 1.00;
 }
 
-h1 {--item-scale: 9/8}
-h2 {--item-scale: 8/8}
-h3 {--item-scale: 7/8}
-h4 {--item-scale: 6/8}
-h5 {--item-scale: 5/8}
-h6 {--item-scale: 4/8}
+h1 {--title-scale: 1.125}
+h2 {--title-scale: 1.000}
+h3 {--title-scale: 0.875}
+h4 {--title-scale: 0.750}
+h5 {--title-scale: 0.625}
+h6 {--title-scale: 0.500}
 
 /* 2.3: Other Text Items
    ===================== */
@@ -507,15 +527,12 @@ abbr {--text-decoration: underline;}
 
 blockquote {
 	border-left: var(--border-width) solid var(--body-color);
-	padding: calc(var(--spacing-size) / 4) var(--spacing-size);
+	padding: var(--spacing-size);
+	padding-left: calc(var(--spacing-size)*2);
 	margin: var(--spacing-size);
 }
 
-.text-breadcrumbs {
-	--font-family: var(--monospace-font);
-	--font-weight: var(--monospace-weight);
-}
-
+// Built-in dropcap
 .text-dropcap {
 	--font-family: var(--title-font);
 	--font-weight: var(--title-weight);
@@ -526,49 +543,21 @@ blockquote {
 }
 
 hr {
-	width: 25%;
-	min-width: 50px;
+	width: 100%;
 	margin: var(--spacing-size) auto !important;
 	border: calc(var(--border-width) * 1/2) solid var(--body-color);
 }
 
-mark, .text-highlight {
-	background-color: var(--highlight-color);
-}
-
-figcaption {
-	--item-scale: 3/4;
-	--text-align: center;
-	margin: 8px 0px !important;
-}
-
-.text-reading {
-	--font-family: var(--reading-font);
-	--body-size: var(--reading-size);
-	--body-weight: var(--reading-weight);
-	--text-align: justify;
-}
-
-sup, sub {--item-scale: 3/4;}
-
-code, .text-code, .text-code-font {
-	--font-family: var(--monospace-font);
-	--font-weight: var(--monospace-weight);
-	--item-scale: 0.85;
-	padding: calc(var(--spacing-size) / 8) calc(var(--spacing-size) / 4);
-	border-radius: 1.5px;
-}
-
-code, .text-code {background-color: var(--complementary-shade);}
+sup, sub {--item-scale: 0.70;}
 
 pre {
 	--font-family: var(--monospace-font);
 	--font-weight: var(--monospace-weight);
-	padding: calc(var(--body-size) * 1/2);
+	padding: var(--body-size);
 	overflow-x: auto;
 	background-color: var(--complementary-shade);
 	border: none;
-	border-radius: 1.5px;
+	border-radius: var(--border-radius);
 }
 
 /* =============================================================================
@@ -578,13 +567,12 @@ pre {
 
 /* Color variables */
 :root {
-	/* Color */
-	
+	/* Stands out from the rest */
 	--theme-color: #32a365;
 	
+	/* Greys */
 	--black-color: #000000;
 	--white-color: #ffffff;
-	
 	--dark-color: #202020;
 	--middle-color-1: #383838;
 	--middle-color-2: #505050;
@@ -596,15 +584,16 @@ pre {
 	--middle-color-8: #e8e8e8;
 	--light-color: #f5f5f5;
 	
+	/* Extra variables to abstract away some logic */
 	--match-with-theme-color: var(--light-color);
 	--match-with-theme-color-dark: var(--match-with-theme-color);
 	--match-with-light: var(--dark-color);
 	--match-with-dark: var(--light-color);
 	
+	/* Variables to hold the highlight color that contrasts a light and dark bg */
 	--highlight-match-with-light: var(--middle-color-5);
 	--highlight-match-with-dark: var(--middle-color-3);
 }
-
 
 * {color: var(--body-color);}
 
@@ -719,7 +708,6 @@ $generate-suffix: "-darkmode";
 @media (prefers-color-scheme: dark) {
 	// Generate section- color and element- classes
 	@include generate-colors;
-}
 
 	// Generate responsive section- color and element- classes
 	@each $responsive-name, $responsive-data in $responsive-sizes {
@@ -731,6 +719,7 @@ $generate-suffix: "-darkmode";
 			@include generate-colors;
 		}
 	}
+}
 
 /* =============================================================================
    4: Buttons
@@ -748,7 +737,7 @@ button, a.button, input[type=submit].a.button {
 	// Add some spacing and reduce font size
 	padding: calc(var(--spacing-size) * 3/5) var(--spacing-size);
 	margin: calc(var(--spacing-size) * 1/5);
-	--child-scale: 0.75;
+	--item-scale: 0.75;
 	
 	// Colors
 	// @NOTE these variables are local to a single button, they abstract away
@@ -807,7 +796,7 @@ badge, span.badge {
 	
 	padding: calc(var(--spacing-size) * 0.3) calc(var(--spacing-size)*0.6);
 	margin: calc(var(--spacing-size) * 0.25);
-	--child-scale: 0.50;
+	--item-scale: 0.75;
 	text-transform: uppercase;
 	
 	// Colors
@@ -834,25 +823,23 @@ badge, span.badge {
 }
 
 /* =============================================================================
-   6: Header & Footer
-   > Less visually impacting sections
+   6: Header
+   > Special section with a nav bar
 ============================================================================= */
 
 header {
 	// UI item
  	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
-	--section-scale: 0.80;
 	padding: calc(var(--spacing-size)*2) 0;
 	width:100%;
-	
-	& > * {margin: calc(3 * var(--spacing-size)) 0;}
-	& > *:first-child {margin-top: 0;}
-	& > *:last-child {margin-bottom: 0;}
 	
 	// Scroll if the header is off the screen
 	overflow-x: scroll;
 	display:inline-block;
+	
+	display: grid;
+	align-items: flex-start;	
 	
 	&.header-fixed {position: fixed;}
 	&.header-sticky {position: sticky;}
@@ -862,7 +849,9 @@ header {
 		z-index: 99 !important;
 		border-bottom: var(--body-color) solid var(--border-width);
 	}
-	
+}
+
+nav {
 	ul, ol {
 		margin: 0;
 		padding: 0;
@@ -870,25 +859,28 @@ header {
 		flex-wrap: nowrap;
 		align-items: center;
 		
+		grid-auto-flow: column;
+		list-style: none;
+		padding: 0;
+		
+		align-items: center;
+		grid-gap: calc(1.5*var(--spacing-size));
+		
 		&>li {
-			padding-right: var(--spacing-size);
-			
 			display: inline-block;
 			--text-transform: uppercase;
-			&.header-dropdown:hover {
-				cursor: pointer;
-			}
 			
 			& a {text-decoration: none}
 		}
 	}
 }
 
-
 footer {
-	width: 100%;
-	padding: calc(var(--spacing-size) * 2) 0;
-	--section-scale: 0.75;
+	// UI item
+ 	--font-family: var(--ui-font);
+	--font-weight: var(--ui-weight);
+	padding: calc(var(--spacing-size)*3) 0;
+	width:100%;
 }
 
 /* =============================================================================
@@ -902,8 +894,8 @@ table {
 }
 
 th, td {
-	padding: calc(var(--spacing-size) * 4/5) calc(var(--spacing-size) * 3/5);
-	border: calc(var(--border-width) * 1/2) solid var(--body-color);
+	padding: calc(var(--spacing-size) * 0.8) calc(var(--spacing-size) * 3/5);
+	border: calc(var(--border-width) * 0.5) solid var(--body-color);
 	
 }
 
@@ -920,7 +912,7 @@ th {
 ============================================================================= */
 
 form * {
-	margin: calc(var(--spacing-size) * 2/5) 0;
+	margin: calc(var(--spacing-size)/2) 0;
 	background-color: transparent;
 	border-style: none;
 }
@@ -928,11 +920,11 @@ form * {
 form label {
 	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
-	margin-right: calc(var(--spacing-size) * 1/2);
+	margin-right: calc(var(--spacing-size)/2);
 }
 
 input {
-	padding: calc(var(--spacing-size) * 1/4) 0;
+	padding: calc(var(--spacing-size)/4) 0;
 	border: 0;
 	outline: 0;
 	background: transparent;
@@ -942,38 +934,24 @@ input {
 	margin: 0;
 }
 
-input[type="file"] {
-	border: none;
-}
+input[type="file"] {border: none;}
 
-input[type="search"] {
-	opacity: 0.75;
-}
+input[type="search"] {opacity: 0.75;}
 
 input[type="text"], input[type="email"], input[type="password"] {
 	display: block;
 	opacity: 0.75;
 }
 
-.grid > * > input[type="text"], .grid > * > input[type="email"], .grid > * > input[type="password"] {
-	width: 100%;
-}
+input:focus {opacity: 1;}
 
-input:focus {
-	opacity: 1;
-}
+input[type=radio] {margin: calc(var(--spacing-size)/2);}
 
-input[type=radio] {
-	margin: calc(var(--spacing-size) * 1/2);
-}
-
-input[type=submit] {
-	display: block;
-}
+input[type=submit] {display: block;}
 
 select {
 	border: var(--border-width) solid var(--body-color);
-	padding: calc(var(--spacing-size) * 1/2);
+	padding: calc(var(--spacing-size)/2);
 }
 
 select[multiple=multiple] {
@@ -982,25 +960,23 @@ select[multiple=multiple] {
 }
 
 textarea {
-	padding: calc(var(--spacing-size) * 1/4);
-	border: calc(var(--border-width) * 2/3) solid var(--body-color);
+	padding: calc(var(--spacing-size)/2);
+	border: var(--border-width) solid var(--body-color);
 	width: 100%;
 	margin-bottom: 0;
 	transition-duration: 0s;
 	transition: 0.25s;
 }
 
-
 /* =============================================================================
    9: Print
    > Adjustments to make content take up less space during printing
 ============================================================================= */
 
-
 @media print {
 	:root {
-		--title-scale: 3/4;
-		--body-scale: 7/10;
+		--title-scale: 0.65;
+		--body-scale: 0.75;
 	}
 	section {
 		padding-top: var(--spacing-size) !important;

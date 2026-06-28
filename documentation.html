@@ -15,20 +15,20 @@
 	<body>
 		
 		<!-- Title Section -->
-		<section class="section-theme" id="title-section">
+		<header class="section-theme" id="title-section">
 			<div class="container">
 				<div class="row">
 					<h1>Mable Documentation</h1>
 					<p class="text-breadcrumbs"><a href="index.html">home</a> / documentation.html</p>
-					<h2 class="text-tagline">In progress</h2>
 				</div>
 				<div class="row">
+					<p>Try another theme:</p>
 					<input type="text" placeholder="Try Another Theme" onkeypress="checkHeaderTheme(event)" id="header-theme-field">
 				</div>
 			</div>
-		</section>
+		</header>
 		
-		<section class="section-light section-thin dark-enabled">
+		<section class="section-black section-thin">
 			<div class="container">
 				<div class="row">
 					<p>This page contains documentation on how to build HTML that works with Mable. Please see the below links for other documentation</p>
@@ -66,10 +66,10 @@
 		</section>
 		
 		<!-- General Document Setup -->
-		<section class="section-thin-xs section-light section-dark-darkmode" id="general-document-setup">
+		<section class="section-thin-xs section-black" id="general-document-setup">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">1.0</h1>
+					<h1 class="text-tiny">1.0</h1>
 					<h1>General Document Setup</h1>
 					<p>A typical Mable HTML document will look like this:</p>
 					<pre>
@@ -105,7 +105,7 @@
 		<section class="section-thin-xs section-dark" id="layout">
 			<div class="container" id="layout--text-container">
 				<div class="row">
-					<h1 class="section-number">2.0</h1>
+					<h1 class="text-tiny">2.0</h1>
 					<h1>Layout</h1>
 					<p>This section is about the larger blocks that make up Mable webpages.
 				</div>
@@ -115,7 +115,7 @@
 				</div>
 				
 				<div class="row" id="layout--dynamic-screen-sizes">
-					<h2 class="section-number">2.1</h2>
+					<h2 class="text-tiny">2.1</h2>
 					<h2>Dynamic Screen Sizes</h2>
 					<p>In order to help compensate for the wide range of screen sizes, Mable has implemented compatibility for Bootstrap-standard dynamic screen size selectors:</p>
 					<ul>
@@ -129,7 +129,7 @@
 				</div>
 				
 				<div class="row" id="layout--sections-containers-rows">
-					<h2 class="section-number">2.2</h2>
+					<h2 class="text-tiny">2.2</h2>
 					<h2>Sections, Containers, and Rows</h2>
 					<p>Generally, the page is comprised of sections, one after the other, which looks like a series of horizontal stripes. They are typically coded like this:</p>
 					<pre>
@@ -165,7 +165,7 @@
 				</div>
 				
 				<div class="row" id="layout--grids">
-					<h2 class="section-number">2.3</h2>
+					<h2 class="text-tiny">2.3</h2>
 					<h2>Grids</h2>
 					<p>Grids are very simple, and are similar to Bootstrap's. To create a grid, simply make a parent <code>&lt;div&gt;</code> with the <code>.grid</code> class. It is recommended to use the <code>.row</code> structure as the grid container so you can easily mix grids in with regular text within a container, but any tag that displays as a block will work fine.</p>
 					<pre>
@@ -198,13 +198,13 @@
 					<p>These are also compatible with dynamic screen size selectors:</p>
 					<pre>
 &lt;div class="row grid"&gt;
-	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+	&lt;div class="col-4 col-6-sm col-12-xs"&gt;
 		&lt;!-- Content --&gt;
 	&lt;/div&gt;
-	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+	&lt;div class="col-4 col-6-sm col-12-xs"&gt;
 		&lt;!-- Content --&gt;
 	&lt;/div&gt;
-	&lt;div class="col-4 col-sm-6 col-xs-12"&gt;
+	&lt;div class="col-4 col-6-sm col-12-xs"&gt;
 		&lt;!-- Content --&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</pre>
@@ -224,7 +224,7 @@
 					<p>This is intended to be used for a portfolio or a list of blog posts or something where each element would have the same width, but nonetheless you can still specify the column-width for each child element.</p>
 					<p>This is also compatible with dynamic screen size selectors:</p>
 					<pre>
-&lt;div class="row grid cols-3 cols-sm-2 cols-xs-1"&gt;
+&lt;div class="row grid cols-3 cols-sm-2 cols-1-xs"&gt;
 	&lt;div&gt;
 		&lt;!-- Content --&gt;
 	&lt;/div&gt;
@@ -249,9 +249,9 @@
 						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-3</p></div>
 						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-3</p></div>
 						<div class="col-3 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-3</p></div>
-						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-sm-6 col-xs-4</p></div>
-						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-sm-6 col-xs-4</p></div>
-						<div class="col-12 col-sm-6 col-xs-4 section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-sm-6 col-xs-4</p></div>
+						<div class="col-12 col-6-sm col-4-xs section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-6-sm col-4-xs</p></div>
+						<div class="col-12 col-6-sm col-4-xs section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-6-sm col-4-xs</p></div>
+						<div class="col-12 col-6-sm col-4-xs section-dark" style="padding:calc(var(--spacing-size) * 1 / 2); border:var(--border-width) solid var(--body-color)"><p class="text-code-font">col-12 col-6-sm col-4-xs</p></div>
 					</div>
 					
 					<p class="text-code-font">.grid.cols-3</p>
@@ -271,7 +271,7 @@
 		<section class="section-thin-xs section-black" id="content-and-text fonts-and-text">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">3.0</h1>
+					<h1 class="text-tiny">3.0</h1>
 					<h1>Content and Text</h1>
 					<p>There really isn't much to this section. Once inside a row or a grid child element, you can put basically any item and it should just work. Mable offers a bit of extra customization and functionality.</p>
 					<p>There are four classes to customize the text alignment: <code>.text-left</code>, <code>.text-center</code>, <code>.text-right</code>, and <code>.text-justified</code>. These will apply to any and child elements automatically, not just what the class is applied to. These are also compatible with dynamic screen size selectors: <code>.text-center-xs</code>, etc.</p>
@@ -309,7 +309,7 @@
 		<section class="section-thin-xs section-dark" id="colors">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">4.0</h1>
+					<h1 class="text-tiny">4.0</h1>
 					<h1>Colors</h1>
 					<div class="section-light dark-enabled row" style="padding:var(--spacing-size);">
 						<p>You can click on any of the class names that <b>are in a list</b> to apply it to this section.</p>
@@ -360,7 +360,7 @@
 		<section class="section-thin-xs section-black" id="buttons">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">5.0</h1>
+					<h1 class="text-tiny">5.0</h1>
 					<h1>Buttons</h1>
 					<p>Buttons are very simple. They can take three forms:</p>
 					<pre>&lt;a class="button">Text&lt;/a&gt;
@@ -381,7 +381,7 @@
 		<section class="section-thin-xs section-dark" id="code">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">6.0</h1>
+					<h1 class="text-tiny">6.0</h1>
 					<h1>Code</h1>
 					<p>Mable offeres a few choices for displaying code blocks.</p>
 					<p>Using the <code>&lt;pre&gt;</code> tag will apply a washed out background to the code, and make the font monospace. Use the <code>&lt;code&gt;</code> tag or the <code>.code</code> class for inline uses.</p>
@@ -394,7 +394,7 @@
 		<section class="section-thin-xs section-black" id="headers">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">7.0</h1>
+					<h1 class="text-tiny">7.0</h1>
 					<h1>Headers</h1>
 					<p>Headers are super simple. They work like normal sections, with a few special selectors.<p>
 					<pre>&lt;header class="section-dark" id="navigation"&gt;
@@ -431,7 +431,7 @@
 		<section class="section-thin-xs section-dark" id="footers">
 			<div class="container">
 				<div class="row">
-					<h1 class="section-number">8.0</h1>
+					<h1 class="text-tiny">8.0</h1>
 					<h1>Footers</h1>
 					<p>Footers don't do anything except make the items inside it slightly smaller. Use the <code>&lt;footer&gt;</code> tag in place of a <code>&lt;section&gt;</code> to use this behavior.</p>
 				</div>
