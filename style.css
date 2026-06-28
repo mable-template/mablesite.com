@@ -5064,12 +5064,6 @@ span.badge {
 	opacity: 1
 }
 
-badge.badge-hollow,
-span.badge.badge-hollow {
-	color: var(--body-color);
-	background-color: transparent
-}
-
 badge.badge-rounded,
 span.badge.badge-rounded {
 	border-radius: var(--border-radius)

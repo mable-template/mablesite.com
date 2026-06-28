@@ -791,11 +791,6 @@ badge, span.badge {
 	background-color: var(--body-color);
 	border: var(--border-width) solid var(--body-color);
 	
-	&.badge-hollow {
-		color: var(--body-color);
-		background-color: transparent;
-	}
-	
 	// Other styling
 	--text-align: center;
 	--text-decoration: uppercase;
