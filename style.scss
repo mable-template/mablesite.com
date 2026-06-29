@@ -252,12 +252,15 @@ $generate-suffix: "";
 		
 		// Add margin around text items
 		& > .row {
-			margin: calc(var(--spacing-size)*2);
+			padding: calc(var(--spacing-size)*2);
 		}
 		
 		// Visual indication of a card
 		overflow: hidden;
-		border-radius: var(--border-radius);
+		border-radius: calc(var(--border-radius)*2);
+		
+		// One item by default
+		grid-template-columns: repeat(1, 1fr);
 	}
 }
 
