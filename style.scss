@@ -244,6 +244,21 @@ $generate-suffix: "";
 		grid-column-end: span 1;
 		margin: 0;
 	}
+	
+	/* A card is a type of grid which collects closely releated */
+	&.card {
+		// No gap between items
+		--grid-gap: 0;
+		
+		// Add margin around text items
+		& > .row {
+			margin: calc(var(--spacing-size)*2);
+		}
+		
+		// Visual indication of a card
+		overflow: hidden;
+		border-radius: var(--border-radius);
+	}
 }
 
 /* Define this giant map that represents all properties a .grid may have */
