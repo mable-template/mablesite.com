@@ -753,8 +753,8 @@ button, a.button, input[type=submit].a.button {
 	line-height: 1;
 	
 	// Add some spacing and reduce font size
-	padding: calc(var(--spacing-size) * 3/5) var(--spacing-size);
-	margin: calc(var(--spacing-size) * 1/5);
+	padding: calc(var(--spacing-size) * 0.6);
+	margin: calc(var(--spacing-size) * 0.2);
 	--item-scale: 0.75;
 	
 	// Other styling
@@ -783,7 +783,11 @@ button, a.button, input[type=submit].a.button {
 	// Round and Pill effects
 	&.button-rounded {border-radius: var(--border-radius)}
 	&.button-rounder {border-radius: calc(var(--border-radius)*2)}
-	&.button-pill {border-radius: 9999px}
+	&.button-pill {
+		border-radius: 9999px;
+		// Extra padding to accomodate tight border radii
+		padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 0.6);
+	}
 }
 
 /* =============================================================================
