@@ -786,7 +786,7 @@ button, a.button, input[type=submit].a.button {
 	&.button-pill {
 		border-radius: 9999px;
 		// Extra padding to accomodate tight border radii
-		padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 0.6);
+		padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 1.2);
 	}
 }
 
@@ -803,9 +803,9 @@ badge, span.badge {
 	--font-weight: var(--ui-weight);
 	line-height: 1;
 	
-	padding: calc(var(--spacing-size) * 0.3) calc(var(--spacing-size)*0.6);
-	margin: calc(var(--spacing-size) * 0.25);
-	--item-scale: 0.75;
+	padding: calc(var(--spacing-size) * 1.0);
+	margin: calc(var(--spacing-size) * 0.4);
+	--item-scale: 0.60;
 	text-transform: uppercase;
 	
 	// Colors
@@ -822,7 +822,11 @@ badge, span.badge {
 	// Round and Pill effects
 	&.badge-rounded {border-radius: var(--border-radius)}
 	&.badge-rounder {border-radius: calc(var(--border-radius)*2)}
-	&.badge-pill {border-radius: 9999px}
+	&.badge-pill {
+		border-radius: 9999px;
+		// Extra padding to accomodate tight border radii
+		padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 1.2);
+	}
 	
 }
 

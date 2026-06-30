@@ -507,6 +507,17 @@ section>*:last-child {
 	margin: 0
 }
 
+.grid.card {
+	--grid-gap: 0;
+	overflow: hidden;
+	border-radius: calc(var(--border-radius)*2);
+	grid-template-columns: repeat(1, 1fr)
+}
+
+.grid.card>.row {
+	padding: calc(var(--spacing-size)*2)
+}
+
 .grid-flow-rows {
 	grid-auto-flow: row
 }
@@ -4997,8 +5008,8 @@ input[type=submit].a.button {
 	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
 	line-height: 1;
-	padding: calc(var(--spacing-size) * 3/5) var(--spacing-size);
-	margin: calc(var(--spacing-size) * 1/5);
+	padding: calc(var(--spacing-size) * 0.6);
+	margin: calc(var(--spacing-size) * 0.2);
 	--item-scale: 0.75;
 	--text-align: center;
 	text-decoration: none;
@@ -5043,7 +5054,8 @@ input[type=submit].a.button.button-rounder {
 button.button-pill,
 a.button.button-pill,
 input[type=submit].a.button.button-pill {
-	border-radius: 9999px
+	border-radius: 9999px;
+	padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 1.2)
 }
 
 badge,
@@ -5051,9 +5063,9 @@ span.badge {
 	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
 	line-height: 1;
-	padding: calc(var(--spacing-size) * 0.3) calc(var(--spacing-size)*0.6);
-	margin: calc(var(--spacing-size) * 0.25);
-	--item-scale: 0.75;
+	padding: calc(var(--spacing-size) * 1.0);
+	margin: calc(var(--spacing-size) * 0.4);
+	--item-scale: 0.60;
 	text-transform: uppercase;
 	color: var(--element-background-color);
 	background-color: var(--body-color);
@@ -5076,7 +5088,8 @@ span.badge.badge-rounder {
 
 badge.badge-pill,
 span.badge.badge-pill {
-	border-radius: 9999px
+	border-radius: 9999px;
+	padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 1.2)
 }
 
 header {
