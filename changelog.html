@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<!-- Page Info -->
+		<title>Version Changelog - Mable - a Multipourpouse HTML Template</title>
+		<meta name="description" content="Mable is a free and easy to use multipourpose HTML template that is licensed under MIT">
+		<meta name="keywords" content="HTML, Open Source, HTML Template, Free">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- CSS Sheets -->
+		<link type="text/css" rel="stylesheet" href="style.css">
+			
+		<!-- Themes -->
+		<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
+	</head>
+	<body>
+		<!-- Simple Centered -->
+		<section class="section-theme section-thin" id="simple-centered">
+			<div class="container">
+				<div class="row">
+					<h1>Changelog</h1>
+					<p class="text-breadcrumbs"><a href="index.html">home</a> / changelog.html</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="section-light dark-enabled" id="content">
+			<div class="container">
+				<div class="row">
+					<h2>Explaining Versioning</h2>
+					<p>Mable prides itself on being simple, and its version codes are easy to understand. The codes contain three numbers, such as <code>1.0.1</code>.</p>
+					<p>The three numbers are as follows:</p>
+					<ol>
+						<li>Major revision</li>
+						<li>Minor revision</li>
+						<li>Bug fixes</li>
+					</ol>
+					<p>Major revisions contain functional changes, new features, any new namespaces, and anything which would heavily impact stability. Minor revisions have miscelaneous changes, and may change functionality, but never in a significant way, and never introduce new features. Bug fix versions are for bug fixes.</p>
+					<p>It is up to you when and how, or if you want to update your main CSS file. <b>All themes are compatible with all versions of mable</b>. Past, present, and future, provided they only affect variables. Affecting selectors directly can cause forward-compatability problems.</b>
+				</div>
+				
+				<div class="row">
+					<h2>Versions</h2>
+					
+					<h3 class="text-small" id="1.1">1.1</h3>
+					<ul>
+						<li>Organization changes</li>
+						<li>Various bug fixes</li>
+						<li>Removed <code>top</code> namespace. <code>.top-section-transparent</code> is now <code>.section-transparent-top</code></li>
+					</ul>
+					
+					<h3 class="text-small" id="1.0.1">1.0.1</h3>
+					<ul>
+						<li>Various bug fixes</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+		<footer class="section-theme">
+			<div class="container-large">
+				<div class="row">
+					<h1>Mable HTML Template</h1>
+					<input type="text" placeholder="Try Another Theme" onkeypress="checkFooterTheme(event)" id="footer-theme-field">
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<!-- Scripts -->
+		<script src="js/top.js"></script>
+		<script>
+			var customTheme = document.getElementById("custom-theme-sheet");
+					
+			function checkHeaderTheme(e){
+				let customThemeInputHeader = document.getElementById("header-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputHeader.substr(0,5) == 'http:' || customThemeInputHeader.substr(0,6) == 'https:' || customThemeInputHeader.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputHeader;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputHeader + ".css";
+					}
+				}
+			}
+					
+			function checkFooterTheme(e){
+				let customThemeInputFooter = document.getElementById("footer-theme-field").value;
+				
+				if(e.keyCode == 13){
+					if (customThemeInputFooter.substr(0,5) == 'http:' || customThemeInputFooter.substr(0,6) == 'https:' || customThemeInputFooter.substr(0,6) == 'local:') {
+						customTheme.href = customThemeInputFooter;
+					}
+					else {
+						customTheme.href = "https://cdn.mablesite.com/themes/" + customThemeInputFooter + ".css";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
