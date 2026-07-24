@@ -416,13 +416,10 @@ $generate-suffix: "";
 
 // Adjust text size down for smaller screens
 @media (max-width: 768px) {
-	:root {--title-scale: 7/8;}
+	:root {--title-scale: 0.75;}
 }
 @media (max-width: 576px) {
-	:root {
-		--title-scale: 3/4;
-		--body-scale: 9/10;
-	}
+	:root {--body-scale: 0.75;}
 }
 
 /* Define default text size for everything */
@@ -529,12 +526,12 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.00;
 }
 
-h1 {--title-scale: 1.125}
-h2 {--title-scale: 1.000}
-h3 {--title-scale: 0.875}
-h4 {--title-scale: 0.750}
-h5 {--title-scale: 0.625}
-h6 {--title-scale: 0.500}
+h1 {font-size: var(--font-size)}
+h2 {font-size: calc(var(--font-size)*0.8)}
+h3 {font-size: calc(var(--font-size)*0.7)}
+h4 {font-size: calc(var(--font-size)*0.6)}
+h5 {font-size: calc(var(--font-size)*0.5)}
+h6 {font-size: calc(var(--font-size)*0.4)}
 
 /* 2.3: Other Text Items
    ===================== */
