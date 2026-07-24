@@ -803,8 +803,8 @@ badge, span.badge {
 	--font-weight: var(--ui-weight);
 	line-height: 1;
 	
-	padding: calc(var(--spacing-size) * 1.0);
-	margin: calc(var(--spacing-size) * 0.4);
+	padding: calc(var(--spacing-size) * 0.5);
+	margin: calc(var(--spacing-size) * 0.25);
 	--item-scale: 0.60;
 	text-transform: uppercase;
 	
@@ -825,7 +825,7 @@ badge, span.badge {
 	&.badge-pill {
 		border-radius: 9999px;
 		// Extra padding to accomodate tight border radii
-		padding: calc(var(--spacing-size) * 0.6) calc(var(--spacing-size) * 1.2);
+		padding: calc(var(--spacing-size) * 0.5) calc(var(--spacing-size) * 1.0);
 	}
 	
 }
