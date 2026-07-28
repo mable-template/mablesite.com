@@ -17,10 +17,16 @@ jobs:
         id: build
         run: make
         
+      - name: Clean Git
+        id: clean
+        run: rm -rf .git
+        
       - name: Zip repository
+        id: zip
         run: zip -r -9 "build-output.zip" .
         
       - name: Upload artifact
+        id: upload
         uses: actions/upload-artifact@v3
         with:
           name: build-output
