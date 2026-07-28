@@ -1,0 +1,23 @@
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      
+      - name: Update Container
+        id: update-container
+        run: sudo apt-get update
+      
+      - name: Install Dependencies
+        id: install-dependencies
+        run: sudo apt-get install -y sassc css-beautify
+        
+      - name: Zip repository
+        run: zip -r -9 "build-output.zip" .
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: build-output.zip
