@@ -12,6 +12,10 @@ jobs:
       - name: Install Dependencies
         id: install-dependencies
         run: sudo apt-get install -y sassc css-beautify
+      
+      - name: Build
+        id: build
+        run: make
         
       - name: Zip repository
         run: zip -r -9 "build-output.zip" .
