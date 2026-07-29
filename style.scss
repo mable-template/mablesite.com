@@ -135,9 +135,8 @@ $classes-section-sizes: (
 	& > * {margin: auto;}
 }
 
-/* Mixin for generating section- size classes
-   @NOTE requires $generate-suffix be set */
-@mixin generate-section-size {
+/* Mixin for generating section- size classes */
+@mixin generate-section-size ($generate-suffix: "") {
 	@each $size-name, $size-mult in $classes-section-sizes {
 		.section-#{$size-name}#{$generate-suffix} {
 			padding: calc(var(--spacing-size) * #{$size-mult}) 0;
@@ -147,17 +146,15 @@ $classes-section-sizes: (
 }
 
 // Generate section- size classes
-$generate-suffix: "";
 @include generate-section-size
 
 // Generate responsive section classes for different sizes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-section-size;
+		@include generate-section-size("-"+$responsive-name);
 	}
 }
 
@@ -185,9 +182,8 @@ $classes-container-widths: (
  "-fluid":  100%
 );
 
-/* Mixin for generating container- classes
-   @NOTE requires $generate-suffix be set */
-@mixin generate-containers {
+/* Mixin for generating container- classes */
+@mixin generate-containers ($generate-suffix: "") {
 	// Generate container classes for different sizes
 	@each $size, $size-px in $classes-container-widths {
 		.container#{$size}#{$generate-suffix} {
@@ -197,17 +193,15 @@ $classes-container-widths: (
 };
 
 // Generate container sizes
-$generate-suffix: "";
 @include generate-containers;
 
 // Generate responsive container classes for different sizes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-containers;
+		@include generate-containers("-"+$responsive-name);
 	}
 }
 
@@ -298,9 +292,8 @@ $classes-grid-layout: (
 	)
 );
 
-/* Mixin for generating grid- classes
-   @NOTE requires $generate-suffix be set */
-@mixin generate-grid-utils {
+/* Mixin for generating grid- classes */
+@mixin generate-grid-utils ($generate-suffix: "") {
 	@each $group, $items in $classes-grid-layout {
 		@each $key, $rules in $items {
 			// Choose Mable class name beased on the property's group
@@ -324,17 +317,15 @@ $classes-grid-layout: (
 }
 
 // Generate grid setting classes
-$generate-suffix: "";
 @include generate-grid-utils;
 
 // Generate responsive grid setting classes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-grid-utils;
+		@include generate-grid-utils("-"+$responsive-name);
 	}
 }
 
@@ -342,11 +333,10 @@ $generate-suffix: "";
 $grid-max-crs: 12;
 
 /* Mixin for generating col-, row-, cols-, and rows- classes
-   @NOTE requires $generate-suffix be set
    @NOTE duplicate class selectors are included for backwards compatibility with
 		 Mable 1.* selectors with the responsive names in the middle instead of
 		 the end. */
-@mixin generate-rc {
+@mixin generate-rc ($generate-suffix: "") {
 	@for $cr-count from 1 through $grid-max-crs {
 		.grid {
 			& > .col#{$generate-suffix}-#{$cr-count} {grid-column-end: span $cr-count}
@@ -365,17 +355,15 @@ $grid-max-crs: 12;
 }
 	
 // Create col-, row-, cols- and rows- classes
-$generate-suffix: "";
 @include generate-rc;
 
 // Create responsive col-, row-, cols- and rows- classes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-rc;
+		@include generate-rc("-"+$responsive-name);
 	}
 }
 
@@ -484,9 +472,8 @@ $classes-text-align: (
 	"justified": justify
 );
 
-/* Mixin for generating text- classes
-   @NOTE requires $generate-suffix be set */
-@mixin generate-text {
+/* Mixin for generating text- classes */
+@mixin generate-text ($generate-suffix: "") {
 	@each $size, $size-multiple in $classes-text-size {
 		.text-#{$size}#{$generate-suffix} {
 			--style-scale: #{$size-multiple};
@@ -501,17 +488,15 @@ $classes-text-align: (
 }
 
 // Generate text- classes
-$generate-suffix: "";
 @include generate-text;
 
 // Generate responsive text- classes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-text;
+		@include generate-text("-"+$responsive-name);
 	}
 }
 
@@ -659,9 +644,8 @@ $classes-colors-data: (
 	),
 );
 
-/* Mixin for generating section- color and element- classes
-   @NOTE requires $generate-suffix be set */
-@mixin generate-colors {
+/* Mixin for generating section- color and element- classes */
+@mixin generate-colors ($generate-suffix: "") {
 	// Generate section- classes before elemenet- classes so the latter has priority
 	@each $color, $color-data in $classes-colors-data {
 		$color-bg: nth($color-data, 1);
@@ -704,34 +688,30 @@ $classes-colors-data: (
 }
 
 // Generate section- color and element- classes
-$generate-suffix: "";
 @include generate-colors;
 
 // Generate responsive section- color and element- classes
 @each $responsive-name, $responsive-data in $responsive-sizes {
 	$responsive-px: nth($responsive-data, 1);
 	$responsive-property : nth($responsive-data, 2);
-	$generate-suffix: "-"+$responsive-name;
 	
 	@media (#{$responsive-property}-width: $responsive-px) {
-		@include generate-colors;
+		@include generate-colors("-"+$responsive-name);
 	}
 }
 
 // Generate section- and element- classes for darkmode
-$generate-suffix: "-darkmode";
 @media (prefers-color-scheme: dark) {
 	// Generate section- color and element- classes
-	@include generate-colors;
+	@include generate-colors("-darkmode");
 
 	// Generate responsive section- color and element- classes
 	@each $responsive-name, $responsive-data in $responsive-sizes {
 		$responsive-px: nth($responsive-data, 1);
 		$responsive-property : nth($responsive-data, 2);
-		$generate-suffix: "-darkmode-"+$responsive-name;
 		
 		@media (#{$responsive-property}-width: $responsive-px) {
-			@include generate-colors;
+			@include generate-colors("-darkmode-"+$responsive-name);
 		}
 	}
 }
