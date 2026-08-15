@@ -21,13 +21,9 @@ jobs:
         id: clean
         run: rm -rf .git
         
-      - name: Zip repository
-        id: zip
-        run: zip -r -9 "build-output.zip" .
-        
       - name: Upload artifact
         id: upload
-        uses: actions/upload-artifact@v3
+        uses: forgejo/upload-artifact@v4
         with:
           name: build-output
-          path: build-output.zip
+          path: ./
